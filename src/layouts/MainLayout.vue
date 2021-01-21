@@ -2,7 +2,7 @@
   <q-layout view="hhh lpR fff">
     <q-header class="header container bg-transparent text-white">
       <q-toolbar class="row items-center justify-between">
-        <q-img class="header-logo" src="../assets/logo-header.png"/>
+        <q-img class="header-logo" src="../assets/logo-index.png"/>
         <div class="header-navigation text-main row font-montserrat__semi-bold">
           <span>Блог</span>
           <span>API</span>
@@ -22,7 +22,7 @@
 
     <q-footer class="footer text-white">
       <q-toolbar class="q-py-sm relative-position container row items-center justify-center">
-        <q-img class="q-ml-xl absolute-left footer-logo" src="../assets/logo-footer.png"/>
+        <q-img class="q-ml-xl absolute-left footer-logo" src="../assets/logo.png"/>
         <ul class="text-main row font-montserrat__semi-bold">
           <li>API</li>
           <li>Оплата и возврат</li>
