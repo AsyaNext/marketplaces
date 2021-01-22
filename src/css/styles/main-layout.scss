@@ -1,0 +1,38 @@
+.container {
+  margin: 0 auto;
+  padding: 0 30px;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.q-layout {
+  background: linear-gradient(117.23deg, #3A0166 -0.6%, #58287E 100%);;
+}
+
+.header {
+  .q-toolbar {
+    padding: 0;
+    margin-top: 21px;
+  }
+  &-logo {
+    max-width: 150px;
+  }
+  &-navigation {
+    span {
+      margin-left: 30px;
+    }
+  }
+}
+
+.footer {
+  background: linear-gradient(92.02deg, #DFB6FF 0%, #58287E 143.72%);
+  &-logo {
+    max-width: 150px;
+  }
+  ul {
+    list-style-type: none;
+    li {
+      margin-left: 30px;
+    }
+  }
+}
