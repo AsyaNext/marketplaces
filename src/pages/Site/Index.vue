@@ -72,6 +72,15 @@
         </div>
       </div>
     </section>
+    <div class="background-items">
+      <div class="background-items-rectangle absolute"></div>
+      <div class="background-items-rhombus absolute"></div>
+      <div class="background-items-sticks absolute">
+        <div class="background-items-sticks__first absolute"></div>
+        <div class="background-items-sticks__second absolute"></div>
+        <div class="background-items-sticks__third absolute"></div>
+      </div>
+    </div>
   </q-page>
 </template>
 
