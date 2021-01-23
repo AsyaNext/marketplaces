@@ -5,4 +5,33 @@
       font-size: 30px;
     }
   }
+  &-content{
+    &__column {
+      &-search {
+        .q-field__control {
+          padding-right: 0;
+          height: 44px;
+          box-shadow: none !important;
+          border-radius: 11px;
+          input {
+            font-weight: 600;
+            color: rgba(58, 1, 102, 0.49) !important;
+          }
+          .q-field__label {
+            top: 12px;
+            color: rgba(58, 1, 102, 0.49);
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 100%;
+          }
+          .blog-content__column-search-icon {
+            padding: 10px 12px;
+          }
+          .q-field__append {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
 }

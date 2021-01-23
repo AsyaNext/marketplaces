@@ -8,7 +8,13 @@
       <q-card-section class="card-article__group column justify-between">
         <div class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10">Очень длинное название статьи</div>
         <div>
-          <q-chip dense class="q-ma-none q-mb-md q-px-md card-article__group-category font-montserrat__semi-bold text-caption" color="pink-6" text-color="white">Категория</q-chip>
+          <q-chip
+            dense
+            class="q-ma-none q-mb-md q-px-md card-article__group-category font-montserrat__semi-bold text-caption"
+            color="pink-6"
+            text-color="white">
+            Категория
+          </q-chip>
           <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description text-grey-10">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa, enim error fuga fugiat hic laborum minima natus obcaecati odio porro recusandae ullam vero. Deleniti eaque eius harum odio sapiente.
           </div>

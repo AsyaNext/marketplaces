@@ -7,7 +7,19 @@
       <div class="blog-content__articles col-9 row q-col-gutter-lg">
         <card-of-article class="col-4" v-for="i in 10" :key="i" />
       </div>
-      <div class="blog-content__categories col-3"></div>
+      <div class="blog-content__column col-3">
+        <q-input
+          standout="bg-purple-2 text-purple-11"
+          dense
+          class="blog-content__column-search bg-purple-2 font-montserrat__semi-bold text-purple-11 text-main border-box"
+          v-model="search"
+          placeholder="Поиск"
+        >
+          <template #append>
+            <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
+          </template>
+        </q-input>
+      </div>
     </div>
   </q-page>
 </template>
@@ -18,6 +30,11 @@ export default {
   name: 'Blog',
   components: {
     CardOfArticle
+  },
+  data () {
+    return {
+      search: ''
+    }
   }
 }
 </script>
