@@ -3,7 +3,7 @@
     <div class="blog-headline font-montserrat__semi-bold text-purple-10">
       <div class="blog-headline__title">Блог</div>
     </div>
-    <div class="blog-content row q-col-gutter-x-xl">
+    <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
       <div class="blog-content__articles col-9 row q-col-gutter-lg">
         <card-of-article class="col-4" v-for="i in 10" :key="i" />
       </div>
@@ -29,6 +29,18 @@
         </div>
       </div>
     </div>
+    <div class="blog-pagination row justify-center">
+      <q-pagination
+        color="purple-10"
+        text-color="purple-11"
+        class="font-montserrat__semi-bold"
+        v-model="currentPage"
+        :max="10"
+        :max-pages="4"
+        :direction-links="true"
+      >
+      </q-pagination>
+    </div>
   </q-page>
 </template>
 
@@ -41,7 +53,8 @@ export default {
   },
   data () {
     return {
-      search: ''
+      search: '',
+      currentPage: 1
     }
   }
 }

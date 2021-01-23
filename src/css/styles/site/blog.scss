@@ -40,4 +40,34 @@
       }
     }
   }
+  &-pagination {
+    margin-bottom: 91px;
+    .q-btn--standard {
+      background: #EEE3FD !important;
+      .q-btn__wrapper {
+        &:before {
+          box-shadow: none;
+        }
+      }
+    }
+    .q-hoverable:hover > .q-focus-helper {
+      background: #8A7CB1 !important;
+    }
+    .row {
+      button {
+        margin-left: 4px;
+      }
+    }
+    .q-icon {
+      color: #53326C;
+    }
+    .q-btn__content {
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(58, 1, 102, 0.49);
+    }
+    .q-btn--rectangle {
+      border-radius: 22px;
+    }
+  }
 }
