@@ -13,6 +13,10 @@ export default function (/* { store, ssrContext } */) {
     mode: process.env.VUE_ROUTER_MODE,
     base: process.env.VUE_ROUTER_BASE
   })
+  Router.beforeEach((to, from, next) => {
+    document.title = to.meta.title || 'Аналитика маркетплейсов'
+    next()
+  })
 
   return Router
 }
