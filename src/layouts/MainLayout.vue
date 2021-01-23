@@ -2,10 +2,12 @@
   <q-layout :class="[$route.meta.title === 'Главная' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
     <q-header :class="[$route.meta.title === 'Главная' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
       <q-toolbar class="row items-center justify-between">
-        <q-img v-if="$route.meta.title === 'Главная'" class="header-logo" src="../assets/logo-index.png"/>
-        <q-img v-else class="q-ml-sm header-logo" src="../assets/logo.png"/>
+        <router-link to="/" class="header-logo">
+          <q-img v-if="$route.meta.title === 'Главная'" src="../assets/logo-index.png"/>
+          <q-img v-else class="q-ml-sm" src="../assets/logo.png"/>
+        </router-link>
         <div class="header-navigation text-main row font-montserrat__semi-bold">
-          <span>Блог</span>
+          <router-link to="blog">Блог</router-link>
           <span>API</span>
           <span>Тарифы</span>
           <span>Оплата и возврат</span>
@@ -24,12 +26,12 @@
     <q-footer class="footer text-white">
       <q-toolbar class="q-py-sm relative-position container row items-center justify-center">
         <q-img class="q-ml-xl absolute-left footer-logo" src="../assets/logo.png"/>
-        <ul class="text-main row font-montserrat__semi-bold">
-          <li>API</li>
-          <li>Оплата и возврат</li>
-          <li>FAQ</li>
-          <li>Контакты</li>
-        </ul>
+        <div class="footer-navigation text-main row font-montserrat__semi-bold">
+          <span>API</span>
+          <span>Оплата и возврат</span>
+          <span>FAQ</span>
+          <span>Контакты</span>
+        </div>
       </q-toolbar>
     </q-footer>
   </q-layout>

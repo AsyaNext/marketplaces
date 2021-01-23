@@ -1,5 +1,13 @@
 @import "fonts";
 
+* {
+  outline: none;
+}
+
 body {
   overflow-x: hidden;
+}
+
+.border-box {
+  border-radius: 11px;
 }
