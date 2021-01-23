@@ -1,7 +1,11 @@
 <template>
   <q-page class="q-mt-lg blog">
-    <div class="blog-headline font-montserrat__semi-bold text-purple-10">
-      <div class="blog-headline__title">Блог</div>
+    <div class="blog-headline row items-end q-gutter-x-md text-purple-10">
+      <div class="blog-headline__title font-montserrat__semi-bold cursor-pointer" @click="category = ''">Блог</div>
+      <div v-if="category" class="blog-headline__category row q-gutter-x-md items-end">
+        <q-icon name="fas fa-caret-right" size="sm"/>
+        <div class="blog-headline__category-title font-montserrat__semi-bold text-body1">{{category}}</div>
+      </div>
     </div>
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
       <div class="blog-content__articles col-9 row q-col-gutter-lg">
@@ -22,7 +26,7 @@
         <div class="q-py-md blog-content__column-categories bg-purple-2 border-box">
           <div class="q-mx-md blog-content__column-categories-title font-montserrat__semi-bold text-main text-purple-10">Категории</div>
           <q-list dense class="font-montserrat__regular text-body1 text-grey-10">
-            <q-item clickable v-for="i in 6" :key="i">
+            <q-item clickable v-for="i in 6" :key="i" @click="category = `Категория ${i}`">
               Категория {{i}}
             </q-item>
           </q-list>
@@ -54,7 +58,8 @@ export default {
   data () {
     return {
       search: '',
-      currentPage: 1
+      currentPage: 1,
+      category: ''
     }
   }
 }
