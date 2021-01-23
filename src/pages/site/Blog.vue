@@ -11,7 +11,7 @@
         <q-input
           standout="bg-purple-2 text-purple-11"
           dense
-          class="blog-content__column-search bg-purple-2 font-montserrat__semi-bold text-purple-11 text-main border-box"
+          class="q-mb-md blog-content__column-search bg-purple-2 font-montserrat__semi-bold text-purple-11 text-main border-box"
           v-model="search"
           placeholder="Поиск"
         >
@@ -19,6 +19,14 @@
             <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
           </template>
         </q-input>
+        <div class="q-py-md blog-content__column-categories bg-purple-2 border-box">
+          <div class="q-mx-md blog-content__column-categories-title font-montserrat__semi-bold text-main text-purple-10">Категории</div>
+          <q-list dense class="font-montserrat__regular text-body1 text-grey-10">
+            <q-item clickable v-for="i in 6" :key="i">
+              Категория {{i}}
+            </q-item>
+          </q-list>
+        </div>
       </div>
     </div>
   </q-page>

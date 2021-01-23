@@ -11,6 +11,7 @@
         .q-field__control {
           padding-right: 0;
           height: 44px;
+          background: inherit;
           box-shadow: none !important;
           border-radius: 11px;
           input {
@@ -30,6 +31,11 @@
           .q-field__append {
             height: 100%;
           }
+        }
+      }
+      &-categories {
+        &-title {
+          margin-bottom: 6px;
         }
       }
     }
