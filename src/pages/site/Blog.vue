@@ -1,18 +1,13 @@
 <template>
   <q-page class="q-mt-lg blog">
-    <div class="blog-headline row items-end q-gutter-x-md text-purple-10">
-      <div class="blog-headline__title font-montserrat__semi-bold cursor-pointer" @click="category = ''">Блог</div>
-      <div v-if="category" class="blog-headline__category row q-gutter-x-md items-end">
-        <q-icon name="fas fa-caret-right" size="sm"/>
-        <div class="blog-headline__category-title font-montserrat__semi-bold text-body1">{{category}}</div>
-      </div>
-    </div>
+    <base-submenu main-title="Блог" :category="category" @drop-data="category = ''"/>
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
       <div class="blog-content__articles col-9 row q-col-gutter-lg">
         <card-of-article class="col-4" v-for="i in 10" :key="i" />
       </div>
       <div class="blog-content__column col-3">
         <q-input
+          v-if="!category"
           standout="bg-purple-2 text-purple-11"
           dense
           class="q-mb-md blog-content__column-search bg-purple-2 font-montserrat__semi-bold text-purple-11 text-main border-box"
@@ -50,9 +45,11 @@
 
 <script>
 import CardOfArticle from 'components/site/CardOfArticle'
+import BaseSubmenu from 'components/site/BaseSubmenu'
 export default {
   name: 'Blog',
   components: {
+    BaseSubmenu,
     CardOfArticle
   },
   data () {
