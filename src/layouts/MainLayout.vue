@@ -8,7 +8,7 @@
         </router-link>
         <div class="header-navigation text-main row font-montserrat__semi-bold">
           <router-link to="/blog">Блог</router-link>
-          <span>API</span>
+          <router-link to="/api">API</router-link>
           <span>Тарифы</span>
           <span>Оплата и возврат</span>
           <span>FAQ</span>

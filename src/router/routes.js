@@ -21,7 +21,8 @@ const routes = [
             component: () => import('components/site/BaseArticle.vue')
           }
         ]
-      }
+      },
+      { path: 'api', meta: { title: 'API' }, component: () => import('pages/site/Api.vue') }
     ]
   },
   {
