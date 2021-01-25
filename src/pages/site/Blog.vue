@@ -79,8 +79,11 @@ export default {
         this.$router.push('/blog')
       }
     },
-    dropArticle () {
+    dropArticle (category) {
       if (this.$route.name === 'blog.article') {
+        if (this.category === '') {
+          this.category = category
+        }
         this.$router.push('/blog')
       }
     },
