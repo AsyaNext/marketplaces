@@ -100,4 +100,7 @@ export default {
     }
   }
 }
+.pagination {
+  margin-bottom: 102px;
+}
 </style>

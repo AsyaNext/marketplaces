@@ -24,9 +24,9 @@
     </q-page-container>
 
     <q-footer class="footer text-white">
-      <q-toolbar class="q-py-sm relative-position container row items-center justify-center">
+      <q-toolbar class="relative-position container row items-center justify-center">
         <q-img class="q-ml-xl absolute-left footer-logo" src="../assets/logo.png"/>
-        <div class="footer-navigation text-main row font-montserrat__semi-bold">
+        <div class="q-my-lg footer-navigation text-main row font-montserrat__semi-bold">
           <span>API</span>
           <span>Оплата и возврат</span>
           <span>FAQ</span>
