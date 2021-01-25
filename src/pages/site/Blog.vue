@@ -18,14 +18,7 @@
             <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
           </template>
         </q-input>
-        <div class="q-py-md blog-content__column-categories bg-purple-2 border-box">
-          <div class="q-mx-md blog-content__column-categories-title font-montserrat__semi-bold text-main text-purple-10">Категории</div>
-          <q-list dense class="font-montserrat__regular text-body1 text-grey-10">
-            <q-item clickable v-for="i in 6" :key="i" @click="category = `Категория ${i}`">
-              Категория {{i}}
-            </q-item>
-          </q-list>
-        </div>
+        <categories-of-blog @change-category="category = `Категория ${$event}`" />
       </div>
     </div>
     <div class="blog-pagination row justify-center">
@@ -46,9 +39,11 @@
 <script>
 import CardOfArticle from 'components/site/CardOfArticle'
 import BaseSubmenu from 'components/site/BaseSubmenu'
+import CategoriesOfBlog from 'components/site/CategoriesOfBlog'
 export default {
   name: 'Blog',
   components: {
+    CategoriesOfBlog,
     BaseSubmenu,
     CardOfArticle
   },
