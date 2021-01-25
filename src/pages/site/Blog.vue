@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import BaseSubmenu from 'components/site/BaseSubmenu'
+import BaseSubmenu from 'components/site/BaseNavigation'
 import CategoriesOfBlog from 'components/site/CategoriesOfBlog'
 export default {
   name: 'Blog',

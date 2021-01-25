@@ -3,4 +3,25 @@
     margin-bottom: 39px;
     font-size: 30px;
   }
+  &-navigation {
+    margin-right: 20px;
+    &__wrapper {
+      overflow: hidden;
+      &:first-child {
+        border-radius: 11px 11px 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 11px 11px;
+      }
+    }
+    &__section {
+      background: #8A7CB1;
+      &:hover {
+        background: #332852;
+      }
+      &-subsection {
+        padding: 10px 24px;
+      }
+    }
+  }
 }
