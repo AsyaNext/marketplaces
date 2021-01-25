@@ -7,13 +7,16 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue ./",
-    "start:dev": "quasar dev"
+    "start:dev": "quasar dev",
+    "start:build": "quasar build",
+    "surge-deploy": "surge ./dist/spa --domain analytics-marketplace.surge.sh"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "surge": "^0.21.7"
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
