@@ -7,7 +7,7 @@
           <q-img v-else class="q-ml-sm" src="../assets/logo.png"/>
         </router-link>
         <div class="header-navigation text-main row font-montserrat__semi-bold">
-          <router-link to="blog">Блог</router-link>
+          <router-link to="/blog">Блог</router-link>
           <span>API</span>
           <span>Тарифы</span>
           <span>Оплата и возврат</span>

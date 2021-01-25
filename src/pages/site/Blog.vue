@@ -1,10 +1,14 @@
 <template>
   <q-page class="q-mt-lg blog">
-    <base-submenu main-title="Блог" :category="category" @drop-data="category = ''"/>
+    <base-submenu
+      main-title="Блог"
+      :category="category || categoryArticle"
+      :article="article"
+      @drop-data="dropData"
+      @drop-article="dropArticle"
+    />
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
-      <div class="blog-content__articles col-9 row q-col-gutter-lg">
-        <card-of-article class="col-4" v-for="i in 10" :key="i" />
-      </div>
+      <router-view />
       <div class="blog-content__column col-3">
         <q-input
           v-if="!category"
@@ -18,10 +22,10 @@
             <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
           </template>
         </q-input>
-        <categories-of-blog @change-category="category = `Категория ${$event}`" />
+        <categories-of-blog @change-category="changeCategory" />
       </div>
     </div>
-    <div class="blog-pagination row justify-center">
+    <div v-if="this.$route.name !== 'blog.article'" class="blog-pagination row justify-center">
       <q-pagination
         color="purple-10"
         text-color="purple-11"
@@ -37,21 +41,58 @@
 </template>
 
 <script>
-import CardOfArticle from 'components/site/CardOfArticle'
 import BaseSubmenu from 'components/site/BaseSubmenu'
 import CategoriesOfBlog from 'components/site/CategoriesOfBlog'
 export default {
   name: 'Blog',
   components: {
     CategoriesOfBlog,
-    BaseSubmenu,
-    CardOfArticle
+    BaseSubmenu
   },
   data () {
     return {
       search: '',
       currentPage: 1,
       category: ''
+    }
+  },
+  computed: {
+    categoryArticle () {
+      if (this.$route.name === 'blog.article') {
+        return 'Категория 1'
+      } else {
+        return ''
+      }
+    },
+    article () {
+      if (this.$route.name === 'blog.article') {
+        return `Название статьи ${this.$route.params.id}`
+      } else {
+        return ''
+      }
+    }
+  },
+  methods: {
+    dropData () {
+      this.category = ''
+      if (this.$route.name === 'blog.article') {
+        this.$router.push('/blog')
+      }
+    },
+    dropArticle () {
+      if (this.$route.name === 'blog.article') {
+        this.$router.push('/blog')
+      }
+    },
+    changeCategory (category) {
+      this.category = `Категория ${category}`
+      if (this.$route.name === 'blog.article') {
+        this.$router.push('/blog')
+      }
+    },
+    openArticle (article) {
+      this.category = 'Категория 1'
+      this.article = article
     }
   }
 }

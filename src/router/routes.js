@@ -6,13 +6,19 @@ const routes = [
       { path: '', meta: { title: 'Главная' }, component: () => import('pages/site/Index.vue') },
       {
         path: 'blog',
-        meta: { title: 'Блог' },
         component: () => import('pages/site/Blog.vue'),
         children: [
           {
-            name: 'article',
-            path: '/article/:id',
-            component: () => import('pages/site/PageArticle.vue')
+            name: 'blog.page',
+            path: '',
+            meta: { title: 'Блог' },
+            component: () => import('components/site/ArticlesBlog.vue')
+          },
+          {
+            name: 'blog.article',
+            path: 'article/:id',
+            meta: { title: 'Статья' },
+            component: () => import('components/site/BaseArticle.vue')
           }
         ]
       }

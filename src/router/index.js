@@ -14,7 +14,14 @@ export default function (/* { store, ssrContext } */) {
     base: process.env.VUE_ROUTER_BASE
   })
   Router.beforeEach((to, from, next) => {
-    document.title = to.meta.title || 'Аналитика маркетплейсов'
+    if (to.params.title || localStorage.getItem('titlePage')) {
+      document.title = to.params.title || 'Аналитика маркетплейсов'
+      to.meta.title = to.params.title
+    } else if (to.params.id) {
+      document.title = `${to.meta.title} ${to.params.id}` || 'Аналитика маркетплейсов'
+    } else {
+      document.title = to.meta.title || 'Аналитика маркетплейсов'
+    }
     next()
   })
 
