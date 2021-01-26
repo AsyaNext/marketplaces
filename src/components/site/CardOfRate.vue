@@ -5,7 +5,7 @@
         <div class="q-mb-xs card-rate__headline-name font-montserrat__medium text-white">{{rate.name}}</div>
         <div class="row">
           <div class="card-rate__headline-symbol font-montserrat__medium text-main text-white">₽</div>
-          <div class="q-mr-sm card-rate__headline-price font-montserrat__medium text-white">{{rate.price}}</div>
+          <div class="q-mr-sm card-rate__headline-price font-montserrat__medium text-white">{{price}}</div>
           <div class="card-rate__headline-mounth font-montserrat__medium text-body2 text-white">/месяц</div>
         </div>
       </div>
@@ -43,6 +43,11 @@ export default {
   name: 'CardOfRate',
   props: {
     rate: Object
+  },
+  computed: {
+    price () {
+      return this.rate.price.toLocaleString()
+    }
   }
 }
 </script>
