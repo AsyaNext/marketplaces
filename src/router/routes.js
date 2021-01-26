@@ -40,7 +40,8 @@ const routes = [
             component: () => import('components/site/ApiArticle.vue')
           }
         ]
-      }
+      },
+      { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Index.vue') },
     ]
   },
   {

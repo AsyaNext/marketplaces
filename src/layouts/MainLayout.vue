@@ -9,7 +9,7 @@
         <div class="header-navigation text-main row font-montserrat__semi-bold">
           <router-link to="/blog">Блог</router-link>
           <router-link to="/api">API</router-link>
-          <span>Тарифы</span>
+          <router-link to="/rates">Тарифы</router-link>
           <span>Оплата и возврат</span>
           <span>FAQ</span>
           <span>Контакты</span>
