@@ -1,0 +1,53 @@
+.rates {
+  &-headline {
+    margin-bottom: 35px;
+    font-size: 30px;
+  }
+  &-subscription {
+    margin-bottom: 62px;
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__list {
+      .active-item {
+        color: #53326C;
+        background-color: #F8F4FD;
+      }
+      &-item {
+        color: white;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
+        &:hover {
+          color: #53326C;
+          background-color: #F8F4FD;
+        }
+      }
+    }
+  }
+  &-list {
+    margin-bottom: 189px;
+    &__item {
+      &:first-child {
+        .card-rate__headline {
+          background-color: #8A7CB1;
+        }
+      }
+      &:nth-child(2) {
+        .card-rate__headline {
+          background-color: #6C5196;
+        }
+      }
+      &:nth-child(3) {
+        .card-rate__headline {
+          background-color: #512C7E;
+        }
+      }
+      &:last-child {
+        .card-rate__headline {
+          background-color: #330264;
+        }
+      }
+    }
+  }
+}

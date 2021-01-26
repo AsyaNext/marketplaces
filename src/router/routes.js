@@ -41,7 +41,7 @@ const routes = [
           }
         ]
       },
-      { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Index.vue') },
+      { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Rates.vue') }
     ]
   },
   {
