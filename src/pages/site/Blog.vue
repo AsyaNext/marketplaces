@@ -8,7 +8,7 @@
       @drop-article="dropArticle"
     />
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
-      <router-view />
+      <router-view :articles="articles" />
       <div class="blog-content__column col-3">
         <q-input
           v-if="!category"
@@ -22,7 +22,7 @@
             <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
           </template>
         </q-input>
-        <categories-of-blog @change-category="changeCategory" />
+        <categories-of-blog @change-category="changeCategory" :categories="categories" />
       </div>
     </div>
     <div v-if="this.$route.name !== 'blog.article'" class="blog-pagination row justify-center">
@@ -41,6 +41,7 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import BaseSubmenu from 'components/site/BaseNavigation'
 import CategoriesOfBlog from 'components/site/CategoriesOfBlog'
 export default {
@@ -57,6 +58,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      categories: 'blog/categories',
+      articles: 'blog/articles'
+    }),
     categoryArticle () {
       if (this.$route.name === 'blog.article') {
         return 'Категория 1'
@@ -73,6 +78,10 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      getArticles: 'blog/getArticles',
+      getCategories: 'blog/getCategories'
+    }),
     dropData () {
       this.category = ''
       if (this.$route.name === 'blog.article') {
@@ -88,7 +97,7 @@ export default {
       }
     },
     changeCategory (category) {
-      this.category = `Категория ${category}`
+      this.category = category
       if (this.$route.name === 'blog.article') {
         this.$router.push('/blog')
       }
@@ -97,6 +106,10 @@ export default {
       this.category = 'Категория 1'
       this.article = article
     }
+  },
+  beforeMount () {
+    this.getCategories()
+    this.getArticles({ page: 1, page_size: 10 })
   }
 }
 </script>

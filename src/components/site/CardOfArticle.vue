@@ -1,22 +1,29 @@
 <template>
   <div>
-    <router-link :to="{ name: 'blog.article', params: { id: 1, title: 'Статья о маркетплейсе' } }">
+    <router-link :to="{ name: 'blog.article', params: { id: 1, title: 'Статья о маркетплейсе', article: article } }">
       <q-card class="card-article border-box column full-height">
         <div class="card-article__image overflow-hidden">
-          <q-img native-context-menu src="https://cdn.quasar.dev/img/mountains.jpg" :ratio="26/14" />
+          <q-img native-context-menu :src="article.image" :ratio="26/14" />
         </div>
         <q-card-section class="card-article__group column justify-between">
-          <div class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10">Очень длинное название статьи</div>
-          <div>
-            <q-chip
-              dense
-              class="q-ma-none q-mb-md q-px-md card-article__group-category font-montserrat__semi-bold text-caption"
-              color="pink-6"
-              text-color="white">
-              Категория
-            </q-chip>
+          <div class="card-article__group-headline column justify-between">
+            <div class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10">{{article.name}}</div>
+            <div class="q-mb-md row q-gutter-xs">
+              <div v-for="category in article.category" :key="category.id">
+                <q-chip
+                  dense
+                  class="q-ma-none q-px-md card-article__group-category font-montserrat__semi-bold text-caption"
+                  color="pink-6"
+                  text-color="white"
+                >
+                  {{category.name}}
+                </q-chip>
+              </div>
+            </div>
+          </div>
+          <div class="card-article__group-content">
             <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores culpa, enim error fuga fugiat hic laborum minima natus obcaecati odio porro recusandae ullam vero. Deleniti eaque eius harum odio sapiente.
+               {{article.text}}
             </div>
             <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">12.07.2020</div>
           </div>
@@ -28,7 +35,10 @@
 
 <script>
 export default {
-  name: 'CardOfArticle'
+  name: 'CardOfArticle',
+  props: {
+    article: Object
+  }
 }
 </script>
 
@@ -59,6 +69,12 @@ a {
   }
   &__group {
     flex-grow: 1;
+    &-headline {
+      flex-grow: 1;
+    }
+    &-content {
+      min-height: 120px;
+    }
     &-description {
       overflow: hidden;
       text-overflow: ellipsis;

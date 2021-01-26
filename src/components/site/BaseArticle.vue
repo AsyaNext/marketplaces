@@ -56,13 +56,11 @@
 <script>
 export default {
   name: 'PageArticle',
-  data () {
-    return {
-      article: 'Статья'
-    }
+  props: {
+    article: Object
   },
   created () {
-    document.title = 'Статья о маркетплейсах'
+    document.title = this.article.name
   }
 }
 </script>

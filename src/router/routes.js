@@ -25,6 +25,7 @@ const routes = [
       {
         path: 'api',
         meta: { title: 'API' },
+        props: true,
         component: () => import('pages/site/Api.vue'),
         children: [
           {
