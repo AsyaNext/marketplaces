@@ -22,7 +22,25 @@ const routes = [
           }
         ]
       },
-      { path: 'api', meta: { title: 'API' }, component: () => import('pages/site/Api.vue') }
+      {
+        path: 'api',
+        meta: { title: 'API' },
+        component: () => import('pages/site/Api.vue'),
+        children: [
+          {
+            name: 'api.page',
+            path: '',
+            meta: { title: 'API' },
+            component: () => import('components/site/ApiArticle.vue')
+          },
+          {
+            name: 'api.article',
+            path: ':slug',
+            meta: { title: 'API' },
+            component: () => import('components/site/ApiArticle.vue')
+          }
+        ]
+      }
     ]
   },
   {

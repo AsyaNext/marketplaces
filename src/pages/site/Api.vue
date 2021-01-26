@@ -7,7 +7,7 @@
           <div
             :class="{ 'bg-purple-13' : openSection.name === section.name }"
             class="q-py-md q-px-lg api-navigation__section font-montserrat__semi-bold text-white text-body1 text-uppercase cursor-pointer"
-            @click="openSection = section"
+            @click="openArticle(section)"
           >
             {{section.name}}
           </div>
@@ -21,38 +21,47 @@
           </div>
         </div>
       </div>
-      <api-article class="api-content col" :section="openSection" />
+      <div class="api-content col">
+        <router-view :section="openSection" />
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import ApiArticle from '../../components/site/ApiArticle'
 export default {
   name: 'Api',
-  components: {
-    ApiArticle
-  },
   data () {
     return {
       openSection: null,
       sections: [
         {
           name: 'Раздел 1',
+          slug: '',
           submenu: ['Страница 1', 'Страница 2', 'Страница 3']
         },
         {
           name: 'Раздел 2',
+          slug: 'section-first',
           submenu: ['Страница 1', 'Страница 2']
         },
         {
           name: 'Раздел 3',
+          slug: 'section-second',
           submenu: ['Страница 1', 'Страница 2', 'Страница 3']
         }
       ]
     }
   },
   methods: {
+    openArticle (section) {
+      this.openSection = section
+      if (this.openSection.slug !== '') {
+        this.$router.push({ name: 'api.article', params: { slug: this.openSection.slug } })
+      } else {
+        this.$router.push('/api')
+      }
+    },
     anchorHashCheck () {
       if (window.location.hash === this.$route.hash) {
         const el = document.getElementById(this.$route.hash.slice(1))
