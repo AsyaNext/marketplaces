@@ -3,7 +3,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', meta: { title: 'Главная' }, component: () => import('pages/site/Index.vue') },
+      { path: '', name: 'index', meta: { title: 'Главная' }, component: () => import('pages/site/Index.vue') },
       {
         path: 'blog',
         component: () => import('pages/site/Blog.vue'),
@@ -42,7 +42,10 @@ const routes = [
           }
         ]
       },
-      { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Rates.vue') }
+      { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Rates.vue') },
+      { path: 'payment-and-return', meta: { title: 'Оплата и возврат' }, component: () => import('pages/site/PaymentAndReturn.vue') },
+      { path: 'faq', meta: { title: 'FAQ' }, component: () => import('pages/site/Faq.vue') },
+      { path: 'contacts', meta: { title: 'Контакты' }, component: () => import('pages/site/Contacts.vue') }
     ]
   },
   {

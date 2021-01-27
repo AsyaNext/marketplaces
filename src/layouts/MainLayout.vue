@@ -1,36 +1,41 @@
 <template>
-  <q-layout :class="[$route.meta.title === 'Главная' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
-    <q-header :class="[$route.meta.title === 'Главная' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
+  <q-layout :class="[$route.name === 'index' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
+    <q-header :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
       <q-toolbar class="row items-center justify-between">
         <router-link to="/" class="header-logo">
-          <q-img v-if="$route.meta.title === 'Главная'" class="q-ml-sm" src="../assets/logo-index.svg"/>
+          <q-img v-if="$route.name === 'index'" class="q-ml-sm" src="../assets/logo-index.svg"/>
           <q-img v-else class="q-ml-sm" src="../assets/logo.svg"/>
         </router-link>
-        <div class="header-navigation text-main row font-montserrat__semi-bold">
+        <div v-if="widthWindow >= 1050" class="header-navigation text-main row font-montserrat__semi-bold">
           <router-link to="/blog">Блог</router-link>
           <router-link to="/api">API</router-link>
           <router-link to="/rates">Тарифы</router-link>
-          <span>Оплата и возврат</span>
-          <span>FAQ</span>
-          <span>Контакты</span>
+          <router-link to="/payment-and-return">Оплата и возврат</router-link>
+          <router-link to="/faq">FAQ</router-link>
+          <router-link to="/contacts">Контакты</router-link>
           <span>Вход</span>
           <span>Регистрация</span>
         </div>
+        <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
       </q-toolbar>
     </q-header>
+
+    <q-drawer v-model="rightDrawer" side="right" overlay behavior="mobile">
+      <!-- drawer content -->
+    </q-drawer>
 
     <q-page-container class="container">
       <router-view />
     </q-page-container>
 
     <q-footer class="footer text-white">
-      <q-toolbar class="relative-position container row items-center justify-center">
-        <q-img class="q-ml-sm absolute-left footer-logo" src="../assets/logo.svg"/>
-        <div class="q-my-lg footer-navigation text-main row font-montserrat__semi-bold">
-          <span>API</span>
-          <span>Оплата и возврат</span>
-          <span>FAQ</span>
-          <span>Контакты</span>
+      <q-toolbar :class="[widthWindow >= 800 ? 'justify-center' : 'justify-between', widthWindow <= 700 ? 'q-pt-lg column text-center' : 'row']" class="relative-position container items-center justify-center">
+        <q-img :class="{ 'absolute-left q-ml-sm' : widthWindow >= 800 }" class="footer-logo" src="../assets/logo.svg"/>
+        <div class="q-my-lg footer-navigation text-main row justify-center font-montserrat__semi-bold">
+          <router-link to="/api">API</router-link>
+          <router-link to="/payment-and-return">Оплата и возврат</router-link>
+          <router-link to="/faq">FAQ</router-link>
+          <router-link to="/contacts">Контакты</router-link>
         </div>
       </q-toolbar>
     </q-footer>
@@ -42,7 +47,17 @@ export default {
   name: 'MainLayout',
   data () {
     return {
+      widthWindow: 0,
+      rightDrawer: false
     }
+  },
+  methods: {
+    updateWidth () {
+      this.widthWindow = window.innerWidth
+    }
+  },
+  created () {
+    window.addEventListener('resize', this.updateWidth)
   }
 }
 </script>
