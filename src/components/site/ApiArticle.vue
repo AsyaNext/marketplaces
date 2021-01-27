@@ -45,6 +45,10 @@
           hide-bottom
         />
       </div>
+      <q-markdown
+        class="font-avenir__regular text-grey-10"
+        src="> This is a **test** of markdown">
+      </q-markdown>
     </div>
   </div>
 </template>
