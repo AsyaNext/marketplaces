@@ -13,10 +13,14 @@
           </div>
           <div v-show="openSection.name === section.name">
             <div
-              class="api-navigation__section-subsection font-montserrat__medium bg-white text-grey-10 text-body1"
+              class="api-navigation__section-subsection"
               v-for="subsection in section.submenu"
               :key="subsection.index">
-              <router-link :to="{ hash: `#${section.submenu.indexOf(subsection) + 1}` }" @click.native="anchorHashCheck">{{subsection}}</router-link>
+              <router-link :to="{ hash: `#${section.submenu.indexOf(subsection) + 1}` }" @click.native="anchorHashCheck">
+                <div class="api-navigation__section-subsection-item font-montserrat__medium bg-white text-grey-10 text-body1">
+                  {{subsection}}
+                </div>
+              </router-link>
             </div>
           </div>
         </div>
