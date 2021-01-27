@@ -101,6 +101,9 @@ export default {
     this.getArticles({ page: 1, page_size: 10 })
     if (this.$route.params.id) {
       this.getSpecArticle(this.$route.params.id)
+        .then(() => {
+          document.title = this.article
+        })
     }
   }
 }

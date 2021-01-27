@@ -3,13 +3,18 @@
     <div class="article q-pa-md bg-white">
       <q-img native-context-menu class="q-mb-md article-cover" src="https://cdn.quasar.dev/img/mountains.jpg" :ratio="79/23" />
       <div class="q-mb-lg article-extradata row justify-between items-center">
-        <q-chip
-          dense
-          class="q-px-md font-montserrat__semi-bold text-caption"
-          color="pink-6"
-          text-color="white">
-          Категория
-        </q-chip>
+        <div>
+          <q-chip
+            dense
+            class="q-px-md font-montserrat__semi-bold text-caption"
+            color="pink-6"
+            text-color="white"
+            v-for="category in article.category"
+            :key="category.id"
+          >
+            {{category.name}}
+          </q-chip>
+        </div>
         <div class="font-avenir__bold text-grey-5 letter-spacing__less text-caption">12.07.2020</div>
       </div>
       <div class="article-title font-montserrat__bold text-center text-purple-12">
