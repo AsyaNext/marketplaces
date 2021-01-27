@@ -16,12 +16,13 @@
       </div>
     </div>
     <div class="rates-list row q-col-gutter-x-md">
-      <card-of-rate class="rates-list__item col-3" v-for="rate in rates" :key="rate.index" :rate="rate" />
+      <card-of-rate class="rates-list__item col-3" v-for="rate in ratesOrg" :key="rate.id" :rate="rate" :subscription="activeItem" />
     </div>
   </q-page>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import CardOfRate from '../../components/site/CardOfRate'
 export default {
   name: 'Rates',
@@ -31,53 +32,22 @@ export default {
   data () {
     return {
       activeItem: '',
-      subscription: ['1 месяц', '3 месяца (скидка 10%)', '6 месяцев (скидка 20%)'],
-      rates: [
-        {
-          name: 'Базовый',
-          price: 4500,
-          requests: 350,
-          analysis_categories: true,
-          analysis_brands: false,
-          data_scan: false,
-          data_for_days: 14
-        },
-        {
-          name: 'Расширенный',
-          price: 16000,
-          requests: 1300,
-          analysis_categories: true,
-          analysis_brands: true,
-          data_scan: true,
-          data_for_days: 30,
-          view_new: true
-        },
-        {
-          name: 'Профессиональный',
-          price: 25000,
-          requests: 2700,
-          analysis_categories: true,
-          analysis_brands: true,
-          data_scan: true,
-          data_for_days: 45,
-          view_new: true,
-          change_date: true
-        },
-        {
-          name: 'Элитный',
-          price: 35000,
-          requests: 4000,
-          analysis_categories: true,
-          analysis_brands: true,
-          data_scan: true,
-          data_for_days: 60,
-          view_new: true,
-          change_date: true
-        }
-      ]
+      subscription: ['1 месяц', '3 месяца (скидка 10%)', '6 месяцев (скидка 20%)']
     }
   },
+  computed: {
+    ...mapGetters({
+      ratesOrg: 'rates/rates'
+    })
+  },
+  methods: {
+    ...mapActions({
+      getRates: 'rates/getRates'
+    })
+  },
   beforeMount () {
+    this.getRates()
+    console.log(this.ratesOrg)
     this.activeItem = this.subscription[0]
   }
 }
