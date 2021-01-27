@@ -1,9 +1,10 @@
 <template>
   <div>
-    <router-link :to="{ name: 'blog.article', params: { id: 1, title: 'Статья о маркетплейсе', article: article } }">
-      <q-card class="card-article border-box column full-height">
+    <router-link :to="{ name: 'blog.article', params: { id: article.id, title: article.name } }">
+      <q-card class="card-article border-box column full-height" @click="$emit('get-article', article.id)">
         <div class="card-article__image overflow-hidden">
-          <q-img native-context-menu :src="article.image" :ratio="26/14" />
+          <q-img v-if="article.image" native-context-menu :src="article.image" :ratio="26/14" />
+          <q-img v-else native-context-menu src="../../assets/placeholder.png" :ratio="26/14" />
         </div>
         <q-card-section class="card-article__group column justify-between">
           <div class="card-article__group-headline column justify-between">

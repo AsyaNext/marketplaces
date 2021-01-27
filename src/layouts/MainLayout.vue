@@ -57,6 +57,7 @@ export default {
     }
   },
   created () {
+    this.updateWidth()
     window.addEventListener('resize', this.updateWidth)
   }
 }

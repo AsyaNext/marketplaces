@@ -2,12 +2,14 @@ import api from '../../boot/api'
 
 const state = {
   articles: null,
-  categories: null
+  categories: null,
+  specArticle: null
 }
 
 const getters = {
   articles: state => state.articles,
-  categories: state => state.categories
+  categories: state => state.categories,
+  specArticle: state => state.specArticle
 }
 
 const mutations = {
@@ -16,6 +18,9 @@ const mutations = {
   },
   GET_CATEGORIES (state, payload) {
     state.categories = payload
+  },
+  GET_SPEC_ARTICLE (state, payload) {
+    state.specArticle = payload
   }
 }
 
@@ -23,10 +28,7 @@ const actions = {
   getArticles ({ commit }, data) {
     return new Promise((resolve, reject) => {
       api.get('articles', {
-        params: data,
-        headers: {
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjExNzUzNTc3LCJqdGkiOiI1ZjNjNWIxM2NiMjg0MTA3ODI5MDUzNmIyZjhiMjFjMCIsInVzZXJfaWQiOjJ9.oRYoOqUxe-DFZvAXM-Fwkd2m76DdRHRp2c_YemY5J7s'
-        }
+        params: data
       })
         .then((response) => {
           commit('GET_ARTICLES', response.data.results)
@@ -40,13 +42,23 @@ const actions = {
   },
   getCategories ({ commit }) {
     return new Promise((resolve, reject) => {
-      api.get('articles/categories', {
-        headers: {
-          Authorization: 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjExNzUzNTc3LCJqdGkiOiI1ZjNjNWIxM2NiMjg0MTA3ODI5MDUzNmIyZjhiMjFjMCIsInVzZXJfaWQiOjJ9.oRYoOqUxe-DFZvAXM-Fwkd2m76DdRHRp2c_YemY5J7s'
-        }
-      })
+      api.get('articles/categories')
         .then((response) => {
           commit('GET_CATEGORIES', response.data)
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  getSpecArticle ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      api.get(`articles/${data}`)
+        .then((response) => {
+          console.log(response)
+          localStorage.getItem('article', JSON.stringify(response.data))
+          commit('GET_SPEC_ARTICLE', response.data)
           resolve(response)
         })
         .catch((error) => {

@@ -2,7 +2,7 @@
   <q-page class="q-mt-lg blog">
     <base-submenu
       main-title="Блог"
-      :category="category || categoryArticle"
+      :category="category"
       :article="article"
       @drop-data="dropData"
       @drop-article="dropArticle"
@@ -60,18 +60,12 @@ export default {
   computed: {
     ...mapGetters({
       categories: 'blog/categories',
-      articles: 'blog/articles'
+      articles: 'blog/articles',
+      specArticle: 'blog/specArticle'
     }),
-    categoryArticle () {
-      if (this.$route.name === 'blog.article') {
-        return 'Категория 1'
-      } else {
-        return ''
-      }
-    },
     article () {
-      if (this.$route.name === 'blog.article') {
-        return `Название статьи ${this.$route.params.id}`
+      if (this.$route.name === 'blog.article' && this.specArticle) {
+        return this.specArticle.name
       } else {
         return ''
       }
@@ -80,36 +74,34 @@ export default {
   methods: {
     ...mapActions({
       getArticles: 'blog/getArticles',
-      getCategories: 'blog/getCategories'
+      getCategories: 'blog/getCategories',
+      getSpecArticle: 'blog/getSpecArticle'
     }),
     dropData () {
-      this.category = ''
+      this.category = localStorage.removeItem('category')
       if (this.$route.name === 'blog.article') {
         this.$router.push('/blog')
       }
     },
-    dropArticle (category) {
+    dropArticle () {
       if (this.$route.name === 'blog.article') {
-        if (this.category === '') {
-          this.category = category
-        }
         this.$router.push('/blog')
       }
     },
     changeCategory (category) {
-      this.category = category
+      localStorage.setItem('category', category)
+      this.category = localStorage.getItem('category')
       if (this.$route.name === 'blog.article') {
         this.$router.push('/blog')
       }
-    },
-    openArticle (article) {
-      this.category = 'Категория 1'
-      this.article = article
     }
   },
   beforeMount () {
     this.getCategories()
     this.getArticles({ page: 1, page_size: 10 })
+    if (this.$route.params.id) {
+      this.getSpecArticle(this.$route.params.id)
+    }
   }
 }
 </script>
