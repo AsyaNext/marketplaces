@@ -44,11 +44,11 @@
           class="no-shadow article-section__content-table"
           hide-bottom
         />
+        <q-markdown
+          class="font-avenir__regular text-grey-10"
+          src="> This is a **test** of markdown">
+        </q-markdown>
       </div>
-      <q-markdown
-        class="font-avenir__regular text-grey-10"
-        src="> This is a **test** of markdown">
-      </q-markdown>
     </div>
   </div>
 </template>
@@ -110,7 +110,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .article {
   margin-bottom: 28px;
   &-section {
@@ -127,6 +127,13 @@ export default {
       line-height: 20px;
       &-table {
         border-radius: 0;
+      }
+      .q-markdown{
+        &--note {
+          border: none;
+          border-radius: 0;
+          background-color: transparent;
+        }
       }
     }
   }
