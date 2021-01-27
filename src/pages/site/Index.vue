@@ -3,7 +3,7 @@
     <section class="index-page-functions">
       <div class="index-page-functions__title font-montserrat__semi-bold text-h3">О сервисе</div>
       <div class="q-pl-lg index-page-functions__group row">
-        <div class="index-page-functions__group-image relative-position">
+        <div class="index-page-functions__group-image border-box relative-position">
           <div class="img border-box relative-position"></div>
         </div>
         <div class="index-page-functions__group-column">
@@ -16,7 +16,7 @@
           <div class="index-page-functions__group-column-title font-montserrat__semi-bold text-h5">Функция</div>
           <div class="index-page-functions__group-column-description font-avenir__regular text-main">Описание функции</div>
         </div>
-        <div class="index-page-functions__group-image relative-position">
+        <div class="index-page-functions__group-image border-box relative-position">
           <div class="img border-box relative-position"></div>
         </div>
       </div>

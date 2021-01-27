@@ -29,8 +29,8 @@
     </q-page-container>
 
     <q-footer class="footer text-white">
-      <q-toolbar :class="[widthWindow >= 800 ? 'justify-center' : 'justify-between', widthWindow <= 700 ? 'q-pt-lg column text-center' : 'row']" class="relative-position container items-center justify-center">
-        <q-img :class="{ 'absolute-left q-ml-sm' : widthWindow >= 800 }" class="footer-logo" src="../assets/logo.svg"/>
+      <q-toolbar :class="[widthWindow >= 800 ? 'justify-center' : 'justify-between', widthWindow <= 700 ? 'column text-center' : 'row']" class="relative-position container items-center justify-center">
+        <q-img :class="[{ 'absolute-left q-ml-sm' : widthWindow >= 800 }, { 'q-mt-lg' : widthWindow <= 700 }]" class="footer-logo" src="../assets/logo.svg"/>
         <div class="q-my-lg footer-navigation text-main row justify-center font-montserrat__semi-bold">
           <router-link to="/api">API</router-link>
           <router-link to="/payment-and-return">Оплата и возврат</router-link>
