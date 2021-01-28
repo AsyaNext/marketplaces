@@ -46,20 +46,20 @@
       </div>
     </div>
     <div class="pagination row justify-between">
-      <div class="pagination-back row items-center q-gutter-x-sm cursor-pointer">
-        <q-icon name="keyboard_arrow_left" size="md" color="purple-10"></q-icon>
+      <div class="pagination-back row items-center q-gutter-x-sm cursor-pointer" @click="getArticle(article.id + 1)">
+        <q-icon :class="[article.id + 1 > this.count ? 'text-purple-11' : 'text-purple-10']" name="keyboard_arrow_left" size="md"></q-icon>
         <div class="font-montserrat__semi-bold text-purple-11 text-main">Назад</div>
       </div>
-      <div class="pagination-forward row items-center q-gutter-x-sm cursor-pointer">
+      <div class="pagination-forward row items-center q-gutter-x-sm cursor-pointer" @click="getArticle(article.id - 1)">
         <div class="font-montserrat__semi-bold text-purple-11 text-main">Следующая</div>
-        <q-icon name="keyboard_arrow_right" size="md" color="purple-10"></q-icon>
+        <q-icon :class="[article.id - 1 === 0 ? 'text-purple-11' : 'text-purple-10']" name="keyboard_arrow_right" size="md" color="purple-10"></q-icon>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'PageArticle',
   data () {
@@ -68,8 +68,23 @@ export default {
   },
   computed: {
     ...mapGetters({
-      article: 'blog/specArticle'
+      article: 'blog/specArticle',
+      count: 'blog/countArticles'
     })
+  },
+  methods: {
+    ...mapActions({
+      getSpecArticle: 'blog/getSpecArticle'
+    }),
+    getArticle (id) {
+      if (id > 0 && id <= this.count) {
+        this.getSpecArticle(id)
+          .then(() => {
+            this.$router.push({ name: 'blog.article', params: { id: this.article.id, title: this.article.name } })
+            document.title = this.article.name
+          })
+      }
+    }
   },
   beforeMount () {
     console.log(this.article)
@@ -112,5 +127,9 @@ export default {
 }
 .pagination {
   margin-bottom: 102px;
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 </style>
