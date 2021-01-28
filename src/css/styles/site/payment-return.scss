@@ -1,0 +1,28 @@
+.payment-return {
+  &-headline {
+    margin-bottom: 39px;
+    font-size: 30px;
+  }
+  &-content {
+    margin-bottom: 28px;
+    border-radius: 15px;
+    padding: 25px 30px 25px 20px;
+    &__section {
+      margin-bottom: 45px;
+      &-list {
+        .q-img {
+          &__image {
+            background-size: contain !important;
+          }
+        }
+        &-visa, &-mir {
+          width: 95px;
+        }
+        &-mastercard {
+          margin: 0 27px;
+          width: 48px
+        }
+      }
+    }
+  }
+}
