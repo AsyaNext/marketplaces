@@ -2,19 +2,22 @@ import api from '../../boot/api'
 
 const state = {
   articles: null,
+  countArticles: null,
   categories: null,
   specArticle: null
 }
 
 const getters = {
   articles: state => state.articles,
+  countArticles: state => state.countArticles,
   categories: state => state.categories,
   specArticle: state => state.specArticle
 }
 
 const mutations = {
   GET_ARTICLES (state, payload) {
-    state.articles = payload
+    state.articles = payload.results
+    state.countArticles = payload.count
   },
   GET_CATEGORIES (state, payload) {
     state.categories = payload
@@ -31,7 +34,7 @@ const actions = {
         params: data
       })
         .then((response) => {
-          commit('GET_ARTICLES', response.data.results)
+          commit('GET_ARTICLES', response.data)
           console.log(response)
           resolve(response)
         })

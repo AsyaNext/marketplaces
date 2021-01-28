@@ -31,9 +31,10 @@
         text-color="purple-11"
         class="font-montserrat__semi-bold"
         v-model="currentPage"
-        :max="10"
+        :max="Math.ceil(count / 10)"
         :max-pages="4"
         :direction-links="true"
+        @input="getArticles({ page: currentPage, page_size: 10 })"
       >
       </q-pagination>
     </div>
@@ -61,6 +62,7 @@ export default {
     ...mapGetters({
       categories: 'blog/categories',
       articles: 'blog/articles',
+      count: 'blog/countArticles',
       specArticle: 'blog/specArticle'
     }),
     article () {
