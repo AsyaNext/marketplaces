@@ -13,7 +13,7 @@
           <router-link to="/payment-and-return">Оплата и возврат</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/contacts">Контакты</router-link>
-          <span>Вход</span>
+          <span @click="openLogin = true">Вход</span>
           <span>Регистрация</span>
         </div>
         <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
@@ -26,6 +26,7 @@
 
     <q-page-container class="container">
       <router-view />
+      <login :status="openLogin" @close-login="openLogin = false" />
     </q-page-container>
 
     <q-footer class="footer text-white">
@@ -43,12 +44,17 @@
 </template>
 
 <script>
+import Login from 'components/popups/Login'
 export default {
   name: 'MainLayout',
+  components: {
+    Login
+  },
   data () {
     return {
       widthWindow: 0,
-      rightDrawer: false
+      rightDrawer: false,
+      openLogin: false
     }
   },
   methods: {
