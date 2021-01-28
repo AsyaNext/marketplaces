@@ -1,7 +1,7 @@
 <template>
   <div v-show="article" class="col-9">
     <div class="article q-pa-md bg-white">
-      <q-img native-context-menu class="q-mb-md article-cover" src="https://cdn.quasar.dev/img/mountains.jpg" :ratio="79/23" />
+      <q-img native-context-menu class="q-mb-md article-cover" :src="article.image" :ratio="79/23" />
       <div class="q-mb-lg article-extradata row justify-between items-center">
         <div>
           <q-chip
@@ -46,11 +46,11 @@
       </div>
     </div>
     <div class="pagination row justify-between">
-      <div class="pagination-back row items-center q-gutter-x-sm cursor-pointer" @click="getArticle(article.id + 1)">
+      <div :class="[article.id + 1 > this.count ? 'cursor-not-allowed' : 'cursor-pointer']" class="pagination-back row items-center q-gutter-x-sm" @click="getArticle(article.id + 1)">
         <q-icon :class="[article.id + 1 > this.count ? 'text-purple-11' : 'text-purple-10']" name="keyboard_arrow_left" size="md"></q-icon>
         <div class="font-montserrat__semi-bold text-purple-11 text-main">Назад</div>
       </div>
-      <div class="pagination-forward row items-center q-gutter-x-sm cursor-pointer" @click="getArticle(article.id - 1)">
+      <div :class="[article.id - 1 === 0 ? 'cursor-not-allowed' : 'cursor-pointer']" class="pagination-forward row items-center q-gutter-x-sm" @click="getArticle(article.id - 1)">
         <div class="font-montserrat__semi-bold text-purple-11 text-main">Следующая</div>
         <q-icon :class="[article.id - 1 === 0 ? 'text-purple-11' : 'text-purple-10']" name="keyboard_arrow_right" size="md" color="purple-10"></q-icon>
       </div>
