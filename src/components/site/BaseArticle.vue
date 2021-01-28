@@ -21,14 +21,10 @@
         {{article.name}}
       </div>
       <div class="article-content font-avenir__regular text-main text-justify text-grey-10">
-        <p>Статистику Wildberries за прошлый год цитирует vc.ru: выручка выросла на 96%, до 437 млрд рублей,
-          число покупателей тоже выросло вдвое — с 18 млн до 40 млн человек — с пропорциональным ростом заказов,
-          а продавцов — более чем вчетверо, с 19 тысяч до 91 тысячи.</p>
-        <p>Сегмент fashion обеспечил компании точно половину годовой выручки — 218 млрд рублей. Но больше всего
-          за пандемический год — в 17 раз — выросли продажи товаров для здоровья. Почти на порядок выросли продажи
-          садовой техники и инвентаря. Больше трети выручки — 152 млрд рублей — пришлось на четвертый квартал.</p>
-        <p>Такие показатели выводят Wildberries в топ-5 ритейлеров страны на уровень «М.Видео — Эльдорадо» группы
-          «Сафмар» Михаила Гуцериева, пишет Forbes.</p>
+        <q-markdown
+          :src="article.text"
+          no-heading-anchor-links
+        />
       </div>
       <div class="article-section">
         <div class="article-section__title font-montserrat__semi-bold text-purple-12">Подзаголовок</div>
@@ -108,7 +104,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .article {
   margin-bottom: 50px;
   border-radius: 15px;
@@ -131,6 +127,11 @@ export default {
       line-height: 26px;
     }
     &__content {
+      .q-markdown {
+        p {
+          display: flex;
+        }
+      }
       &-text {
         line-height: 25px;
       }
