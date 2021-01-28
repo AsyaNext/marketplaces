@@ -1,5 +1,5 @@
 <template>
-  <div class="col-9 row q-col-gutter-lg">
+  <div class="row q-col-gutter-lg">
     <card-of-article
       class="col-4"
       v-for="article in articles"

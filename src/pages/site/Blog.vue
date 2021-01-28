@@ -8,7 +8,7 @@
       @drop-article="dropArticle"
     />
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
-      <router-view :articles="articles" />
+      <router-view class="col-9" :articles="articles" />
       <div class="blog-content__column col-3">
         <q-input
           v-if="!category"

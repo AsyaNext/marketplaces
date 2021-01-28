@@ -1,5 +1,5 @@
 <template>
-  <div v-show="article" class="col-9">
+  <div v-show="article">
     <div class="article q-pa-md bg-white">
       <q-img native-context-menu class="q-mb-md article-cover" :src="article.image" :ratio="79/23" />
       <div class="q-mb-lg article-extradata row justify-between items-center">
@@ -15,7 +15,7 @@
             {{category.name}}
           </q-chip>
         </div>
-        <div class="font-avenir__bold text-grey-5 letter-spacing__less text-caption">12.07.2020</div>
+        <div class="font-avenir__bold text-grey-5 letter-spacing__less text-caption">{{dateArticle}}</div>
       </div>
       <div class="article-title font-montserrat__bold text-center text-purple-12">
         {{article.name}}
@@ -70,7 +70,23 @@ export default {
     ...mapGetters({
       article: 'blog/specArticle',
       count: 'blog/countArticles'
-    })
+    }),
+    dateArticle () {
+      const date = new Date(this.article.updated_on)
+      let day = ''
+      let month = ''
+      if (date.getDate() < 10) {
+        day = `0${date.getDate()}`
+      } else {
+        day = date.getDate()
+      }
+      if (date.getMonth() < 10) {
+        month = `0${date.getMonth() + 1}`
+      } else {
+        month = date.getMonth() + 1
+      }
+      return `${day}.${month}.${date.getFullYear()}`
+    }
   },
   methods: {
     ...mapActions({

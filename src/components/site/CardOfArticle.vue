@@ -26,7 +26,7 @@
             <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
                {{article.text}}
             </div>
-            <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">12.07.2020</div>
+            <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">{{dateArticle}}</div>
           </div>
         </q-card-section>
       </q-card>
@@ -39,6 +39,24 @@ export default {
   name: 'CardOfArticle',
   props: {
     article: Object
+  },
+  computed: {
+    dateArticle () {
+      const date = new Date(this.article.updated_on)
+      let day = ''
+      let month = ''
+      if (date.getDate() < 10) {
+        day = `0${date.getDate()}`
+      } else {
+        day = date.getDate()
+      }
+      if (date.getMonth() < 10) {
+        month = `0${date.getMonth() + 1}`
+      } else {
+        month = date.getMonth() + 1
+      }
+      return `${day}.${month}.${date.getFullYear()}`
+    }
   }
 }
 </script>
