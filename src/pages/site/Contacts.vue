@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-mt-lg contacts column">
-    <div class="contacts-headline font-montserrat__semi-bold text-purple-10">
+    <div class="page-headline font-montserrat__semi-bold text-purple-10">
       Контакты
     </div>
     <div class="contacts-content column flex-center text-center">

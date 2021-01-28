@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-mt-lg rates">
-    <div class="rates-headline font-montserrat__semi-bold text-purple-10">Тарифы</div>
+    <div class="page-headline font-montserrat__semi-bold text-purple-10">Тарифы</div>
     <div class="rates-subscription column items-center">
       <div class="rates-subscription__title font-montserrat__semi-bold text-purple-10 text-body1">Срок подписки</div>
       <div class="q-pa-xs rates-subscription__list row bg-purple-4 border-box">

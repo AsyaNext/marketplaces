@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-mt-lg api">
-    <div class="api-headline font-montserrat__semi-bold text-purple-10">API</div>
+    <div class="page-headline font-montserrat__semi-bold text-purple-10">API</div>
     <div class="row">
       <div class="api-navigation col-3">
         <div class="api-navigation__wrapper" v-for="section in sections" :key="section.name">

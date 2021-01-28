@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-mt-lg payment-return">
-    <div class="payment-return-headline font-montserrat__semi-bold text-purple-10">
+    <div class="page-headline font-montserrat__semi-bold text-purple-10">
       Политика оплаты и возврата
     </div>
     <div class="payment-return-content column bg-white">
