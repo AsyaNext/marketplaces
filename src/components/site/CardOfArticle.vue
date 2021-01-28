@@ -24,7 +24,7 @@
           </div>
           <div class="card-article__group-content">
             <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
-               {{article.text}}
+               <q-markdown :src="article.text" />
             </div>
             <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">{{dateArticle}}</div>
           </div>
@@ -61,7 +61,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 a {
   text-decoration: none;
 }
@@ -104,6 +104,11 @@ a {
       -webkit-box-orient: vertical;
       line-clamp: 5;
       box-orient: vertical;
+      .q-markdown {
+        p {
+          margin-bottom: 0;
+        }
+      }
     }
   }
 }
