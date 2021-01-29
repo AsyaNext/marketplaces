@@ -13,8 +13,9 @@
           <router-link to="/payment-and-return">Оплата и возврат</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/contacts">Контакты</router-link>
-          <span @click="openLogin = true">Вход</span>
-          <span @click="openRegister = true">Регистрация</span>
+          <span v-show="isAuth" @click="openLogin = true">Вход</span>
+          <span v-show="isAuth" @click="openRegister = true">Регистрация</span>
+          <span v-show="!isAuth">Сервис</span>
         </div>
         <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
       </q-toolbar>
@@ -49,6 +50,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+import { Cookies } from 'quasar'
 import Login from 'components/popups/Login'
 import Registration from 'components/popups/Registration'
 import SendLink from 'components/popups/SendLink'
@@ -67,6 +70,7 @@ export default {
   },
   data () {
     return {
+      isAuth: false,
       widthWindow: 0,
       rightDrawer: false,
       openLogin: false,
@@ -74,12 +78,34 @@ export default {
       openSendLink: false,
       openConfirmEmail: false,
       openRecoveryPassword: false,
-      openRecoveryLink: true
+      openRecoveryLink: false
     }
   },
   methods: {
+    ...mapActions({
+      checkToken: 'auth/checkToken',
+      updateToken: 'auth/updateToken'
+    }),
     updateWidth () {
       this.widthWindow = window.innerWidth
+    },
+    checkAuth () {
+      if (Cookies.has('access-token')) {
+        this.checkToken()
+          .then(() => {
+            this.isAuth = true
+          })
+          .catch(() => {
+            this.updateToken()
+              .then(() => {
+                this.isAuth = true
+              })
+              .catch(() => {
+                this.isAuth = false
+                this.openLogin = true
+              })
+          })
+      }
     }
   },
   created () {
