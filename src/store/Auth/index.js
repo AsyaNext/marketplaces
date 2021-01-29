@@ -1,5 +1,5 @@
 import api from '../../boot/api'
-import Cookies from 'quasar'
+import { Cookies } from 'quasar'
 
 const state = {
   accessToken: '',
@@ -48,13 +48,16 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.post('auth/jwt/create', data)
         .then((response) => {
-          Cookies.set('accessToken', response.data.access)
-          Cookies.set('refreshToken', response.data.refresh)
+          console.log(response)
+          Cookies.set('access-token', response.data.access)
+          Cookies.set('refresh-token', response.data.refresh)
           api.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
           commit('AUTH_SUCCESS', response.data)
+          console.log(response)
           resolve(response)
         })
         .catch((error) => {
+          console.log(error)
           reject(error)
         })
     })
@@ -69,8 +72,11 @@ const actions = {
             Cookies.remove('access-token')
             delete api.defaults.headers.common.Authorization
             reject(response)
+            console.log(response)
+          } else {
+            console.log(response)
+            resolve(response)
           }
-          resolve(response)
         })
         .catch((error) => {
           reject(error)
@@ -88,7 +94,7 @@ const actions = {
             reject(response)
           }
           if (response.data.access) {
-            Cookies.set('accessToken', response.data.access)
+            Cookies.set('access-token', response.data.access)
             api.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
             commit('UPDATE_TOKEN', response.data.access)
             resolve(response)

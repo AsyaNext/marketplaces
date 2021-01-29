@@ -13,9 +13,9 @@
           <router-link to="/payment-and-return">Оплата и возврат</router-link>
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/contacts">Контакты</router-link>
-          <span v-show="isAuth" @click="openLogin = true">Вход</span>
-          <span v-show="isAuth" @click="openRegister = true">Регистрация</span>
-          <span v-show="!isAuth">Сервис</span>
+          <span v-show="!isAuth" @click="openLogin = true">Вход</span>
+          <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
+          <span v-show="isAuth">Сервис</span>
         </div>
         <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
       </q-toolbar>
@@ -27,7 +27,7 @@
 
     <q-page-container class="container">
       <router-view />
-      <login :status="openLogin" @close-login="openLogin = false" />
+      <login :status="openLogin" @close-login="openLogin = false; isAuth = true" />
       <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
       <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
       <confirm-email :status="openConfirmEmail" />
@@ -90,6 +90,7 @@ export default {
       this.widthWindow = window.innerWidth
     },
     checkAuth () {
+      console.log(Cookies.has('access-token'))
       if (Cookies.has('access-token')) {
         this.checkToken()
           .then(() => {
@@ -106,9 +107,12 @@ export default {
               })
           })
       }
+      console.log(this.isAuth)
     }
   },
   created () {
+    console.log(this.isAuth)
+    this.checkAuth()
     this.updateWidth()
     window.addEventListener('resize', this.updateWidth)
   }

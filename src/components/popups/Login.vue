@@ -71,6 +71,7 @@ export default {
     authLogin () {
       this.login(this.user)
         .then(() => {
+          console.log('hi')
           this.$emit('close-login')
         })
         .catch(() => {
