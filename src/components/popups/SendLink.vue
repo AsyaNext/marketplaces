@@ -11,7 +11,7 @@
         <q-btn
           flat
           no-caps
-          class="q-mt-sm full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
+          class="q-mt-sm send-link-btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Отправить письмо повторно"
         />
       </q-card-section>
@@ -34,6 +34,9 @@ export default {
     padding: 30px 36px 60px;
     font-size: 26px;
     line-height: 32px;
+  }
+  &-btn {
+    height: 44px;
   }
 }
 </style>

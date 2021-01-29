@@ -30,6 +30,8 @@
       <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
       <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
       <confirm-email :status="openConfirmEmail" />
+      <recovery-password :status="openRecoveryPassword" @close-recovery-password="openRecoveryPassword = false" />
+      <send-link-for-recovery :status="openRecoveryLink" />
     </q-page-container>
 
     <q-footer class="footer text-white">
@@ -51,9 +53,13 @@ import Login from 'components/popups/Login'
 import Registration from 'components/popups/Registration'
 import SendLink from 'components/popups/SendLink'
 import ConfirmEmail from 'components/popups/ConfirmEmail'
+import RecoveryPassword from 'components/popups/RecoveryPassword'
+import SendLinkForRecovery from 'components/popups/SendLinkForRecovery'
 export default {
   name: 'MainLayout',
   components: {
+    SendLinkForRecovery,
+    RecoveryPassword,
     ConfirmEmail,
     SendLink,
     Registration,
@@ -65,10 +71,10 @@ export default {
       rightDrawer: false,
       openLogin: false,
       openRegister: false,
-      openSendLink: true,
+      openSendLink: false,
       openConfirmEmail: false,
       openRecoveryPassword: false,
-      openSendLinkForRecovery: false
+      openRecoveryLink: true
     }
   },
   methods: {
