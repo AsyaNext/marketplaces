@@ -51,7 +51,6 @@
             dense
             standout="bg-purple-2 text-grey-9"
             v-model="user.mobile"
-            fill-mask
             mask="+7##########"
             class="register-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
           />
