@@ -30,17 +30,17 @@
             v-model="user.password"
             class="login-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
           />
-          <div class="login-form__section-link__password cursor-pointer font-montserrat__semi-bold text-center text-body1">
-            Забыли пароль?
-          </div>
-          <q-btn
-            no-caps
-            flat
-            class="login-form__section-btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
-            label="Войти в аккаунт" />
-          <div class="login-form__section-link__registration cursor-pointer font-montserrat__semi-bold text-center text-body1">
-            Регистрация
-          </div>
+        </div>
+        <div class="login-form__link-password cursor-pointer font-montserrat__semi-bold text-center text-body1">
+          Забыли пароль?
+        </div>
+        <q-btn
+          no-caps
+          flat
+          class="login-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
+          label="Войти в аккаунт" />
+        <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1">
+          Регистрация
         </div>
       </q-card-section>
     </q-card>
@@ -84,21 +84,21 @@ export default {
           }
         }
       }
-      &-link__password {
-        margin: 12px auto;
+    }
+    &__link-password {
+      margin: 12px auto;
+    }
+    &__link-password, &__link-registration {
+      color: rgba(58, 1, 102, 0.49);
+      &:hover {
+        color: #53326C;
       }
-      &-link__password, &-link__registration {
-        color: rgba(58, 1, 102, 0.49);
-        &:hover {
-          color: #53326C;
-        }
-      }
-      &-btn {
-        margin-bottom: 19px;
-        height: 44px;
-        .q-btn__wrapper {
-          min-height: auto;
-        }
+    }
+    &__btn {
+      margin-bottom: 19px;
+      height: 44px;
+      .q-btn__wrapper {
+        min-height: auto;
       }
     }
   }

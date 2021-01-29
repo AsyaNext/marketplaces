@@ -32,4 +32,5 @@ body {
 
 .q-dialog__inner--minimized > div {
   max-width: 450px;
+  min-height: auto !important;
 }

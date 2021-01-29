@@ -14,7 +14,7 @@
           <router-link to="/faq">FAQ</router-link>
           <router-link to="/contacts">Контакты</router-link>
           <span @click="openLogin = true">Вход</span>
-          <span>Регистрация</span>
+          <span @click="openRegister = true">Регистрация</span>
         </div>
         <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
       </q-toolbar>
@@ -27,6 +27,8 @@
     <q-page-container class="container">
       <router-view />
       <login :status="openLogin" @close-login="openLogin = false" />
+      <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
+      <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
     </q-page-container>
 
     <q-footer class="footer text-white">
@@ -45,16 +47,22 @@
 
 <script>
 import Login from 'components/popups/Login'
+import Registration from 'components/popups/Registration'
+import SendLink from 'components/popups/SendLink'
 export default {
   name: 'MainLayout',
   components: {
+    SendLink,
+    Registration,
     Login
   },
   data () {
     return {
       widthWindow: 0,
       rightDrawer: false,
-      openLogin: false
+      openLogin: false,
+      openRegister: false,
+      openSendLink: false
     }
   },
   methods: {

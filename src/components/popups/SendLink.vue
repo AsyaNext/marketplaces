@@ -1,0 +1,32 @@
+<template>
+  <q-dialog v-model="status">
+    <q-card class="send-link">
+      <q-card-section class="row items-end q-pb-none">
+        <q-space />
+        <q-btn icon="close" color="purple-10" flat round dense @click="$emit('close-send-link')" />
+      </q-card-section>
+      <q-card-section class="send-link-description font-montserrat__medium text-purple-10 text-center">
+        На указанную почту отправлена ссылка для подтверждения аккаунта
+      </q-card-section>
+    </q-card>
+  </q-dialog>
+</template>
+
+<script>
+export default {
+  name: 'SendLink',
+  props: {
+    status: Boolean
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.send-link {
+  &-description {
+    padding: 30px 36px 60px;
+    font-size: 26px;
+    line-height: 32px;
+  }
+}
+</style>
