@@ -52,7 +52,7 @@
             standout="bg-purple-2 text-grey-9"
             v-model="user.mobile"
             fill-mask
-            mask="+7 (###) ### ## ##"
+            mask="+7##########"
             class="register-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
           />
         </div>
@@ -72,7 +72,7 @@
           flat
           class="q-mt-xl register-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Зарегистрироваться"
-          @click="$emit('registration')"
+          @click="authRegister"
         />
         <div class="register-form__link-login cursor-pointer font-montserrat__semi-bold text-center text-body1">
           Уже есть аккаунт?
@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Registration',
   props: {
@@ -97,6 +98,20 @@ export default {
         password: '',
         re_password: ''
       }
+    }
+  },
+  methods: {
+    ...mapActions({
+      registration: 'auth/registration'
+    }),
+    authRegister () {
+      this.registration(this.user)
+        .then(() => {
+          this.$emit('registration')
+        })
+        .catch(() => {
+          console.log('произошла какая-то ошибка')
+        })
     }
   }
 }

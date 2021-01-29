@@ -38,7 +38,9 @@
           no-caps
           flat
           class="login-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
-          label="Войти в аккаунт" />
+          label="Войти в аккаунт"
+          @click="authLogin"
+        />
         <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1">
           Регистрация
         </div>
@@ -48,6 +50,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Login',
   props: {
@@ -59,6 +62,20 @@ export default {
         email: '',
         password: ''
       }
+    }
+  },
+  methods: {
+    ...mapActions({
+      login: 'auth/login'
+    }),
+    authLogin () {
+      this.login(this.user)
+        .then(() => {
+          this.$emit('close-login')
+        })
+        .catch(() => {
+          console.log('Произошла ошибка')
+        })
     }
   }
 }

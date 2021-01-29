@@ -5,8 +5,15 @@
         <q-space />
         <q-btn icon="close" color="purple-10" flat round dense @click="$emit('close-send-link')" />
       </q-card-section>
-      <q-card-section class="send-link-description font-montserrat__medium text-purple-10 text-center">
-        На указанную почту отправлена ссылка для подтверждения аккаунта
+      <q-card-section class="send-link-description">
+        <div class="font-montserrat__medium text-purple-10 text-center">На указанную почту отправлена ссылка для подтверждения аккаунта</div>
+        <div class="q-mt-lg font-montserrat__medium text-body1 text-purple-10 text-center">Не получили письмо?</div>
+        <q-btn
+          flat
+          no-caps
+          class="q-mt-sm full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
+          label="Отправить письмо повторно"
+        />
       </q-card-section>
     </q-card>
   </q-dialog>

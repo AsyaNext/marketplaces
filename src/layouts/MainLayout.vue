@@ -29,6 +29,7 @@
       <login :status="openLogin" @close-login="openLogin = false" />
       <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
       <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
+      <confirm-email :status="openConfirmEmail" />
     </q-page-container>
 
     <q-footer class="footer text-white">
@@ -49,9 +50,11 @@
 import Login from 'components/popups/Login'
 import Registration from 'components/popups/Registration'
 import SendLink from 'components/popups/SendLink'
+import ConfirmEmail from 'components/popups/ConfirmEmail'
 export default {
   name: 'MainLayout',
   components: {
+    ConfirmEmail,
     SendLink,
     Registration,
     Login
@@ -62,7 +65,10 @@ export default {
       rightDrawer: false,
       openLogin: false,
       openRegister: false,
-      openSendLink: false
+      openSendLink: true,
+      openConfirmEmail: false,
+      openRecoveryPassword: false,
+      openSendLinkForRecovery: false
     }
   },
   methods: {
