@@ -35,9 +35,20 @@ const actions = {
   },
   resendLink ({ commit }, data) {
     return new Promise((resolve, reject) => {
-      api.post('auth/users/resend_activation/', data)
+      api.post('auth/users/resend_activation', data)
         .then((response) => {
           resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  activateUser ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      api.post('auth/users/activation', data)
+        .then(() => {
+          resolve(reject)
         })
         .catch((error) => {
           reject(error)
