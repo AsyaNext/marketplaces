@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="status">
+  <q-dialog v-model="status" persistent>
     <q-card class="login">
       <q-card-section class="row items-end q-pb-none">
         <q-space />

@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="status">
+  <q-dialog v-model="status" persistent>
     <q-card class="register">
       <q-card-section class="row items-end q-pb-none">
         <q-space />
@@ -49,9 +49,10 @@
           </div>
           <q-input
             dense
+            maxlength="12"
             standout="bg-purple-2 text-grey-9"
             v-model="user.mobile"
-            mask="+7##########"
+            mask="+7###########"
             class="register-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
           />
         </div>

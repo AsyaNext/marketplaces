@@ -48,11 +48,13 @@ const actions = {
   },
   activateUser ({ commit }, data) {
     return new Promise((resolve, reject) => {
-      api.post('auth/users/activation', data)
-        .then(() => {
-          resolve(reject)
+      api.post('auth/users/activation/', data)
+        .then((response) => {
+          console.log(response)
+          resolve(response)
         })
         .catch((error) => {
+          console.log(error)
           reject(error)
         })
     })

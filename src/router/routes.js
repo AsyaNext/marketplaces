@@ -4,6 +4,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', name: 'index', meta: { title: 'Главная' }, component: () => import('pages/site/Index.vue') },
+      { path: ':uid/:token', name: 'activate', meta: { title: 'Активация' }, component: () => import('pages/Activate.vue') },
       {
         path: 'blog',
         props: true,
