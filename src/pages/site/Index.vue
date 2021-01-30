@@ -104,8 +104,7 @@ export default {
     })
   },
   created () {
-    const confirmURL = new URL(this.$route.fullPath)
-    const argPath = confirmURL.pathname.split('/').splice(1)
+    const argPath = this.$route.path.split('/').splice(1)
     if (argPath.length === 2 && argPath[0] !== 'blog' && argPath[0] !== 'faq') {
       this.activateUser({ uid: argPath[0], token: argPath[1] })
         .then(() => {

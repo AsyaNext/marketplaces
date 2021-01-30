@@ -25,6 +25,8 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.post('auth/users/', data)
         .then((response) => {
+          commit('GET_EMAIL', response.data.email)
+          console.log(response.data.email)
           console.log(response)
           resolve(response)
         })

@@ -11,8 +11,10 @@
         <q-btn
           flat
           no-caps
+          :disable="disable"
           class="q-mt-sm send-link-btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Отправить письмо повторно"
+          @click="sendLink"
         />
       </q-card-section>
     </q-card>
@@ -20,10 +22,32 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'SendLink',
   props: {
     status: Boolean
+  },
+  data () {
+    return {
+      disable: false
+    }
+  },
+  computed: {
+    ...mapGetters({
+      email: 'auth/email'
+    })
+  },
+  methods: {
+    ...mapActions({
+      resendLink: 'auth/resendLink'
+    }),
+    sendLink () {
+      this.resendLink({ email: this.email })
+        .then(() => {
+          this.disable = true
+        })
+    }
   }
 }
 </script>
