@@ -12,11 +12,17 @@
             Email
           </div>
           <q-input
+            ref="email"
             dense
             type="email"
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
-            class="login-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
+            :lazy-rules="true"
+            class="login-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
+            :rules="[
+            $rules.required('Это обязательное поле'),
+            $rules.email('Вы ввели некорректный email')
+          ]"
           />
         </div>
         <div class="login-form__section">
@@ -24,19 +30,25 @@
             Пароль
           </div>
           <q-input
+            ref="password"
             dense
             type="password"
             standout="bg-purple-2 text-grey-9"
             v-model="user.password"
-            class="login-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
+            class="login-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
+            :rules="[
+            $rules.required('Это обязательное поле')
+          ]"
           />
         </div>
         <div class="login-form__link-password cursor-pointer font-montserrat__semi-bold text-center text-body1">
           Забыли пароль?
         </div>
+        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно войти в аккаунт</div>
         <q-btn
           no-caps
           flat
+          type="submit"
           class="login-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Войти в аккаунт"
           @click="authLogin"
@@ -58,6 +70,7 @@ export default {
   },
   data () {
     return {
+      warning: false,
       user: {
         email: '',
         password: ''
@@ -69,14 +82,17 @@ export default {
       login: 'auth/login'
     }),
     authLogin () {
-      this.login(this.user)
-        .then(() => {
-          console.log('hi')
-          this.$emit('close-login')
-        })
-        .catch(() => {
-          console.log('Произошла ошибка')
-        })
+      const valid = this.$refs.email.validate() && this.$refs.password.validate()
+      if (valid) {
+        this.login(this.user)
+          .then(() => {
+            this.warning = false
+            this.$emit('close-login')
+          })
+          .catch(() => {
+            this.warning = true
+          })
+      }
     }
   }
 }
@@ -88,13 +104,16 @@ export default {
     padding: 0 48px 36px;
     &__section {
       &:not(:last-child) {
-        margin-bottom: 20px;
+        //margin-bottom: 20px;
       }
       &-input {
         width: 355px;
+        .q-field__append {
+          display: none;
+        }
         .q-field__control {
           height: 44px;
-          background: inherit;
+          background: #EEE3FD !important;
           box-shadow: none !important;
           border-radius: 11px;
           input {

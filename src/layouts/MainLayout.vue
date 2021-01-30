@@ -27,7 +27,7 @@
 
     <q-page-container class="container">
       <router-view />
-      <login :status="openLogin" @close-login="openLogin = false; isAuth = true" />
+      <login :status="openLogin" @close-login="openLogin = false; checkAuth" />
       <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
       <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
       <recovery-password :status="openRecoveryPassword" @close-recovery-password="openRecoveryPassword = false" />
