@@ -30,12 +30,12 @@ const mutations = {
 const actions = {
   getArticles ({ commit }, data) {
     return new Promise((resolve, reject) => {
-      api.get('articles', {
+      api.get('articles/', {
         params: data
       })
         .then((response) => {
+          console.log(data)
           commit('GET_ARTICLES', response.data)
-          console.log(response)
           resolve(response)
         })
         .catch((error) => {

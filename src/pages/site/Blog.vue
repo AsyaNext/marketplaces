@@ -19,7 +19,11 @@
           placeholder="Поиск"
         >
           <template #append>
-            <q-icon class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer" name="img:icons/icon-search.svg"/>
+            <q-icon
+              class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer"
+              name="img:icons/icon-search.svg"
+              @click="getArticles({ page: 1, page_size: 10, search: search})"
+            />
           </template>
         </q-input>
         <categories-of-blog @change-category="changeCategory" :categories="categories" />
@@ -34,7 +38,7 @@
         :max="Math.ceil(count / 10)"
         :max-pages="4"
         :direction-links="true"
-        @input="getArticles({ page: currentPage, page_size: 10 })"
+        @input="getArticles({ page: currentPage, page_size: 10, search: search, category__id: idCategory })"
       >
       </q-pagination>
     </div>
@@ -55,7 +59,8 @@ export default {
     return {
       search: '',
       currentPage: 1,
-      category: ''
+      category: '',
+      idCategory: null
     }
   },
   computed: {
@@ -80,7 +85,10 @@ export default {
       getSpecArticle: 'blog/getSpecArticle'
     }),
     dropData () {
+      this.search = ''
+      this.idCategory = null
       this.category = localStorage.removeItem('category')
+      this.getArticles({ page: 1, page_size: 10 })
       if (this.$route.name === 'blog.article') {
         this.$router.push('/blog')
       }
@@ -91,14 +99,16 @@ export default {
       }
     },
     changeCategory (category) {
-      localStorage.setItem('category', category)
+      this.idCategory = category.id
+      this.getArticles({ page: 1, page_size: 10, category__id: this.idCategory })
+      localStorage.setItem('category', category.name)
       this.category = localStorage.getItem('category')
       if (this.$route.name === 'blog.article') {
         this.$router.push('/blog')
       }
     }
   },
-  beforeMount () {
+  created () {
     this.getCategories()
     this.getArticles({ page: 1, page_size: 10 })
     if (this.$route.name === 'blog.article') {
