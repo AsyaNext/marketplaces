@@ -73,7 +73,6 @@ export default {
       openLogin: false,
       openRegister: false,
       openSendLink: false,
-      openConfirmEmail: false,
       openRecoveryPassword: false,
       openRecoveryLink: false
     }
@@ -87,7 +86,6 @@ export default {
       this.widthWindow = window.innerWidth
     },
     checkAuth () {
-      console.log(Cookies.has('access-token'))
       if (Cookies.has('access-token')) {
         this.checkToken()
           .then(() => {
@@ -104,11 +102,9 @@ export default {
               })
           })
       }
-      console.log(this.isAuth)
     }
   },
   created () {
-    console.log(this.isAuth)
     this.checkAuth()
     this.updateWidth()
     window.addEventListener('resize', this.updateWidth)

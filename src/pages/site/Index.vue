@@ -86,30 +86,25 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
 import ConfirmEmail from 'components/popups/ConfirmEmail'
 export default {
   name: 'PageIndex',
+  props: {
+    confirm: Boolean
+  },
+  components: {
+    ConfirmEmail
+  },
   data () {
     return {
       openConfirmEmail: false
     }
   },
-  components: {
-    ConfirmEmail
-  },
-  methods: {
-    ...mapActions({
-      activateUser: 'auth/activateUser'
-    })
-  },
   created () {
-    const argPath = this.$route.path.split('/').splice(1)
-    if (argPath.length === 2 && argPath[0] !== 'blog' && argPath[0] !== 'faq') {
-      this.activateUser({ uid: argPath[0], token: argPath[1] })
-        .then(() => {
-          this.openConfirmEmail = true
-        })
+    console.log(this.$route.params)
+    console.log(this.confirm)
+    if (this.$route.params.confirm || this.confirm) {
+      this.openConfirmEmail = true
     }
   }
 }
