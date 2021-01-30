@@ -44,7 +44,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import BaseSubmenu from 'components/site/BaseNavigation'
-import CategoriesOfBlog from 'components/site/CategoriesOfBlog'
+import CategoriesOfBlog from 'components/site/blog/CategoriesOfBlog'
 export default {
   name: 'Blog',
   components: {
@@ -101,7 +101,7 @@ export default {
   beforeMount () {
     this.getCategories()
     this.getArticles({ page: 1, page_size: 10 })
-    if (this.$route.params.id) {
+    if (this.$route.name === 'blog.article') {
       this.getSpecArticle(this.$route.params.id)
         .then(() => {
           document.title = this.article

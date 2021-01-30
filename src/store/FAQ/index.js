@@ -1,51 +1,33 @@
 import api from '../../boot/api'
 
 const state = {
-  articles: null,
-  countArticles: null,
   categories: null,
-  specArticle: null
+  specCategory: null,
+  article: null
 }
 
 const getters = {
-  articles: state => state.articles,
-  countArticles: state => state.countArticles,
   categories: state => state.categories,
-  specArticle: state => state.specArticle
+  specCategory: state => state.specCategory,
+  article: state => state.article
 }
 
 const mutations = {
-  GET_ARTICLES (state, payload) {
-    state.articles = payload.results
-    state.countArticles = payload.count
-  },
   GET_CATEGORIES (state, payload) {
     state.categories = payload
   },
-  GET_SPEC_ARTICLE (state, payload) {
-    state.specArticle = payload
+  GET_SPEC_CATEGORY (state, payload) {
+    state.specCategory = payload
+  },
+  GET_ARTICLE (state, payload) {
+    state.article = payload
   }
 }
 
 const actions = {
-  getArticles ({ commit }, data) {
-    return new Promise((resolve, reject) => {
-      api.get('articles', {
-        params: data
-      })
-        .then((response) => {
-          commit('GET_ARTICLES', response.data)
-          console.log(response)
-          resolve(response)
-        })
-        .catch((error) => {
-          reject(error)
-        })
-    })
-  },
   getCategories ({ commit }) {
     return new Promise((resolve, reject) => {
-      api.get('articles/categories')
+      api.get('faq')
         .then((response) => {
           commit('GET_CATEGORIES', response.data)
           resolve(response)
@@ -55,12 +37,23 @@ const actions = {
         })
     })
   },
-  getSpecArticle ({ commit }, data) {
+  getSpecCategory ({ commit }, data) {
     return new Promise((resolve, reject) => {
-      api.get(`articles/${data}`)
+      api.get(`faq/${data}`)
         .then((response) => {
-          console.log(response)
-          commit('GET_SPEC_ARTICLE', response.data)
+          commit('GET_SPEC_CATEGORY', response.data)
+          resolve(response)
+        })
+        .catch((error) => {
+          reject(error)
+        })
+    })
+  },
+  getArticle ({ commit }, data) {
+    return new Promise((resolve, reject) => {
+      api.get(`faq/article/${data}`)
+        .then((response) => {
+          commit('GET_ARTICLE', response.data)
           resolve(response)
         })
         .catch((error) => {

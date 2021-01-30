@@ -14,13 +14,13 @@ const routes = [
             path: '',
             meta: { title: 'Блог' },
             props: true,
-            component: () => import('components/site/ArticlesBlog.vue')
+            component: () => import('components/site/blog/ArticlesBlog.vue')
           },
           {
             name: 'blog.article',
             path: 'article/:id',
             meta: { title: 'Статья' },
-            component: () => import('components/site/BaseArticle.vue')
+            component: () => import('components/site/blog/BlogArticle.vue')
           }
         ]
       },
@@ -46,7 +46,32 @@ const routes = [
       },
       { path: 'rates', meta: { title: 'Тарифы' }, component: () => import('pages/site/Rates.vue') },
       { path: 'payment-and-return', meta: { title: 'Оплата и возврат' }, component: () => import('pages/site/PaymentAndReturn.vue') },
-      { path: 'faq', meta: { title: 'FAQ' }, component: () => import('pages/site/Faq.vue') },
+      {
+        path: 'faq',
+        props: true,
+        component: () => import('pages/site/Faq.vue'),
+        children: [
+          {
+            name: 'faq.page',
+            path: '',
+            meta: { title: 'FAQ' },
+            props: true,
+            component: () => import('components/site/faq/CategoriesForFAQ.vue')
+          },
+          {
+            name: 'faq.category',
+            path: ':id',
+            meta: { title: 'Категория' },
+            component: () => import('components/site/faq/ArticlesInCategory.vue')
+          },
+          {
+            name: 'faq.article',
+            path: 'article/:id',
+            meta: { title: 'Статья' },
+            component: () => import('components/site/faq/FAQArticle.vue')
+          }
+        ]
+      },
       { path: 'contacts', meta: { title: 'Контакты' }, component: () => import('pages/site/Contacts.vue') }
     ]
   },

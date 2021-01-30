@@ -12,7 +12,7 @@
 
 <script>
 import { mapActions } from 'vuex'
-import CardOfArticle from 'components/site/CardOfArticle'
+import CardOfArticle from 'components/site/blog/CardOfArticle'
 export default {
   name: 'ArticlesBlog',
   props: {

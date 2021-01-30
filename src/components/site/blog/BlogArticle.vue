@@ -57,7 +57,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 export default {
-  name: 'PageArticle',
+  name: 'BlogArticle',
   data () {
     return {
     }
@@ -97,9 +97,6 @@ export default {
           })
       }
     }
-  },
-  beforeMount () {
-    console.log(this.article)
   }
 }
 </script>
