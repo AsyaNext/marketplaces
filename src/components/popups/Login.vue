@@ -22,7 +22,7 @@
             :rules="[
             $rules.required('Это обязательное поле'),
             $rules.email('Вы ввели некорректный email')
-          ]"
+            ]"
           />
         </div>
         <div class="login-form__section">
@@ -36,15 +36,15 @@
             standout="bg-purple-2 text-grey-9"
             v-model="user.password"
             class="login-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
+            :lazy-rules="true"
             :rules="[
             $rules.required('Это обязательное поле')
-          ]"
+            ]"
           />
         </div>
         <div class="login-form__link-password cursor-pointer font-montserrat__semi-bold text-center text-body1">
           Забыли пароль?
         </div>
-        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно войти в аккаунт</div>
         <q-btn
           no-caps
           flat
@@ -53,6 +53,7 @@
           label="Войти в аккаунт"
           @click="authLogin"
         />
+        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно войти в аккаунт</div>
         <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1">
           Регистрация
         </div>
@@ -103,9 +104,6 @@ export default {
   &-form {
     padding: 0 48px 36px;
     &__section {
-      &:not(:last-child) {
-        //margin-bottom: 20px;
-      }
       &-input {
         width: 355px;
         .q-field__append {
@@ -125,6 +123,9 @@ export default {
     &__link-password {
       margin: 12px auto;
     }
+    &__link-registration {
+      margin-top: 19px;
+    }
     &__link-password, &__link-registration {
       color: rgba(58, 1, 102, 0.49);
       &:hover {
@@ -132,7 +133,6 @@ export default {
       }
     }
     &__btn {
-      margin-bottom: 19px;
       height: 44px;
       .q-btn__wrapper {
         min-height: auto;
