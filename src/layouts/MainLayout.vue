@@ -53,6 +53,7 @@
         :status="openRecoveryLink"
         @close-modal="openRecoveryLink = false"
       />
+      <chat />
     </q-page-container>
 
     <q-footer class="footer text-white">
@@ -77,9 +78,11 @@ import Registration from 'components/popups/Registration'
 import SendLink from 'components/popups/SendLink'
 import RecoveryPassword from 'components/popups/RecoveryPassword'
 import SendLinkForRecovery from 'components/popups/SendLinkForRecovery'
+import Chat from 'components/Chat'
 export default {
   name: 'MainLayout',
   components: {
+    Chat,
     SendLinkForRecovery,
     RecoveryPassword,
     SendLink,

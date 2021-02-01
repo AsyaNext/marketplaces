@@ -1,7 +1,7 @@
 <template>
   <div v-show="article">
     <div class="article q-pa-md bg-white">
-      <q-img native-context-menu class="article-cover" src="../../../assets/placeholder.png" :ratio="108/23" />
+      <q-img native-context-menu class="article-cover" :src="`http://192.162.240.96:8014${article.image}`" :ratio="108/23" />
       <div class="article-title font-montserrat__bold text-center text-purple-12">
         {{article.name}}
       </div>
@@ -36,6 +36,7 @@ export default {
   created () {
     this.getArticle(this.$route.params.id)
       .then(() => {
+        console.log(this.article)
         document.title = this.article.name
       })
   }
