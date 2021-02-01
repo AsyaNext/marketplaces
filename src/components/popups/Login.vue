@@ -48,7 +48,6 @@
         <q-btn
           no-caps
           flat
-          type="submit"
           class="login-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Войти в аккаунт"
           @click="authLogin"
