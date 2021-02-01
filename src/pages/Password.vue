@@ -40,6 +40,7 @@
       flat
       class="q-mt-lg password-btn border-box bg-purple-5 font-montserrat__bold text-white text-main"
       label="Восстановить пароль"
+      @click="recoveryPassword"
     />
     <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно восстановить пароль</div>
     <confirm-reset-password :status="openConfirmResetPassword" @close-modal="$router.push('/')"/>
@@ -65,19 +66,19 @@ export default {
   methods: {
     ...mapActions({
       resetPasswordConfirm: 'user/resetPasswordConfirm'
-    })
-  },
-  created () {
-    const { uid, token } = this.$route.params
-    this.resetPasswordConfirm({
-      uid: uid,
-      token: token,
-      new_password: this.newPassword,
-      re_new_password: this.reNewPassword
-    })
-      .then(() => {
-        this.openConfirmResetPassword = true
+    }),
+    recoveryPassword () {
+      const { uid, token } = this.$route.params
+      this.resetPasswordConfirm({
+        uid: uid,
+        token: token,
+        new_password: this.newPassword,
+        re_new_password: this.reNewPassword
       })
+        .then(() => {
+          this.openConfirmResetPassword = true
+        })
+    }
   }
 }
 </script>

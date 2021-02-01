@@ -30,6 +30,7 @@
           flat
           class="recovery-password-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Восстановить пароль"
+          @click="userResetPassword"
         />
         <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно восстановить пароль</div>
       </q-card-section>
