@@ -14,6 +14,7 @@
         :lazy-rules="true"
         class="password-section__input font-montserrat__regular text-main text-grey-9 border-box"
         :rules="[
+          $rules.minLength(5, 'Пароль должен состоять не меньше, чем из 5 символов'),
           $rules.required('Это обязательное поле')
         ]"
       />
@@ -31,6 +32,7 @@
         :lazy-rules="true"
         class="password-section__input font-montserrat__regular text-main text-grey-9 border-box"
         :rules="[
+          $rules.minLength(5, 'Пароль должен состоять не меньше, чем из 5 символов'),
           $rules.required('Это обязательное поле')
         ]"
       />
@@ -69,6 +71,7 @@ export default {
     }),
     recoveryPassword () {
       const { uid, token } = this.$route.params
+      if (this.$refs.password.validate() && this.$refs.re_password.validate())
       this.resetPasswordConfirm({
         uid: uid,
         token: token,

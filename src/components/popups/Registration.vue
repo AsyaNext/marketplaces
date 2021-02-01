@@ -40,7 +40,7 @@
             v-model="user.password"
             class="register-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
             :rules="[
-              $rules.minLength(8, 'Пароль должен состоять не меньше, чем из 8 символов'),
+              $rules.minLength(5, 'Пароль должен состоять не меньше, чем из 5 символов'),
               $rules.required('Это обязательное поле')
             ]"
           />
