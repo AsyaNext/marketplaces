@@ -4,7 +4,7 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', name: 'index', meta: { title: 'Главная' }, component: () => import('pages/site/Index.vue') },
-      { path: ':uid/:token', name: 'activate', meta: { title: 'Активация' }, component: () => import('pages/Activate.vue') },
+      { path: 'activate/:uid/:token', name: 'activate', meta: { title: 'Активация' }, component: () => import('pages/Activate.vue') },
       { path: 'password/:uid/:token', name: 'password', meta: { title: 'Восстановление пароля' }, component: () => import('pages/Password.vue') },
       {
         path: 'blog',
