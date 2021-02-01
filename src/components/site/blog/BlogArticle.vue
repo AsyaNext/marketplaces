@@ -26,20 +26,6 @@
           no-heading-anchor-links
         />
       </div>
-      <div class="article-section">
-        <div class="article-section__title font-montserrat__semi-bold text-purple-12">Подзаголовок</div>
-        <div class="article-section__content row text-justify font-avenir__regular text-main text-grey-10">
-          <div class="article-section__content-text col">
-            <p>Статистику Wildberries за прошлый год цитирует vc.ru: выручка выросла на 96%, до 437 млрд рублей,
-              число покупателей тоже выросло вдвое — с 18 млн до 40 млн человек — с пропорциональным ростом заказов,
-              а продавцов — более чем вчетверо, с 19 тысяч до 91 тысячи.</p>
-            <p>Сегмент fashion обеспечил компании точно половину годовой выручки — 218 млрд рублей.
-              Но больше всего за пандемический год — в 17 раз — выросли продажи товаров для здоровья.
-              Почти на порядок выросли продажи садовой техники и инвентаря.</p>
-          </div>
-          <q-img native-context-menu class="article-section__content-image border-box" src="https://cdn.quasar.dev/img/mountains.jpg" ratio="1" />
-        </div>
-      </div>
     </div>
     <div class="pagination row justify-between">
       <div :class="[article.id + 1 > this.count ? 'cursor-not-allowed' : 'cursor-pointer']" class="pagination-back row items-center q-gutter-x-sm" @click="getArticle(article.id + 1)">
@@ -116,27 +102,6 @@ export default {
   &-content {
     margin-bottom: 60px;
     line-height: 25px;
-  }
-  &-section {
-    &__title {
-      margin-bottom: 20px;
-      font-size: 24px;
-      line-height: 26px;
-    }
-    &__content {
-      .q-markdown {
-        p {
-          display: flex;
-        }
-      }
-      &-text {
-        line-height: 25px;
-      }
-      &-image {
-        margin-left: 27px;
-        width: 300px;
-      }
-    }
   }
 }
 .pagination {

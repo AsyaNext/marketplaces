@@ -34,3 +34,53 @@ body {
   max-width: 450px;
   min-height: auto !important;
 }
+
+.q-markdown {
+  h2 {
+    padding: 0 !important;
+    margin: 40px 0 20px 0 !important;
+    font-size: 24px;
+    line-height: 26px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #291936;
+  }
+  h3 {
+    padding: 0 !important;
+    margin: 20px 0 10px 0 !important;
+    font-size: 20px;
+    line-height: 20px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color: #291936;
+  }
+  p {
+    br {
+      display: none;
+    }
+    .q-markdown--image {
+      float: right;
+      margin-left: 27px;
+      width: 300px;
+      border-radius: 11px;
+    }
+  }
+  blockquote.q-markdown--note {
+    border-width: 0 10px 0 10px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #53326C;
+    background: #F9F4FD;
+    font-size: 18px;
+    color: #0D0D0D;
+  }
+  .q-markdown--note {
+    font-size: 18px;
+    color: #0D0D0D;
+    background: #F9F4FD;
+  }
+  .q-markdown--note-- {
+    border-left: 10px solid #53326C;
+    border-radius: 10px 0 0 10px;
+  }
+}
