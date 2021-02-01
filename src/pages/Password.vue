@@ -71,16 +71,17 @@ export default {
     }),
     recoveryPassword () {
       const { uid, token } = this.$route.params
-      if (this.$refs.password.validate() && this.$refs.re_password.validate())
-      this.resetPasswordConfirm({
-        uid: uid,
-        token: token,
-        new_password: this.newPassword,
-        re_new_password: this.reNewPassword
-      })
-        .then(() => {
-          this.openConfirmResetPassword = true
+      if (this.$refs.password.validate() && this.$refs.re_password.validate()) {
+        this.resetPasswordConfirm({
+          uid: uid,
+          token: token,
+          new_password: this.newPassword,
+          re_new_password: this.reNewPassword
         })
+          .then(() => {
+            this.openConfirmResetPassword = true
+          })
+      }
     }
   }
 }

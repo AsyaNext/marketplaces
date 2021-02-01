@@ -51,6 +51,7 @@
       />
       <send-link-for-recovery
         :status="openRecoveryLink"
+        @close-modal="openRecoveryLink = false"
       />
     </q-page-container>
 

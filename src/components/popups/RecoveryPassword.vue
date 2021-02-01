@@ -17,7 +17,7 @@
             type="email"
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
-            class="recovery-password-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
+            class="recovery-password-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
             :lazy-rules="true"
             :rules="[
             $rules.required('Это обязательное поле'),
@@ -85,9 +85,12 @@ export default {
       margin-bottom: 49px;
       &-input {
         width: 355px;
+        .q-field__append {
+          display: none;
+        }
         .q-field__control {
           height: 44px;
-          background: inherit;
+          background: #EEE3FD !important;
           box-shadow: none !important;
           border-radius: 11px;
           input {

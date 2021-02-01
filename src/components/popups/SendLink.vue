@@ -11,7 +11,6 @@
         <q-btn
           flat
           no-caps
-          :disable="disable"
           class="q-mt-sm send-link-btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Отправить письмо повторно"
           @click="sendLink"
@@ -28,11 +27,6 @@ export default {
   props: {
     status: Boolean
   },
-  data () {
-    return {
-      disable: false
-    }
-  },
   computed: {
     ...mapGetters({
       email: 'auth/email'
@@ -45,7 +39,7 @@ export default {
     sendLink () {
       this.resendLink({ email: this.email })
         .then(() => {
-          this.disable = true
+          this.$emit('close-send-link')
         })
     }
   }
