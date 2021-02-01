@@ -12,11 +12,17 @@
             Email
           </div>
           <q-input
+            ref="email"
             dense
             type="email"
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
             class="recovery-password-form__section-input bg-purple-2 font-montserrat__regular text-main text-grey-9 border-box"
+            :lazy-rules="true"
+            :rules="[
+            $rules.required('Это обязательное поле'),
+            $rules.email('Вы ввели некорректный email')
+            ]"
           />
         </div>
         <q-btn
@@ -25,12 +31,14 @@
           class="recovery-password-form__btn full-width border-box bg-purple-5 font-montserrat__bold text-white text-main"
           label="Восстановить пароль"
         />
+        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно восстановить пароль</div>
       </q-card-section>
     </q-card>
   </q-dialog>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'RecoveryPassword',
   props: {
@@ -38,8 +46,26 @@ export default {
   },
   data () {
     return {
+      warning: false,
       user: {
         email: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({
+      resetPassword: 'user/resetPassword'
+    }),
+    userResetPassword () {
+      if (this.$refs.email.validate()) {
+        this.resetPassword(this.user)
+          .then(() => {
+            this.warning = false
+            this.$emit('reset-password')
+          })
+          .catch(() => {
+            this.warning = true
+          })
       }
     }
   }

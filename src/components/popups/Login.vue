@@ -42,7 +42,7 @@
             ]"
           />
         </div>
-        <div class="login-form__link-password cursor-pointer font-montserrat__semi-bold text-center text-body1">
+        <div class="login-form__link-password cursor-pointer font-montserrat__semi-bold text-center text-body1" @click="$emit('open-recovery-password')">
           Забыли пароль?
         </div>
         <q-btn
@@ -54,7 +54,7 @@
           @click="authLogin"
         />
         <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно войти в аккаунт</div>
-        <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1">
+        <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1" @click="$emit('open-register')">
           Регистрация
         </div>
       </q-card-section>
@@ -88,7 +88,7 @@ export default {
         this.login(this.user)
           .then(() => {
             this.warning = false
-            this.$emit('close-login')
+            this.$emit('login')
           })
           .catch(() => {
             this.warning = true

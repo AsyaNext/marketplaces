@@ -1,9 +1,9 @@
 <template>
-  <q-layout :class="[$route.name === 'index' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
-    <q-header :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
+  <q-layout :class="[$route.name === 'index' || $route.name === 'activate' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
+    <q-header :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
       <q-toolbar class="row items-center justify-between">
         <router-link to="/" class="header-logo">
-          <q-img v-if="$route.name === 'index'" class="q-ml-sm" src="../assets/logo-index.svg"/>
+          <q-img v-if="$route.name === 'index' || $route.name === 'activate'" class="q-ml-sm" src="../assets/logo-index.svg"/>
           <q-img v-else class="q-ml-sm" src="../assets/logo.svg"/>
         </router-link>
         <div v-if="widthWindow >= 1050" class="header-navigation text-main row font-montserrat__semi-bold">
@@ -17,7 +17,7 @@
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
           <span v-show="isAuth">Сервис</span>
         </div>
-        <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
+        <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
       </q-toolbar>
     </q-header>
 
@@ -27,11 +27,31 @@
 
     <q-page-container class="container">
       <router-view />
-      <login :status="openLogin" @close-login="openLogin = false; checkAuth" />
-      <registration :status="openRegister" @close-register="openRegister = false" @registration="openRegister = false; openSendLink = true"/>
-      <send-link :status="openSendLink" @close-send-link="openSendLink = false" />
-      <recovery-password :status="openRecoveryPassword" @close-recovery-password="openRecoveryPassword = false" />
-      <send-link-for-recovery :status="openRecoveryLink" />
+      <login
+        :status="openLogin"
+        @close-login="openLogin = false;"
+        @login="openLogin = false; isAuth = true"
+        @open-register="openLogin = false; openRegister = true"
+        @open-recovery-password="openLogin = false; openRecoveryPassword = true"
+      />
+      <registration
+        :status="openRegister"
+        @close-register="openRegister = false"
+        @registration="openRegister = false; openSendLink = true"
+        @open-login="openRegister = false; openLogin = true"
+      />
+      <send-link
+        :status="openSendLink"
+        @close-send-link="openSendLink = false"
+      />
+      <recovery-password
+        :status="openRecoveryPassword"
+        @close-recovery-password="openRecoveryPassword = false"
+        @reset-password="openRecoveryPassword = false; openRecoveryLink = true"
+      />
+      <send-link-for-recovery
+        :status="openRecoveryLink"
+      />
     </q-page-container>
 
     <q-footer class="footer text-white">

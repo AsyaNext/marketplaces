@@ -81,32 +81,12 @@
         <div class="background-items-sticks__third absolute"></div>
       </div>
     </div>
-    <confirm-email :status="openConfirmEmail" />
   </q-page>
 </template>
 
 <script>
-import ConfirmEmail from 'components/popups/ConfirmEmail'
 export default {
-  name: 'PageIndex',
-  props: {
-    confirm: Boolean
-  },
-  components: {
-    ConfirmEmail
-  },
-  data () {
-    return {
-      openConfirmEmail: false
-    }
-  },
-  created () {
-    console.log(this.$route.params)
-    console.log(this.confirm)
-    if (this.$route.params.confirm || this.confirm) {
-      this.openConfirmEmail = true
-    }
-  }
+  name: 'PageIndex'
 }
 </script>
 

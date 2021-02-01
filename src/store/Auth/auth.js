@@ -10,6 +10,7 @@ const state = {
 }
 
 const getters = {
+  email: state => state.email,
   emailExist: state => state.emailExist,
   mobileExist: state => state.mobileExist
 }
@@ -56,7 +57,7 @@ const actions = {
   },
   resendLink ({ commit }, data) {
     return new Promise((resolve, reject) => {
-      api.post('auth/users/resend_activation', data)
+      api.post('auth/users/resend_activation/', data)
         .then((response) => {
           resolve(response)
         })

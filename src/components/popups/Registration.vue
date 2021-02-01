@@ -111,7 +111,7 @@
           @click="authRegister"
         />
         <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно зарегистрироваться</div>
-        <div class="register-form__link-login cursor-pointer font-montserrat__semi-bold text-center text-body1">
+        <div class="register-form__link-login cursor-pointer font-montserrat__semi-bold text-center text-body1" @click="$emit('open-login')">
           Уже есть аккаунт?
         </div>
       </q-card-section>
