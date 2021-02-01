@@ -87,7 +87,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .article {
   margin-bottom: 50px;
   border-radius: 15px;
