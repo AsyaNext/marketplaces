@@ -55,14 +55,12 @@ export default {
     CategoriesOfBlog,
     BaseSubmenu
   },
-  data () {
-    return {
-      search: '',
-      currentPage: 1,
-      category: '',
-      idCategory: null
-    }
-  },
+  data: () => ({
+    search: '',
+    currentPage: 1,
+    category: '',
+    idCategory: null
+  }),
   computed: {
     ...mapGetters({
       categories: 'blog/categories',

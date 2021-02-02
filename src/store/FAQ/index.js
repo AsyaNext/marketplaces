@@ -1,4 +1,4 @@
-import api from '../../boot/api'
+import { api } from 'boot/api'
 
 const state = {
   categories: null,

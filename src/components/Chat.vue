@@ -13,37 +13,66 @@
       seamless
       transition-show="slide-up"
       transition-hide="slide-down"
-      class="chat-dialog"
     >
-      <q-card class="fixed-bottom-right no-border-radius bg-purple-1">
+      <q-card class="chat-dialog fixed-bottom-right border-box bg-purple-1">
         <q-card-section class="row items-end q-pt-md q-py-none">
           <q-space />
-          <q-btn icon="close" color="purple-10" flat round dense @click="showDialog = false" />
+          <q-btn icon="close" color="purple-10" flat round dense @click="closeDialog" />
         </q-card-section>
-        <q-card-section class="text-purple-10 text-center">
-          <div class="q-mb-lg chat-title font-montserrat__semi-bold">Проконсультируйтесь с нашим специалистом</div>
+        <q-card-section v-if="!sendingSuccess" class="column items-center text-purple-10 text-center">
+          <div class="q-mx-md q-mb-lg chat-title font-montserrat__semi-bold">Проконсультируйтесь с нашим специалистом</div>
           <q-input
+            ref="name"
             dense
             standout="bg-purple-2 text-grey-9"
             v-model="user.name"
             placeholder="Ваше имя"
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
+            :lazy-rules="true"
+            :rules="[
+              $rules.required('Это обязательное поле')
+            ]"
           />
           <q-input
+            ref="username"
             dense
             standout="bg-purple-2 text-grey-9"
             v-model="user.contact"
             placeholder="Ваш email или ник в Telegram"
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
+            :lazy-rules="true"
+            :rules="[
+              $rules.or(
+                val => val.match('@[\\w-]') || 'Неправильный ник или email',
+                $rules.email('Неправильный ник или email')
+              ),
+              $rules.required('Это обязательное поле')
+            ]"
           />
           <q-input
+            ref="message"
             dense
             type="textarea"
             standout="bg-purple-2 text-grey-9"
             v-model="user.message"
             placeholder="Опишите проблему"
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
+            :lazy-rules="true"
+            :rules="[
+              $rules.required('Это обязательное поле')
+            ]"
           />
+          <q-btn
+            no-caps
+            flat
+            class="chat-btn__send border-box bg-purple-5 font-montserrat__bold text-white text-main"
+            label="Отправить сообщение"
+            @click="send"
+          />
+          <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Произошла ошибка</div>
+        </q-card-section>
+        <q-card-section v-else class="text-purple-10 text-center">
+          <div class="q-mb-lg chat-title font-montserrat__semi-bold">Сообщение отправлено, Вам ответят на него по почте или в Telegram</div>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -51,16 +80,43 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'Chat',
   data () {
     return {
+      warning: false,
       showDialog: false,
+      sendingSuccess: false,
       user: {
-        name: '',
-        contact: '',
+        real_name: '',
+        username: '',
         message: ''
       }
+    }
+  },
+  methods: {
+    ...mapActions({
+      sendMessage: 'chat/sendMessage'
+    }),
+    send () {
+      const valid = this.$refs.name.validate() && this.$refs.username.validate() && this.$refs.message.validate()
+      if (valid) {
+        this.sendMessage(this.user)
+          .then(() => {
+            this.warning = false
+            this.sendingSuccess = true
+          })
+          .catch(() => {
+            this.warning = true
+          })
+      }
+    },
+    closeDialog () {
+      this.user.real_name = ''
+      this.user.username = ''
+      this.user.message = ''
+      this.showDialog = false
     }
   }
 }
@@ -71,15 +127,21 @@ export default {
   right: 30px;
   bottom: 30px;
   z-index: 10000;
+  &-dialog {
+    right: 30px;
+    bottom: 30px;
+  }
   &-title {
-    font-size: 20px;
+    font-size: 24px;
   }
   &-input {
-    margin-bottom: 20px;
-    &:not(:last-child) {
-      .q-field__control {
-        height: 44px;
-      }
+    width: 355px;
+    textarea {
+      color: #212121 !important;
+      height: auto;
+    }
+    .q-field__append {
+      display: none;
     }
     .q-field__control {
       background: #EEE3FD !important;
@@ -87,7 +149,16 @@ export default {
       border-radius: 11px;
       input {
         color: #212121 !important;
+        height: 44px;
       }
+    }
+  }
+  &-btn__send {
+    margin-top: 30px;
+    width: 355px;
+    height: 44px;
+    .q-btn__wrapper {
+      min-height: auto;
     }
   }
 }
