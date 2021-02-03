@@ -65,14 +65,14 @@ export default {
   methods: {
     highlightName (text) {
       if (this.search) {
-        return text.replaceAll(this.search, '<span class="highlight-name">$&</span>')
+        return text.replace(new RegExp(this.search, 'ig'), '<span class="highlight-name">$&</span>')
       } else {
         return text
       }
     },
     highlightText (text) {
       if (this.search) {
-        return text.replaceAll(this.search, '<span class="highlight-text">$&</span>')
+        return text.replace(new RegExp(this.search, 'ig'), '<span class="highlight-text">$&</span>')
       } else {
         return text
       }
