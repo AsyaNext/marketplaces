@@ -116,6 +116,7 @@ export default {
       this.user.real_name = ''
       this.user.username = ''
       this.user.message = ''
+      this.sendingSuccess = false
       this.showDialog = false
     }
   }
