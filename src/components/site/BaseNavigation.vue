@@ -3,7 +3,7 @@
     <div class="headline-title font-montserrat__semi-bold cursor-pointer" @click="$emit('drop-data')">{{mainTitle}}</div>
     <div v-show="search" class="headline-category row q-gutter-x-md items-end">
       <q-icon name="fas fa-caret-right" size="sm"/>
-      <div class="headline-category__title font-montserrat__semi-bold text-body1 cursor-pointer" @click="$emit('drop-article')">Результаты поиска {{search}}</div>
+      <div class="headline-category__title font-montserrat__semi-bold text-body1 cursor-pointer" @click="$emit('drop-article')">Результаты поиска "{{search}}"</div>
     </div>
     <div v-show="category" class="headline-category row q-gutter-x-md items-end">
       <q-icon name="fas fa-caret-right" size="sm"/>
