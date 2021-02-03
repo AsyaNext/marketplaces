@@ -5,6 +5,7 @@
       v-for="article in articles"
       :key="article.id"
       :article="article"
+      :search="search"
       @get-article="getArticle($event)"
     />
   </div>
@@ -16,6 +17,7 @@ import CardOfArticle from 'components/site/blog/CardOfArticle'
 export default {
   name: 'ArticlesBlog',
   props: {
+    search: String,
     articles: Array
   },
   components: {

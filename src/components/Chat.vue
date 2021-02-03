@@ -25,7 +25,7 @@
             ref="name"
             dense
             standout="bg-purple-2 text-grey-9"
-            v-model="user.name"
+            v-model="user.real_name"
             placeholder="Ваше имя"
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
             :lazy-rules="true"
@@ -37,7 +37,7 @@
             ref="username"
             dense
             standout="bg-purple-2 text-grey-9"
-            v-model="user.contact"
+            v-model="user.username"
             placeholder="Ваш email или ник в Telegram"
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
             :lazy-rules="true"

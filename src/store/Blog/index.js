@@ -34,7 +34,6 @@ const actions = {
         params: data
       })
         .then((response) => {
-          console.log(data)
           commit('GET_ARTICLES', response.data)
           resolve(response)
         })
@@ -59,7 +58,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.get(`articles/${data}`)
         .then((response) => {
-          console.log(response)
           commit('GET_SPEC_ARTICLE', response.data)
           resolve(response)
         })

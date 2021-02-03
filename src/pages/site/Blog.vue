@@ -4,11 +4,12 @@
       main-title="Блог"
       :category="category"
       :article="article"
+      :search="fieldSearch"
       @drop-data="dropData"
       @drop-article="dropArticle"
     />
     <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
-      <router-view class="col-9" :articles="articles" />
+      <router-view class="col-9" :articles="articles" :search="search"/>
       <div class="blog-content__column col-3">
         <q-input
           v-if="!category"
@@ -22,7 +23,7 @@
             <q-icon
               class="blog-content__column-search-icon q-ml-md border-box bg-purple-4 cursor-pointer"
               name="img:icons/icon-search.svg"
-              @click="getArticles({ page: 1, page_size: 10, search: search})"
+              @click="getArticles({ page: 1, page_size: 10, search: search}); fieldSearch = search"
             />
           </template>
         </q-input>
@@ -46,7 +47,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import BaseSubmenu from 'components/site/BaseNavigation'
 import CategoriesOfBlog from 'components/site/blog/CategoriesOfBlog'
 export default {
@@ -57,6 +58,7 @@ export default {
   },
   data: () => ({
     search: '',
+    fieldSearch: '',
     currentPage: 1,
     category: '',
     idCategory: null
@@ -84,6 +86,7 @@ export default {
     }),
     dropData () {
       this.search = ''
+      this.fieldSearch = ''
       this.idCategory = null
       this.category = localStorage.removeItem('category')
       this.getArticles({ page: 1, page_size: 10 })

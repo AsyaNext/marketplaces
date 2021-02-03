@@ -8,7 +8,10 @@
         </div>
         <q-card-section class="card-article__group column justify-between">
           <div class="card-article__group-headline column justify-between">
-            <div class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10">{{article.name}}</div>
+            <div
+              class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10"
+              v-html="highlightName(article.name)">
+            </div>
             <div class="q-mb-md row q-gutter-xs">
               <div v-for="category in article.category" :key="category.id">
                 <q-chip
@@ -24,7 +27,7 @@
           </div>
           <div class="card-article__group-content">
             <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
-               <q-markdown :src="article.text" />
+               <q-markdown :src="highlightText(article.text)" />
             </div>
             <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">{{dateArticle}}</div>
           </div>
@@ -38,6 +41,7 @@
 export default {
   name: 'CardOfArticle',
   props: {
+    search: String,
     article: Object
   },
   computed: {
@@ -56,6 +60,22 @@ export default {
         month = date.getMonth() + 1
       }
       return `${day}.${month}.${date.getFullYear()}`
+    }
+  },
+  methods: {
+    highlightName (text) {
+      if (this.search) {
+        return text.replaceAll(this.search, '<span class="highlight-name">$&</span>')
+      } else {
+        return text
+      }
+    },
+    highlightText (text) {
+      if (this.search) {
+        return text.replaceAll(this.search, '<span class="highlight-text">$&</span>')
+      } else {
+        return text
+      }
     }
   }
 }
