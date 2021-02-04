@@ -119,6 +119,7 @@ a {
       box-orient: vertical;
       .q-markdown {
         p {
+          white-space: normal;
           margin-bottom: 0;
           &:not(:first-child) {
             display: none;

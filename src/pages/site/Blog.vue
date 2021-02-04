@@ -8,7 +8,7 @@
       @drop-data="dropData"
       @drop-article="dropArticle"
     />
-    <div class="q-mb-xl blog-content row q-col-gutter-x-xl">
+    <div class="q-mb-xl blog-content row justify-between q-col-gutter-x-xl">
       <router-view class="col-9" :articles="articles" :search="search"/>
       <div class="blog-content__column col-3">
         <q-input
