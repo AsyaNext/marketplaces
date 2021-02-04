@@ -1,7 +1,7 @@
 <template>
   <div>
     <router-link :to="{ name: 'blog.article', params: { id: article.id, title: article.name } }">
-      <q-card class="card-article border-box column full-height" @click="$emit('get-article', article.id); console.log('article')">
+      <q-card class="card-article border-box column full-height" @click="$emit('get-article', article.id)">
         <div class="card-article__image overflow-hidden">
           <q-img v-if="article.image" native-context-menu :src="article.image" :ratio="26/14" />
           <q-img v-else native-context-menu src="../../../assets/placeholder.png" :ratio="26/14" />
@@ -120,6 +120,9 @@ a {
       .q-markdown {
         p {
           margin-bottom: 0;
+          &:not(:first-child) {
+            display: none;
+          }
         }
       }
     }
