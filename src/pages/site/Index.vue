@@ -4,7 +4,7 @@
       <div class="index-page-functions__title font-montserrat__semi-bold text-h3">О сервисе</div>
       <div class="q-pl-lg index-page-functions__group row">
         <div class="index-page-functions__group-image border-box relative-position">
-          <div class="img border-box relative-position"></div>
+          <q-img src="https://c.wallhere.com/photos/b4/51/space_mix_up_purple_triangle_blurred_3D-51035.jpg!d" class="img border-box relative-position" :ratio="475/340" />
         </div>
         <div class="index-page-functions__group-column">
           <div class="index-page-functions__group-column-title font-montserrat__semi-bold text-h5">Функция</div>
@@ -17,7 +17,7 @@
           <div class="index-page-functions__group-column-description font-avenir__regular text-main">Описание функции</div>
         </div>
         <div class="index-page-functions__group-image border-box relative-position">
-          <div class="img border-box relative-position"></div>
+          <q-img src="https://2.bp.blogspot.com/-mDGwCOpFSX8/Ua8UvT8EDII/AAAAAAAAABU/9ssWXGSF3fk/s1600/KEYBOARD.jpg" class="img border-box relative-position" :ratio="475/340" />
         </div>
       </div>
     </section>
