@@ -1,12 +1,12 @@
 <template>
-  <q-layout :class="[$route.name === 'index' || $route.name === 'activate' ? 'bg-index' : 'bg-purple-1']" view="hhh lpR fff">
+  <q-layout :class="[$route.name === 'index' || $route.name === 'activate' ? 'bg-index' : 'bg-purple-1']" view="hhh LpR fff">
     <q-header :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
       <q-toolbar class="row items-center justify-between">
         <router-link to="/" class="header-logo">
-          <q-img v-if="$route.name === 'index' || $route.name === 'activate'" class="q-ml-sm" src="../assets/logo-index.svg"/>
-          <q-img v-else class="q-ml-sm" src="../assets/logo.svg"/>
+          <q-img v-if="$route.name === 'index' || $route.name === 'activate'" src="../assets/logo-index.svg"/>
+          <q-img v-else src="../assets/logo.svg"/>
         </router-link>
-        <div v-if="widthWindow >= 1050" class="header-navigation text-main row font-montserrat__semi-bold">
+        <div v-show="widthWindow >= 1100" class="header-navigation text-main row font-montserrat__semi-bold">
           <router-link to="/blog">Блог</router-link>
           <router-link to="/api">API</router-link>
           <router-link to="/rates">Тарифы</router-link>
@@ -17,12 +17,105 @@
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
           <span v-show="isAuth">Сервис</span>
         </div>
-        <q-btn v-else dense flat round icon="menu" :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" @click="rightDrawer = !rightDrawer" />
+        <div v-show="widthWindow < 1100" class="header-drawer__menu">
+          <q-btn
+            v-if="$route.name === 'index' || $route.name === 'activate'"
+            dense
+            flat
+            round
+            icon="img:icons/icon-burger-index.svg"
+            @click="leftDrawer = !leftDrawer"
+          />
+          <q-btn
+            v-else
+            dense
+            flat
+            round
+            icon="img:icons/icon-burger.svg"
+            @click="leftDrawer = !leftDrawer"
+          />
+        </div>
+        <div v-show="widthWindow < 1100" class="header-drawer__profile">
+          <q-btn
+            v-if="$route.name === 'index' || $route.name === 'activate'"
+            dense
+            flat
+            round
+            icon="img:icons/icon-person-index.svg"
+            @click="rightDrawer = !rightDrawer"
+          />
+          <q-btn
+            v-else
+            dense
+            flat
+            round
+            icon="img:icons/icon-person.svg"
+            @click="rightDrawer = !rightDrawer"
+          />
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="rightDrawer" side="right" overlay behavior="mobile">
-      <!-- drawer content -->
+    <q-drawer class="navigation-drawer" v-model="leftDrawer" side="left">
+      <q-separator color="orange-10" />
+      <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10">
+        <q-item to="/blog" clickable exact>
+          <q-item-section>
+            Блог
+          </q-item-section>
+        </q-item>
+        <q-item to="/api" clickable exact>
+          <q-item-section>
+            API
+          </q-item-section>
+        </q-item>
+        <q-item to="/rates" clickable exact>
+          <q-item-section>
+            Тарифы
+          </q-item-section>
+        </q-item>
+        <q-item to="/payment-and-return" clickable exact>
+          <q-item-section>
+            Оплата и возврат
+          </q-item-section>
+        </q-item>
+        <q-item to="/faq" clickable exact>
+          <q-item-section>
+            FAQ
+          </q-item-section>
+        </q-item>
+        <q-item to="/contacts" clickable exact>
+          <q-item-section>
+            Контакты
+          </q-item-section>
+        </q-item>
+        <q-item clickable exact>
+          <q-item-section>
+            Вход
+          </q-item-section>
+        </q-item>
+        <q-item clickable exact>
+          <q-item-section>
+            Регистрация
+          </q-item-section>
+        </q-item>
+      </q-list>
+    </q-drawer>
+
+    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right">
+      <q-separator color="orange-10" />
+      <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">
+        <q-item clickable exact>
+          <q-item-section>
+            Сервис
+          </q-item-section>
+        </q-item>
+        <q-item clickable exact>
+          <q-item-section>
+            Выход
+          </q-item-section>
+        </q-item>
+      </q-list>
     </q-drawer>
 
     <q-page-container class="container">
@@ -79,6 +172,7 @@ import SendLink from 'components/popups/SendLink'
 import RecoveryPassword from 'components/popups/RecoveryPassword'
 import SendLinkForRecovery from 'components/popups/SendLinkForRecovery'
 import Chat from 'components/Chat'
+
 export default {
   name: 'MainLayout',
   components: {
@@ -93,6 +187,7 @@ export default {
     return {
       isAuth: false,
       widthWindow: 0,
+      leftDrawer: false,
       rightDrawer: false,
       openLogin: false,
       openRegister: false,
