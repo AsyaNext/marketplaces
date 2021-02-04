@@ -10,7 +10,7 @@
           <div class="card-article__group-headline column justify-between">
             <div
               class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10"
-              v-html="highlightName(article.name)">
+              v-html="highlight(article.name, 'highlight-name')">
             </div>
             <div class="q-mb-md row q-gutter-xs">
               <div v-for="category in article.category" :key="category.id">
@@ -27,7 +27,7 @@
           </div>
           <div class="card-article__group-content">
             <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
-               <q-markdown :src="highlightText(article.text)" />
+               <q-markdown :src="highlight(article.text, 'highlight-text')" />
             </div>
             <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">{{dateArticle}}</div>
           </div>
@@ -63,16 +63,9 @@ export default {
     }
   },
   methods: {
-    highlightName (text) {
+    highlight (text, className) {
       if (this.search) {
-        return text.replace(new RegExp(this.search, 'ig'), '<span class="highlight-name">$&</span>')
-      } else {
-        return text
-      }
-    },
-    highlightText (text) {
-      if (this.search) {
-        return text.replace(new RegExp(this.search, 'ig'), '<span class="highlight-text">$&</span>')
+        return text.replace(new RegExp(this.search, 'ig'), `<span class="${className}">$&</span>`)
       } else {
         return text
       }
