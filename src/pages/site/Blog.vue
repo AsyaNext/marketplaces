@@ -12,7 +12,7 @@
       <router-view class="col-9" :articles="articles" :search="search"/>
       <div class="blog-content__column col-3">
         <q-input
-          v-if="!category"
+          v-if="!category && !article"
           standout="bg-purple-2 text-purple-11"
           dense
           class="q-mb-md blog-content__column-search bg-purple-2 font-montserrat__semi-bold text-purple-11 text-main border-box"
@@ -100,6 +100,8 @@ export default {
       }
     },
     changeCategory (category) {
+      this.search = ''
+      this.fieldSearch = ''
       this.idCategory = category.id
       this.getArticles({ page: 1, page_size: 10, category__id: this.idCategory })
       localStorage.setItem('category', category.name)
