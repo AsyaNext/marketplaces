@@ -42,10 +42,7 @@
             class="q-mx-lg chat-input font-montserrat__semi-bold text-main text-grey-9 border-box"
             :lazy-rules="true"
             :rules="[
-              $rules.or(
-                val => val.match('@[\\w-]') || 'Неправильный ник или email',
-                $rules.email('Неправильный ник или email')
-              ),
+              val => val.match('^@[\\w-]') || val.match('[0-9a-z_-]+@[0-9a-z_-]+\\.[a-z]{2,5}') || 'Неправильный ник или email',
               $rules.required('Это обязательное поле')
             ]"
           />
