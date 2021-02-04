@@ -1,9 +1,9 @@
-import { telegramApi } from 'boot/api'
+import api from 'boot/api'
 
 const actions = {
   sendMessage (context, data) {
     return new Promise((resolve, reject) => {
-      telegramApi.post('send_message/', data)
+      api.post('telegram_api/send_message/', data)
         .then((response) => {
           console.log(response)
           resolve(response)
