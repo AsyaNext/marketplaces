@@ -124,7 +124,7 @@ export default {
 .chat {
   right: 30px;
   bottom: 30px;
-  z-index: 10000;
+  z-index: 2500;
   &-dialog {
     right: 30px;
     bottom: 30px;
