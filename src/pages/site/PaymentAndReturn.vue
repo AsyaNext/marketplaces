@@ -3,7 +3,7 @@
     <div class="page-headline font-montserrat__semi-bold text-purple-10">
       Политика оплаты и возврата
     </div>
-    <div class="payment-return-content column bg-white">
+    <div class="payment-return-content">
       <div class="payment-return-content__section">
         <div class="q-mb-md payment-return-content__section-title font-montserrat__semi-bold text-h5 text-purple-12">
           Оплата

@@ -1,8 +1,13 @@
 .payment-return {
   &-content {
+    background-color: white;
     margin-bottom: 28px;
     border-radius: 15px;
     padding: 25px 30px 25px 20px;
+    @media (max-width: 670px) {
+      background-color: inherit;
+      padding: 25px 0;
+    }
     &__section {
       margin-bottom: 45px;
       &-list {
@@ -13,6 +18,9 @@
         }
         &-visa, &-mir {
           width: 95px;
+          @media (max-width: 330px) {
+            width: 90px;
+          }
         }
         &-mastercard {
           margin: 0 27px;
