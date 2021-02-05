@@ -3,10 +3,10 @@
     <div class="card-rate column full-height">
       <div class="card-rate__headline">
         <div class="q-mb-xs card-rate__headline-name font-montserrat__medium text-white">{{rate.name}}</div>
-        <div class="row">
+        <div class="card-rate__headline-title row">
           <div class="card-rate__headline-symbol font-montserrat__medium text-main text-white">₽</div>
-          <div class="q-mr-sm card-rate__headline-price font-montserrat__medium text-white">{{price}}</div>
-          <div class="card-rate__headline-mounth font-montserrat__medium text-body2 text-white">/месяц</div>
+          <div class="q-mr-xs card-rate__headline-price font-montserrat__medium text-white">{{price}}</div>
+          <div class="card-rate__headline-mounth font-montserrat__medium text-body2 text-white text-no-wrap">/{{term}}</div>
         </div>
       </div>
       <div class="card-rate__content bg-purple-2 font-montserrat__regular text-body2 text-center text-grey-9">
@@ -45,6 +45,15 @@ export default {
     subscription: String
   },
   computed: {
+    term () {
+      if (this.subscription === '3 месяца (скидка 10%)') {
+        return '3 месяца'
+      } else if (this.subscription === '6 месяцев (скидка 20%)') {
+        return '6 месяцев'
+      } else {
+        return 'месяц'
+      }
+    },
     price () {
       if (this.subscription === '3 месяца (скидка 10%)') {
         return (this.rate.price * 3 * 0.9).toLocaleString()
@@ -62,18 +71,22 @@ export default {
 .card-rate {
   &__headline {
     border-radius: 15px 15px 0 0;
-    padding: 12px 4px 14px 18px;
+    padding: 12px 2px 14px 18px;
+    &-title {
+      flex-wrap: nowrap;
+    }
     &-name {
       font-size: 20px;
       line-height: 24px;
     }
     &-symbol {
       margin-top: 10px;
-      margin-right: 10px;
+      margin-right: 8px;
       align-self: flex-start;
     }
     &-price {
       font-size: 40px;
+      letter-spacing: -0.02em;
     }
     &-mounth {
       margin-bottom: 12px;

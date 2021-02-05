@@ -11,6 +11,10 @@
       }
       &-item {
         color: white;
+        @media (max-width: 450px) {
+          font-size: 10px;
+          line-height: 13px;
+        }
         &:not(:last-child) {
           margin-right: 8px;
         }
@@ -21,9 +25,19 @@
       }
     }
   }
-  &-list {
+  &-wrapper {
+    overflow: hidden;
     margin-bottom: 189px;
+  }
+  &-list {
+    border-radius: 15px;
+    overflow-x: auto;
+    scrollbar-width: 0;
+    &::-webkit-scrollbar {
+      height: 0;
+    }
     &__item {
+      min-width: 290px !important;
       &:first-child {
         .card-rate__headline {
           background-color: #8A7CB1;
@@ -44,6 +58,21 @@
           background-color: #330264;
         }
       }
+    }
+  }
+  &-slider {
+    margin-top: 11px;
+    &__point {
+      background-color: #EEE3FD;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      &:hover {
+        background-color: #8A7CB1;
+      }
+    }
+    .active-point {
+      background-color: #8A7CB1;
     }
   }
 }

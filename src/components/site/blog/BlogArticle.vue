@@ -1,6 +1,6 @@
 <template>
   <div v-show="article">
-    <div class="article q-pa-md bg-white">
+    <div class="article q-pa-md">
       <q-img native-context-menu class="q-mb-md article-cover" :src="article.image" :ratio="ratio" />
       <div class="article-wrapper">
         <div class="q-mb-lg article-extradata row justify-between items-center">
@@ -93,8 +93,12 @@ export default {
 
 <style scoped lang="scss">
 .article {
+  background-color: white;
   margin-bottom: 50px;
   border-radius: 15px;
+  @media (max-width: 670px) {
+    background-color: inherit;
+  }
   &-cover {
     border-radius: 15px;
   }
