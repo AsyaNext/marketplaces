@@ -17,11 +17,11 @@
           Контактные данные
         </div>
         <div class="contacts-content__section-list row q-gutter-x-md">
-          <q-icon class="cursor-pointer" size="xl" name="img:icons/icon-telegram.svg" />
-          <q-icon class="cursor-pointer" size="xl" name="img:icons/icon-whatsapp.svg" />
-          <q-icon class="cursor-pointer" size="xl" name="img:icons/icon-viber.svg" />
-          <q-icon class="cursor-pointer" size="xl" name="img:icons/icon-facebook.svg" />
-          <q-icon class="cursor-pointer" size="xl" name="img:icons/icon-vk.svg" />
+          <q-icon class="cursor-pointer" :size="sizeIcon" name="img:icons/icon-telegram.svg" />
+          <q-icon class="cursor-pointer" :size="sizeIcon" name="img:icons/icon-whatsapp.svg" />
+          <q-icon class="cursor-pointer" :size="sizeIcon" name="img:icons/icon-viber.svg" />
+          <q-icon class="cursor-pointer" :size="sizeIcon" name="img:icons/icon-facebook.svg" />
+          <q-icon class="cursor-pointer" :size="sizeIcon" name="img:icons/icon-vk.svg" />
         </div>
       </div>
       <div class="contacts-content__section">
@@ -36,7 +36,19 @@
 
 <script>
 export default {
-  name: 'Contacts'
+  name: 'Contacts',
+  props: {
+    widthWindow: Number
+  },
+  computed: {
+    sizeIcon () {
+      if (this.widthWindow > 330) {
+        return 'xl'
+      } else {
+        return 'lg'
+      }
+    }
+  }
 }
 </script>
 

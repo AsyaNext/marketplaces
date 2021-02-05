@@ -2,6 +2,10 @@
   &-content {
     flex-grow: 1;
     margin-bottom: 60px;
+    @media (max-width: 540px) {
+      margin-top: 77px;
+      margin-bottom: 96px;
+    }
     &__section {
       max-width: 840px;
       &:not(:last-child) {
