@@ -89,12 +89,12 @@
             Контакты
           </q-item-section>
         </q-item>
-        <q-item clickable @click="leftDrawer = false; openLogin = true">
+        <q-item v-show="!isAuth" clickable @click="leftDrawer = false; openLogin = true">
           <q-item-section>
             Вход
           </q-item-section>
         </q-item>
-        <q-item clickable @click="leftDrawer = false; openRegister = true">
+        <q-item v-show="!isAuth" clickable @click="leftDrawer = false; openRegister = true">
           <q-item-section>
             Регистрация
           </q-item-section>
@@ -105,12 +105,12 @@
     <q-drawer class="profile-drawer" v-model="rightDrawer" side="right">
       <q-separator color="orange-10" />
       <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">
-        <q-item clickable to="/service" exact>
+        <q-item v-show="isAuth" clickable to="/service" exact>
           <q-item-section>
             Сервис
           </q-item-section>
         </q-item>
-        <q-item clickable exact>
+        <q-item v-show="isAuth" clickable @click="logout">
           <q-item-section>
             Выход
           </q-item-section>
@@ -202,8 +202,16 @@ export default {
   methods: {
     ...mapActions({
       checkToken: 'auth/checkToken',
-      updateToken: 'auth/updateToken'
+      updateToken: 'auth/updateToken',
+      logoutUser: 'auth/logout'
     }),
+    logout () {
+      this.rightDrawer = false
+      this.logoutUser()
+        .then(() => {
+          this.isAuth = false
+        })
+    },
     updateWidth () {
       this.widthWindow = window.innerWidth
     },

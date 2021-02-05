@@ -70,11 +70,9 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.post('auth/users/activation/', data)
         .then((response) => {
-          console.log(response)
           resolve(response)
         })
         .catch((error) => {
-          console.log(error)
           reject(error)
         })
     })
@@ -103,17 +101,13 @@ const actions = {
         token: Cookies.get('access-token')
       })
         .then((response) => {
-          if (response.data.detail === 'Token is invalid or expired') {
-            Cookies.remove('access-token')
-            delete api.defaults.headers.common.Authorization
-            reject(response)
-            console.log(response)
-          } else {
-            console.log(response)
-            resolve(response)
-          }
+          resolve(response)
         })
         .catch((error) => {
+          if (error.response.data.detail) {
+            Cookies.remove('access-token')
+            delete api.defaults.headers.common.Authorization
+          }
           reject(error)
         })
     })
@@ -124,22 +118,21 @@ const actions = {
         refresh: Cookies.get('refresh-token')
       })
         .then((response) => {
-          if (response.data.detail === 'Token is invalid or expired') {
-            Cookies.remove('refresh-token')
-            reject(response)
-          }
-          if (response.data.access) {
-            Cookies.set('access-token', response.data.access)
-            api.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
-            commit('UPDATE_TOKEN', response.data.access)
-            resolve(response)
-          }
+          Cookies.set('access-token', response.data.access)
+          api.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
+          commit('UPDATE_TOKEN', response.data.access)
+          resolve(response)
         })
         .catch((error) => {
           Cookies.remove('refresh-token')
           reject(error)
         })
     })
+  },
+  logout () {
+    Cookies.remove('access-token')
+    Cookies.remove('refresh-token')
+    delete api.defaults.headers.common.Authorization
   }
 }
 
