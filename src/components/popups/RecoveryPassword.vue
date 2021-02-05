@@ -46,14 +46,12 @@ export default {
     status: Boolean,
     widthWindow: Number
   },
-  data () {
-    return {
-      warning: false,
-      user: {
-        email: ''
-      }
+  data: () => ({
+    warning: false,
+    user: {
+      email: ''
     }
-  },
+  }),
   methods: {
     ...mapActions({
       resetPassword: 'user/resetPassword'

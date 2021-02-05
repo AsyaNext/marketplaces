@@ -57,14 +57,12 @@ export default {
   components: {
     ConfirmResetPassword
   },
-  data () {
-    return {
-      warning: false,
-      newPassword: '',
-      reNewPassword: '',
-      openConfirmResetPassword: false
-    }
-  },
+  data: () => ({
+    warning: false,
+    newPassword: '',
+    reNewPassword: '',
+    openConfirmResetPassword: false
+  }),
   methods: {
     ...mapActions({
       resetPasswordConfirm: 'user/resetPasswordConfirm'

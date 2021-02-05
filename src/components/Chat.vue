@@ -83,18 +83,16 @@ export default {
   props: {
     widthWindow: Number
   },
-  data () {
-    return {
-      warning: false,
-      showDialog: false,
-      sendingSuccess: false,
-      user: {
-        real_name: '',
-        username: '',
-        message: ''
-      }
+  data: () => ({
+    warning: false,
+    showDialog: false,
+    sendingSuccess: false,
+    user: {
+      real_name: '',
+      username: '',
+      message: ''
     }
-  },
+  }),
   methods: {
     ...mapActions({
       sendMessage: 'chat/sendMessage'

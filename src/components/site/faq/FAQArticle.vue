@@ -21,11 +21,9 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'FAQArticle',
-  data () {
-    return {
-      widthWindow: 0
-    }
-  },
+  data: () => ({
+    widthWindow: 0
+  }),
   computed: {
     ...mapGetters({
       article: 'faq/article'

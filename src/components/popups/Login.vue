@@ -69,15 +69,13 @@ export default {
     status: Boolean,
     widthWindow: Number
   },
-  data () {
-    return {
-      warning: false,
-      user: {
-        email: '',
-        password: ''
-      }
+  data: () => ({
+    warning: false,
+    user: {
+      email: '',
+      password: ''
     }
-  },
+  }),
   methods: {
     ...mapActions({
       login: 'auth/login'

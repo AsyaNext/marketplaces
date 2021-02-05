@@ -37,15 +37,13 @@ export default {
   components: {
     CardOfRate
   },
-  data () {
-    return {
-      preventScrolling: false,
-      slide: 1,
-      activeItem: '',
-      activePoint: 1,
-      subscription: ['1 месяц', '3 месяца (скидка 10%)', '6 месяцев (скидка 20%)']
-    }
-  },
+  data: () => ({
+    preventScrolling: false,
+    slide: 1,
+    activeItem: '',
+    activePoint: 1,
+    subscription: ['1 месяц', '3 месяца (скидка 10%)', '6 месяцев (скидка 20%)']
+  }),
   computed: {
     ...mapGetters({
       ratesOrg: 'rates/rates'

@@ -186,19 +186,17 @@ export default {
     Registration,
     Login
   },
-  data () {
-    return {
-      isAuth: false,
-      widthWindow: 0,
-      leftDrawer: false,
-      rightDrawer: false,
-      openLogin: false,
-      openRegister: false,
-      openSendLink: false,
-      openRecoveryPassword: false,
-      openRecoveryLink: false
-    }
-  },
+  data: () => ({
+    isAuth: false,
+    widthWindow: 0,
+    leftDrawer: false,
+    rightDrawer: false,
+    openLogin: false,
+    openRegister: false,
+    openSendLink: false,
+    openRecoveryPassword: false,
+    openRecoveryLink: false
+  }),
   methods: {
     ...mapActions({
       checkToken: 'auth/checkToken',

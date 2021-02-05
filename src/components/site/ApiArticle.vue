@@ -53,57 +53,52 @@ export default {
   props: {
     section: Object
   },
-  data () {
-    return {
-      columns: [
-        { name: 'one', label: 'One', field: 'one', align: 'left' },
-        { name: 'two', label: 'Two', field: 'two', align: 'left' },
-        { name: 'three', label: 'Three', field: 'three', align: 'left' },
-        { name: 'four', label: 'Four', field: 'four', align: 'left' },
-        { name: 'five', label: 'Five', field: 'five', align: 'left' }
-      ],
-      data: [
-        {
-          one: 'Lorem Ipsum Lorem Ipsum',
-          two: 'Lorem Ipsum',
-          three: 'Lorem Ipsum',
-          four: 'Lorem Ipsum',
-          five: 'Lorem IpsumLorem IpsumLorem Ipsum'
-        },
-        {
-          one: ' ',
-          two: ' ',
-          three: ' ',
-          four: ' ',
-          five: ' '
-        },
-        {
-          one: ' ',
-          two: ' ',
-          three: ' ',
-          four: ' ',
-          five: ' '
-        },
-        {
-          one: ' ',
-          two: ' ',
-          three: ' ',
-          four: ' ',
-          five: ' '
-        },
-        {
-          one: ' ',
-          two: ' ',
-          three: ' ',
-          four: ' ',
-          five: ' '
-        }
-      ]
-    }
-  },
-  created () {
-    window.addEventListener('resize', this.updateWidth)
-  }
+  data: () => ({
+    columns: [
+      { name: 'one', label: 'One', field: 'one', align: 'left' },
+      { name: 'two', label: 'Two', field: 'two', align: 'left' },
+      { name: 'three', label: 'Three', field: 'three', align: 'left' },
+      { name: 'four', label: 'Four', field: 'four', align: 'left' },
+      { name: 'five', label: 'Five', field: 'five', align: 'left' }
+    ],
+    data: [
+      {
+        one: 'Lorem Ipsum Lorem Ipsum',
+        two: 'Lorem Ipsum',
+        three: 'Lorem Ipsum',
+        four: 'Lorem Ipsum',
+        five: 'Lorem IpsumLorem IpsumLorem Ipsum'
+      },
+      {
+        one: ' ',
+        two: ' ',
+        three: ' ',
+        four: ' ',
+        five: ' '
+      },
+      {
+        one: ' ',
+        two: ' ',
+        three: ' ',
+        four: ' ',
+        five: ' '
+      },
+      {
+        one: ' ',
+        two: ' ',
+        three: ' ',
+        four: ' ',
+        five: ' '
+      },
+      {
+        one: ' ',
+        two: ' ',
+        three: ' ',
+        four: ' ',
+        five: ' '
+      }
+    ]
+  })
 }
 </script>
 

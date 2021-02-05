@@ -12,11 +12,9 @@ export default {
   components: {
     ConfirmEmail
   },
-  data () {
-    return {
-      openConfirmEmail: false
-    }
-  },
+  data: () => ({
+    openConfirmEmail: false
+  }),
   methods: {
     ...mapActions({
       activateUser: 'auth/activateUser'

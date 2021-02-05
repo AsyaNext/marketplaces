@@ -127,18 +127,16 @@ export default {
     status: Boolean,
     widthWindow: Number
   },
-  data () {
-    return {
-      warning: false,
-      user: {
-        username: '',
-        mobile: '',
-        email: '',
-        password: '',
-        re_password: ''
-      }
+  data: () => ({
+    warning: false,
+    user: {
+      username: '',
+      mobile: '',
+      email: '',
+      password: '',
+      re_password: ''
     }
-  },
+  }),
   computed: {
     ...mapGetters({
       emailExist: 'auth/emailExist',

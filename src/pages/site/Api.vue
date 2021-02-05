@@ -38,28 +38,26 @@ export default {
   props: {
     widthWindow: Number
   },
-  data () {
-    return {
-      openSection: null,
-      sections: [
-        {
-          name: 'Раздел 1',
-          slug: '',
-          submenu: ['Страница 1', 'Страница 2', 'Страница 3']
-        },
-        {
-          name: 'Раздел 2',
-          slug: 'section-first',
-          submenu: ['Страница 1', 'Страница 2']
-        },
-        {
-          name: 'Раздел 3',
-          slug: 'section-second',
-          submenu: ['Страница 1', 'Страница 2', 'Страница 3']
-        }
-      ]
-    }
-  },
+  data: () => ({
+    openSection: null,
+    sections: [
+      {
+        name: 'Раздел 1',
+        slug: '',
+        submenu: ['Страница 1', 'Страница 2', 'Страница 3']
+      },
+      {
+        name: 'Раздел 2',
+        slug: 'section-first',
+        submenu: ['Страница 1', 'Страница 2']
+      },
+      {
+        name: 'Раздел 3',
+        slug: 'section-second',
+        submenu: ['Страница 1', 'Страница 2', 'Страница 3']
+      }
+    ]
+  }),
   methods: {
     openArticle (section) {
       this.openSection = section

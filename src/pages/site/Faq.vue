@@ -24,10 +24,6 @@ export default {
   components: {
     BaseSubmenu
   },
-  data () {
-    return {
-    }
-  },
   computed: {
     ...mapGetters({
       categories: 'faq/categories',

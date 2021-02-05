@@ -81,16 +81,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       api.post('auth/jwt/create', data)
         .then((response) => {
-          console.log(response)
           Cookies.set('access-token', response.data.access)
           Cookies.set('refresh-token', response.data.refresh)
           api.defaults.headers.common.Authorization = `Bearer ${response.data.access}`
           commit('AUTH_SUCCESS', response.data)
-          console.log(response)
           resolve(response)
         })
         .catch((error) => {
-          console.log(error)
           reject(error)
         })
     })
