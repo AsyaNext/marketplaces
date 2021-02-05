@@ -89,12 +89,12 @@
             Контакты
           </q-item-section>
         </q-item>
-        <q-item clickable exact>
+        <q-item clickable @click="leftDrawer = false; openLogin = true">
           <q-item-section>
             Вход
           </q-item-section>
         </q-item>
-        <q-item clickable exact>
+        <q-item clickable @click="leftDrawer = false; openRegister = true">
           <q-item-section>
             Регистрация
           </q-item-section>
@@ -122,6 +122,7 @@
       <router-view :widthWindow="widthWindow" />
       <login
         :status="openLogin"
+        :widthWindow="widthWindow"
         @close-login="openLogin = false;"
         @login="openLogin = false; isAuth = true"
         @open-register="openLogin = false; openRegister = true"
@@ -129,6 +130,7 @@
       />
       <registration
         :status="openRegister"
+        :widthWindow="widthWindow"
         @close-register="openRegister = false"
         @registration="openRegister = false; openSendLink = true"
         @open-login="openRegister = false; openLogin = true"
@@ -139,6 +141,7 @@
       />
       <recovery-password
         :status="openRecoveryPassword"
+        :widthWindow="widthWindow"
         @close-recovery-password="openRecoveryPassword = false"
         @reset-password="openRecoveryPassword = false; openRecoveryLink = true"
       />

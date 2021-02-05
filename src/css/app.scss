@@ -36,6 +36,11 @@ body {
 .q-dialog__inner--minimized > div {
   max-width: 450px;
   min-height: auto !important;
+  max-height: 100% !important;
+}
+
+.q-dialog__backdrop {
+  background-color: rgba(58, 1, 102, 0.49);
 }
 
 .q-markdown {

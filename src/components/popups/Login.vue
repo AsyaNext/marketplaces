@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="status" persistent>
+  <q-dialog :maximized="widthWindow <= 550" v-model="status" persistent>
     <q-card class="login">
       <q-card-section class="row items-end q-pb-none">
         <q-space />
@@ -66,7 +66,8 @@ import { mapActions } from 'vuex'
 export default {
   name: 'Login',
   props: {
-    status: Boolean
+    status: Boolean,
+    widthWindow: Number
   },
   data () {
     return {
@@ -136,6 +137,28 @@ export default {
       .q-btn__wrapper {
         min-height: auto;
       }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .login {
+    &-form {
+      margin-top: 20px;
+      &__section {
+        &-input {
+          width: 100%;
+        }
+      }
+      &__btn {
+        min-width: auto;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .login {
+    &-form {
+      padding: 0 15px 36px;
     }
   }
 }

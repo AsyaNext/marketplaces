@@ -57,4 +57,14 @@ export default {
     height: 44px;
   }
 }
+
+@media (max-width: 550px) {
+  .send-link {
+    &-description {
+      padding: 30px 30px 56px;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+}
 </style>

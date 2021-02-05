@@ -29,4 +29,13 @@ export default {
     line-height: 32px;
   }
 }
+@media (max-width: 550px) {
+  .confirm-reset-password {
+    &-description {
+      padding: 30px 30px 56px;
+      font-size: 22px;
+      line-height: 27px;
+    }
+  }
+}
 </style>

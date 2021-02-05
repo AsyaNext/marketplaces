@@ -1,5 +1,5 @@
 <template>
-  <q-dialog v-model="status" persistent>
+  <q-dialog :maximized="widthWindow <= 550" v-model="status" persistent>
     <q-card class="recovery-password">
       <q-card-section class="row items-end q-pb-none">
         <q-space />
@@ -43,7 +43,8 @@ import { mapActions } from 'vuex'
 export default {
   name: 'RecoveryPassword',
   props: {
-    status: Boolean
+    status: Boolean,
+    widthWindow: Number
   },
   data () {
     return {
@@ -101,6 +102,32 @@ export default {
     }
     &__btn {
       height: 44px;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .recovery-password {
+    &-headline {
+      margin-bottom: 20px;
+    }
+    &-form {
+      margin-top: 20px;
+      &__section {
+        margin-bottom: 24px;
+        &-input {
+          width: 100%;
+        }
+      }
+      &__btn {
+        min-width: auto;
+      }
+    }
+  }
+}
+@media (max-width: 400px) {
+  .recovery-password {
+    &-form {
+      padding: 0 15px 36px;
     }
   }
 }
