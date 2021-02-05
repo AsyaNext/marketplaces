@@ -16,11 +16,11 @@
       </div>
     </div>
     <div class="rates-wrapper">
-      <div ref="rates" class="rates-list row q-col-gutter-x-md no-wrap">
+      <div ref="rates" class="rates-list row q-col-gutter-x-md no-wrap" @scroll="onScroll">
         <card-of-rate class="rates-list__item col" v-for="rate in ratesOrg" :key="rate.id" :rate="rate" :subscription="activeItem" />
       </div>
       <div v-show="widthWindow <= 1160" class="rates-slider row justify-center q-gutter-x-xs">
-        <div :class="{ 'active-point' : activePoint === i }" class="rates-slider__point cursor-pointer" v-for="i in 4" :key="i"></div>
+        <div :class="{ 'active-point' : activePoint === i }" class="rates-slider__point cursor-pointer" v-for="i in 4" :key="i" @click="(event) => onToggle(event, i)"></div>
       </div>
     </div>
   </q-page>
@@ -39,6 +39,7 @@ export default {
   },
   data () {
     return {
+      preventScrolling: false,
       slide: 1,
       activeItem: '',
       activePoint: 1,
@@ -48,12 +49,38 @@ export default {
   computed: {
     ...mapGetters({
       ratesOrg: 'rates/rates'
-    })
+    }),
+    availableWidth () {
+      return this.widthWindow / 290
+    }
   },
   methods: {
     ...mapActions({
       getRates: 'rates/getRates'
-    })
+    }),
+    onScroll (event) {
+      if (!this.preventScrolling) {
+        const scrollOffset = event.target.scrollLeft / 290
+        if (scrollOffset <= 1 / this.availableWidth) {
+          this.activePoint = 1
+        } else if (scrollOffset > 1 / this.availableWidth && scrollOffset < 2 / this.availableWidth) {
+          this.activePoint = 2
+        } else if (scrollOffset > 2 / this.availableWidth && scrollOffset < 3 / this.availableWidth) {
+          this.activePoint = 3
+        } else {
+          this.activePoint = 4
+        }
+      }
+    },
+    onToggle (event, i) {
+      this.preventScrolling = true
+      this.activePoint = i
+      const scrollTo = ((i - 1) / this.availableWidth) * 290
+      this.$refs.rates.scrollTo({ left: scrollTo, behavior: 'smooth' })
+      setTimeout(() => {
+        this.preventScrolling = false
+      }, 500)
+    }
   },
   beforeMount () {
     this.getRates()
