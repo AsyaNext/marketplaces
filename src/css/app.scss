@@ -57,12 +57,20 @@ body {
   p {
     br {
       display: none;
+      @media (max-width: 550px) {
+        display: block;
+      }
     }
     .q-markdown--image {
       float: right;
       margin-left: 27px;
       width: 300px;
       border-radius: 11px;
+      @media (max-width: 550px) {
+        float: none;
+        align-self: center;
+        margin: 16px auto;
+      }
     }
   }
   blockquote.q-markdown--note {

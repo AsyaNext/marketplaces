@@ -5,12 +5,13 @@
       :category="category"
       :article="article"
       :search="fieldSearch"
+      :widthWindow="widthWindow"
       @drop-data="dropData"
       @drop-article="dropArticle"
     />
-    <div class="q-mb-xl blog-content row justify-between q-col-gutter-x-xl">
-      <router-view class="col-9" :articles="articles" :search="search"/>
-      <div class="blog-content__column col-3">
+    <div class="q-mb-xl blog-content row justify-between">
+      <router-view class="blog-content__articles col-9" :widthWindow="widthWindow" :articles="articles" :search="search"/>
+      <div class="q-pl-xl blog-content__column col-3">
         <q-input
           v-if="!category && !article"
           standout="bg-purple-2 text-purple-11"
@@ -27,7 +28,7 @@
             />
           </template>
         </q-input>
-        <categories-of-blog @change-category="changeCategory" :categories="categories" />
+        <categories-of-blog v-show="!(widthWindow <= 670 && $route.name === 'blog.article')" @change-category="changeCategory" :widthWindow="widthWindow" :categories="categories" />
       </div>
     </div>
     <div v-if="this.$route.name !== 'blog.article'" class="blog-pagination row justify-center">
@@ -52,6 +53,9 @@ import BaseSubmenu from 'components/site/BaseNavigation'
 import CategoriesOfBlog from 'components/site/blog/CategoriesOfBlog'
 export default {
   name: 'Blog',
+  props: {
+    widthWindow: Number
+  },
   components: {
     CategoriesOfBlog,
     BaseSubmenu

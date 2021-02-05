@@ -1,30 +1,32 @@
 <template>
   <div v-show="article">
     <div class="article q-pa-md bg-white">
-      <q-img native-context-menu class="q-mb-md article-cover" :src="article.image" :ratio="79/23" />
-      <div class="q-mb-lg article-extradata row justify-between items-center">
-        <div>
-          <q-chip
-            dense
-            class="q-px-md font-montserrat__semi-bold text-caption"
-            color="pink-6"
-            text-color="white"
-            v-for="category in article.category"
-            :key="category.id"
-          >
-            {{category.name}}
-          </q-chip>
+      <q-img native-context-menu class="q-mb-md article-cover" :src="article.image" :ratio="ratio" />
+      <div class="article-wrapper">
+        <div class="q-mb-lg article-extradata row justify-between items-center">
+          <div class="q-mb-sm">
+            <q-chip
+              dense
+              class="q-px-md font-montserrat__semi-bold text-caption"
+              color="pink-6"
+              text-color="white"
+              v-for="category in article.category"
+              :key="category.id"
+            >
+              {{category.name}}
+            </q-chip>
+          </div>
+          <div class="q-mb-sm q-ml-xs font-avenir__bold text-grey-5 letter-spacing__less text-caption">{{dateArticle}}</div>
         </div>
-        <div class="font-avenir__bold text-grey-5 letter-spacing__less text-caption">{{dateArticle}}</div>
-      </div>
-      <div class="article-title font-montserrat__bold text-center text-purple-12">
-        {{article.name}}
-      </div>
-      <div class="article-content font-avenir__regular text-main text-justify text-grey-10">
-        <q-markdown
-          :src="article.text"
-          no-heading-anchor-links
-        />
+        <div class="article-title font-montserrat__bold text-center text-purple-12">
+          {{article.name}}
+        </div>
+        <div class="article-content font-avenir__regular text-main text-justify text-grey-10">
+          <q-markdown
+            :src="article.text"
+            no-heading-anchor-links
+          />
+        </div>
       </div>
     </div>
     <div class="pagination row justify-between">
@@ -44,9 +46,8 @@
 import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'BlogArticle',
-  data () {
-    return {
-    }
+  props: {
+    widthWindow: Number
   },
   computed: {
     ...mapGetters({
@@ -68,6 +69,9 @@ export default {
         month = date.getMonth() + 1
       }
       return `${day}.${month}.${date.getFullYear()}`
+    },
+    ratio () {
+      return (this.widthWindow > 670) ? 79 / 23 : 345 / 140
     }
   },
   methods: {
@@ -102,6 +106,12 @@ export default {
   &-content {
     margin-bottom: 60px;
     line-height: 25px;
+    p {
+      @media (max-width: 550px) {
+        display: flex;
+        flex-direction: column;
+      }
+    }
   }
 }
 .pagination {
@@ -109,6 +119,15 @@ export default {
   a {
     color: inherit;
     text-decoration: none;
+  }
+}
+
+@media (max-width: 670px) {
+  .article {
+    padding: 0;
+    &-wrapper {
+      padding: 16px;
+    }
   }
 }
 </style>

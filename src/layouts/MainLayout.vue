@@ -119,7 +119,7 @@
     </q-drawer>
 
     <q-page-container class="container">
-      <router-view />
+      <router-view :widthWindow="widthWindow" />
       <login
         :status="openLogin"
         @close-login="openLogin = false;"

@@ -65,3 +65,31 @@
     }
   }
 }
+
+@media (max-width: 800px) {
+  .blog {
+    &-content {
+      &__column {
+        padding-left: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .blog {
+    &-content {
+      flex-direction: column;
+      &__articles {
+        margin-left: 0;
+        width: 100% !important;
+      }
+      &__column {
+        padding-left: 0;
+        margin-bottom: 30px;
+        width: 100% !important;
+        order: -1;
+      }
+    }
+  }
+}
