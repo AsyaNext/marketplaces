@@ -9,7 +9,7 @@
       <q-img :src="category.image" class="category-img" ratio="1"/>
       <div class="category-content col">
         <div class="q-mb-sm font-montserrat__semi-bold text-main text-purple-10">{{category.name}}</div>
-        <div class="font-avenir__regular text-body1 text-grey-10 text-justify">{{category.description}}</div>
+        <div class="faq-description font-avenir__regular text-body1 text-grey-10 text-justify">{{category.description}}</div>
       </div>
     </div>
   </div>
@@ -48,6 +48,9 @@ export default {
   &-img {
     width: 70px;
     margin-right: 33px;
+    @media (max-width: 360px) {
+      width: 60px;
+    }
   }
 }
 </style>

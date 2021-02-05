@@ -7,7 +7,7 @@
       @drop-data="dropData"
       @drop-article="dropArticle"
     />
-    <div class="q-mb-xl full-width">
+    <div class="faq-container full-width">
       <router-view :categories="categories" />
     </div>
   </q-page>
@@ -64,6 +64,6 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
   @import "../../css/styles/site/faq";
 </style>

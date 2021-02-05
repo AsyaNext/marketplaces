@@ -8,7 +8,7 @@
     >
       <div class="category-article-content">
         <div class="q-mb-sm font-montserrat__semi-bold text-main text-purple-10">{{article.name}}</div>
-        <div class="font-avenir__regular text-body1 text-grey-10 text-justify">{{article.description}}</div>
+        <div class="faq-description font-avenir__regular text-body1 text-grey-10 text-justify">{{article.description}}</div>
       </div>
     </div>
   </div>
@@ -43,6 +43,9 @@ export default {
 <style scoped lang="scss">
 .category-article {
   padding: 28px 30px;
+  @media (max-width: 450px) {
+    padding: 13px 15px;
+  }
   &:hover {
     box-shadow: 0 0 15px rgba(138, 124, 177, 0.45);
   }

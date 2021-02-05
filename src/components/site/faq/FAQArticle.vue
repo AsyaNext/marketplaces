@@ -1,15 +1,17 @@
 <template>
   <div v-show="article">
     <div class="article q-pa-md bg-white">
-      <q-img native-context-menu class="article-cover" :src="`http://192.162.240.96:8014${article.image}`" :ratio="108/23" />
-      <div class="article-title font-montserrat__bold text-center text-purple-12">
-        {{article.name}}
-      </div>
-      <div class="article-content font-avenir__regular text-main text-justify text-grey-10">
-        <q-markdown
-          :src="article.text"
-          no-heading-anchor-links
-        />
+      <q-img native-context-menu class="article-cover" :src="`http://192.162.240.96:8014${article.image}`" :ratio="ratio" />
+      <div class="article-wrapper">
+        <div class="article-title font-montserrat__bold text-center text-purple-12">
+          {{article.name}}
+        </div>
+        <div class="article-content font-avenir__regular text-main text-justify text-grey-10">
+          <q-markdown
+            :src="article.text"
+            no-heading-anchor-links
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -26,7 +28,10 @@ export default {
   computed: {
     ...mapGetters({
       article: 'faq/article'
-    })
+    }),
+    ratio () {
+      return (this.widthWindow > 540) ? 108 / 23 : 345 / 140
+    }
   },
   methods: {
     ...mapActions({
@@ -45,6 +50,7 @@ export default {
 
 <style scoped lang="scss">
 .article {
+  background-color: white;
   margin-bottom: 50px;
   border-radius: 15px;
   &-cover {
@@ -67,5 +73,15 @@ export default {
     color: inherit;
     text-decoration: none;
   }
+}
+
+@media (max-width: 540px) {
+.article {
+  padding: 0;
+  background-color: #F9F4FD;
+  &-wrapper {
+    padding: 16px;
+  }
+}
 }
 </style>

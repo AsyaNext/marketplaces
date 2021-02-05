@@ -96,9 +96,6 @@ export default {
   background-color: white;
   margin-bottom: 50px;
   border-radius: 15px;
-  @media (max-width: 670px) {
-    background-color: inherit;
-  }
   &-cover {
     border-radius: 15px;
   }
@@ -129,6 +126,7 @@ export default {
 @media (max-width: 670px) {
   .article {
     padding: 0;
+    background-color: #F9F4FD;
     &-wrapper {
       padding: 16px;
     }

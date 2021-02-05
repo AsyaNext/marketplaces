@@ -5,7 +5,11 @@
       <q-icon name="fas fa-caret-right" size="sm"/>
       <div class="headline-category__title font-montserrat__semi-bold text-body1 cursor-pointer" @click="$emit('drop-article')">Результаты поиска <span v-show="widthWindow > 670">"{{search}}"</span></div>
     </div>
-    <div v-show="category" class="headline-category row q-gutter-x-md items-end no-wrap">
+    <div
+      v-show="category"
+      :class="[widthWindow > 340 ? 'q-gutter-x-md' : 'q-gutter-x-sm']"
+      class="headline-category row items-end no-wrap"
+    >
       <q-icon name="fas fa-caret-right" size="sm"/>
       <div class="headline-category__title font-montserrat__semi-bold text-body1 cursor-pointer" @click="$emit('drop-article')">{{category}}</div>
     </div>
