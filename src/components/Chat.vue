@@ -80,6 +80,9 @@
 import { mapActions } from 'vuex'
 export default {
   name: 'Chat',
+  props: {
+    widthWindow: Number
+  },
   data () {
     return {
       warning: false,
@@ -133,7 +136,8 @@ export default {
     font-size: 24px;
   }
   &-input {
-    width: 355px;
+    max-width: 355px;
+    width: 100%;
     textarea {
       color: #212121 !important;
       height: auto;
@@ -153,10 +157,35 @@ export default {
   }
   &-btn__send {
     margin-top: 30px;
-    width: 355px;
+    max-width: 355px;
+    width: 100%;
     height: 44px;
     .q-btn__wrapper {
       min-height: auto;
+    }
+  }
+}
+@media (max-width: 550px) {
+  .chat {
+    right: 30px;
+    bottom: 30px;
+    &-title {
+      margin: 0 0 24px;
+    }
+    &-dialog {
+      right: 0;
+      bottom: 0;
+      border-radius: 0 !important;
+    }
+    &-input {
+      margin: 0;
+    }
+  }
+}
+@media (max-width: 340px) {
+  .chat {
+    &-input {
+      width: 275px;
     }
   }
 }

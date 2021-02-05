@@ -149,7 +149,7 @@
         :status="openRecoveryLink"
         @close-modal="openRecoveryLink = false"
       />
-      <chat />
+      <chat :widthWindow="widthWindow" />
     </q-page-container>
 
     <q-footer class="footer text-white">
