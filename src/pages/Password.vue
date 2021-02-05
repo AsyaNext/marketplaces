@@ -90,8 +90,10 @@ export default {
 <style lang="scss">
 .password {
   &-section {
+    width: 100%;
     &__input {
-      width: 355px;
+      max-width: 355px;
+      width: 100%;
       .q-field__append {
         display: none;
       }
@@ -107,11 +109,17 @@ export default {
     }
   }
   &-btn {
-    width: 355px;
+    max-width: 355px;
+    width: 100%;
     height: 44px;
     .q-btn__wrapper {
       min-height: auto;
     }
+  }
+}
+@media (max-width: 550px) {
+  .password {
+    padding: 60px 0;
   }
 }
 </style>
