@@ -18,6 +18,9 @@ import { mapGetters, mapActions } from 'vuex'
 import BaseSubmenu from 'components/site/BaseNavigation'
 export default {
   name: 'FAQ',
+  props: {
+    widthWindow: Number
+  },
   components: {
     BaseSubmenu
   },

@@ -63,6 +63,7 @@ const routes = [
           {
             name: 'faq.category',
             path: ':id',
+            props: true,
             meta: { title: 'Категория' },
             component: () => import('components/site/faq/ArticlesInCategory.vue')
           },

@@ -23,6 +23,7 @@ export default {
   name: 'FAQArticle',
   data () {
     return {
+      widthWindow: 0
     }
   },
   computed: {
@@ -36,12 +37,16 @@ export default {
   methods: {
     ...mapActions({
       getArticle: 'faq/getArticle'
-    })
+    }),
+    updateWidth () {
+      this.widthWindow = window.innerWidth
+    }
   },
   created () {
+    this.updateWidth()
+    window.addEventListener('resize', this.updateWidth)
     this.getArticle(this.$route.params.id)
       .then(() => {
-        console.log(this.article)
         document.title = this.article.name
       })
   }

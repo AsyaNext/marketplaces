@@ -100,6 +100,9 @@ export default {
         }
       ]
     }
+  },
+  created () {
+    window.addEventListener('resize', this.updateWidth)
   }
 }
 </script>
@@ -124,45 +127,18 @@ export default {
       font-size: 15px;
       line-height: 20px;
       &-table {
-        position: relative;
+        box-sizing: content-box;
         background-color: inherit;
         border-radius: 0;
-        border-top: 0.5px solid rgba(0, 0, 0, 0.12);
-        border-left: 0.5px solid rgba(0, 0, 0, 0.12);
-        border-right: 0.5px solid rgba(0, 0, 0, 0.12);
-        &:before {
-          content: '';
-          position: absolute;
-          bottom: -0.5px;
-          left: -2px;
-          width: 4px;
-          height: 27px;
-          background-color: white;
-        }
-        &:after {
-          content: '';
-          position: absolute;
-          bottom: -0.5px;
-          right: -2px;
-          width: 4px;
-          height: 27px;
-          background-color: white;
-        }
         .q-table thead, .q-table tr, .q-table th, .q-table td, {
-          border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+          border: 0.5px solid rgba(0, 0, 0, 0.12);
         }
         @media (max-width: 670px) {
-          border-color: rgba(138, 124, 177, 0.45);
           .q-table thead, .q-table tr, .q-table th, .q-table td {
             border-color: rgba(138, 124, 177, 0.45);
           }
-          &:before, &:after {
-            background-color: #F9F4FD;
-          }
         }
         .q-table__middle {
-          scrollbar-color: #DDB4FD inherit;
-          scrollbar-width: auto thin none;
           &::-webkit-scrollbar {
             height: 27px;
             background-color: inherit;
