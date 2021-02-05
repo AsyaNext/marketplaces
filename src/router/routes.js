@@ -77,6 +77,7 @@ const routes = [
       { path: 'contacts', meta: { title: 'Контакты' }, component: () => import('pages/site/Contacts.vue') }
     ]
   },
+  { path: '/service', component: () => import('pages/service/IndexService.vue') },
   {
     path: '*',
     component: () => import('pages/Error404.vue')

@@ -105,7 +105,7 @@
     <q-drawer class="profile-drawer" v-model="rightDrawer" side="right">
       <q-separator color="orange-10" />
       <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">
-        <q-item clickable exact>
+        <q-item clickable to="/service" exact>
           <q-item-section>
             Сервис
           </q-item-section>
