@@ -35,6 +35,9 @@
 <script>
 export default {
   name: 'Api',
+  props: {
+    widthWindow: Number
+  },
   data () {
     return {
       openSection: null,

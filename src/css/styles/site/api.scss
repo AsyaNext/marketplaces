@@ -1,7 +1,5 @@
 .api {
   &-navigation {
-    position: sticky;
-    top: 20px;
     align-self: flex-start;
     margin-right: 20px;
     &__wrapper {
@@ -30,6 +28,15 @@
           padding: 10px 24px;
         }
       }
+    }
+  }
+}
+
+@media (max-width: 670px) {
+  .api {
+    &-navigation {
+      margin-bottom: 24px;
+      width: 100%;
     }
   }
 }

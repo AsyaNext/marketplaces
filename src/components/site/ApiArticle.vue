@@ -1,5 +1,5 @@
 <template>
-  <div class="q-py-lg q-px-md article bg-white border-box">
+  <div class="q-py-lg q-px-md article border-box">
     <div v-show="section.submenu[0]" :id="1" class="article-section">
       <div class="article-section__title font-montserrat__semi-bold text-purple-12">Подзаголовок</div>
       <div class="article-section__content font-avenir__regular text-grey-10">
@@ -22,7 +22,6 @@
       <div class="article-section__title font-montserrat__semi-bold text-purple-12">Название таблицы</div>
       <div class="article-section__content font-avenir__regular text-grey-10">
         <q-table
-          bordered
           separator="cell"
           :data="data"
           :columns="columns"
@@ -36,18 +35,13 @@
       <div class="article-section__title font-montserrat__semi-bold text-purple-12">Название таблицы 2</div>
       <div class="article-section__content font-avenir__regular text-grey-10">
         <q-table
-          bordered
           separator="cell"
           :data="data"
           :columns="columns"
           row-key="name"
           class="no-shadow article-section__content-table"
-          hide-bottom
+          hide-pagination
         />
-        <q-markdown
-          class="font-avenir__regular text-grey-10"
-          src="> This is a **test** of markdown">
-        </q-markdown>
       </div>
     </div>
   </div>
@@ -70,11 +64,11 @@ export default {
       ],
       data: [
         {
-          one: ' ',
-          two: ' ',
-          three: ' ',
-          four: ' ',
-          five: ' '
+          one: 'Lorem Ipsum Lorem Ipsum',
+          two: 'Lorem Ipsum',
+          three: 'Lorem Ipsum',
+          four: 'Lorem Ipsum',
+          five: 'Lorem IpsumLorem IpsumLorem Ipsum'
         },
         {
           one: ' ',
@@ -112,7 +106,11 @@ export default {
 
 <style lang="scss">
 .article {
+  background-color: white;
   margin-bottom: 28px;
+  @media (max-width: 670px) {
+    background-color: inherit;
+  }
   &-section {
     &:not(:last-child) {
       margin-bottom: 40px;
@@ -126,13 +124,64 @@ export default {
       font-size: 15px;
       line-height: 20px;
       &-table {
+        position: relative;
+        background-color: inherit;
         border-radius: 0;
-      }
-      .q-markdown{
-        &--note {
-          border: none;
-          border-radius: 0;
-          background-color: transparent;
+        border-top: 0.5px solid rgba(0, 0, 0, 0.12);
+        border-left: 0.5px solid rgba(0, 0, 0, 0.12);
+        border-right: 0.5px solid rgba(0, 0, 0, 0.12);
+        &:before {
+          content: '';
+          position: absolute;
+          bottom: -0.5px;
+          left: -2px;
+          width: 4px;
+          height: 27px;
+          background-color: white;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          bottom: -0.5px;
+          right: -2px;
+          width: 4px;
+          height: 27px;
+          background-color: white;
+        }
+        .q-table thead, .q-table tr, .q-table th, .q-table td, {
+          border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+        }
+        @media (max-width: 670px) {
+          border-color: rgba(138, 124, 177, 0.45);
+          .q-table thead, .q-table tr, .q-table th, .q-table td {
+            border-color: rgba(138, 124, 177, 0.45);
+          }
+          &:before, &:after {
+            background-color: #F9F4FD;
+          }
+        }
+        .q-table__middle {
+          scrollbar-color: #DDB4FD inherit;
+          scrollbar-width: auto thin none;
+          &::-webkit-scrollbar {
+            height: 27px;
+            background-color: inherit;
+          }
+          &::-webkit-scrollbar-track {
+            border-radius: 24px;
+            background-color: white;
+            @media (max-width: 670px) {
+              background-color: #F9F4FD;
+            }
+          }
+          &::-webkit-scrollbar-thumb {
+            background-color: #DDB4FD;
+            border-radius: 24px;
+            border: 9px solid white;
+            @media (max-width: 670px) {
+              border-color: #F9F4FD;
+            }
+          }
         }
       }
     }

@@ -19,6 +19,9 @@ body {
 .page-headline {
   margin-bottom: 39px;
   font-size: 30px;
+  @media (max-width: 670px) {
+    margin-bottom: 15px;
+  }
 }
 
 .letter-spacing__less {
