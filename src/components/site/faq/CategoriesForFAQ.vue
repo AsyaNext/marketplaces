@@ -37,6 +37,7 @@ export default {
 <style lang="scss">
 .category {
   padding: 28px 30px;
+  transition: all 0.3s ease;
   &:hover {
     box-shadow: 0 0 15px rgba(138, 124, 177, 0.45);
   }

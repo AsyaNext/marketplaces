@@ -46,6 +46,7 @@ export default {
   @media (max-width: 450px) {
     padding: 13px 15px;
   }
+  transition: all 0.3s ease;
   &:hover {
     box-shadow: 0 0 15px rgba(138, 124, 177, 0.45);
   }

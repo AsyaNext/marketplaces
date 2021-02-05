@@ -3,7 +3,7 @@
     <div class="q-py-md" v-if="widthWindow > 670">
       <div class="q-mx-md categories-title font-montserrat__semi-bold text-main text-purple-10">Категории</div>
       <q-list dense class="font-montserrat__regular text-body1 text-grey-10">
-        <q-item clickable v-for="category in categories" :key="category.id" @click="$emit('change-category', category)">
+        <q-item class="categories-item" clickable v-for="category in categories" :key="category.id" @click="$emit('change-category', category)">
           {{category.name}}
         </q-item>
       </q-list>
@@ -43,6 +43,12 @@ export default {
       margin-top: 6px;
       width: 12px;
       height: 12px;
+    }
+  }
+  &-item {
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: rgba(124, 104, 165, 0.1);
     }
   }
 }

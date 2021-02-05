@@ -13,10 +13,16 @@
     }
     &__section {
       background: #8A7CB1;
+      transition: all 0.3s ease;
       &:hover {
         background: #332852;
       }
       &-subsection {
+        background-color: white;
+        transition: all 0.3s ease;
+        &:hover {
+          background-color: rgba(124, 104, 165, 0.1);
+        }
         &:not(:last-child) {
           border-bottom: 1px solid #EEE3FD;
         }

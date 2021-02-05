@@ -117,6 +117,15 @@ export default {
 }
 .pagination {
   margin-bottom: 102px;
+  &-back, &-forward {
+    transition: all 0.3s ease;
+    &:hover .q-icon {
+      background-color: rgba(124, 104, 165, 0.1);
+    }
+  }
+  .q-icon {
+    border-radius: 50%;
+  }
   a {
     color: inherit;
     text-decoration: none;

@@ -85,6 +85,7 @@ a {
   line-height: 19px;
 }
 .card-article {
+  transition: all 0.3s ease;
   &:not(:hover) {
     box-shadow: none;
   }
