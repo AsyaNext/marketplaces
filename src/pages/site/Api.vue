@@ -71,7 +71,7 @@ export default {
       if (window.location.hash === this.$route.hash) {
         const el = document.getElementById(this.$route.hash.slice(1))
         if (el) {
-          window.scrollTo(0, el.offsetTop)
+          window.scrollTo({ top: el.offsetTop, behavior: 'smooth' })
         }
       }
     }
