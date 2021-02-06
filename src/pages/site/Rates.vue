@@ -77,7 +77,7 @@ export default {
       this.$refs.rates.scrollTo({ left: scrollTo, behavior: 'smooth' })
       setTimeout(() => {
         this.preventScrolling = false
-      }, 500)
+      }, 200)
     }
   },
   beforeMount () {
