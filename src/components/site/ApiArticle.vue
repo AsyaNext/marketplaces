@@ -125,11 +125,36 @@ export default {
         box-sizing: content-box;
         background-color: inherit;
         border-radius: 0;
-        .q-table thead, .q-table tr, .q-table th, .q-table td, {
-          border: 0.5px solid rgba(0, 0, 0, 0.12);
+        .q-table tr {
+          border-right: 1px solid rgba(0, 0, 0, 0.12);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+          th:first-child, td:first-child {
+            border-left: 1px solid rgba(0, 0, 0, 0.12);
+          }
+          th:last-child, td:last-child {
+            border-right: 1px solid rgba(0, 0, 0, 0.12);
+          }
+        }
+        .q-table tr:first-child th {
+          border-top: 1px solid rgba(0, 0, 0, 0.12);
+        }
+        .q-table tr:last-child td {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.12);
         }
         @media (max-width: 670px) {
-          .q-table thead, .q-table tr, .q-table th, .q-table td {
+          .q-table tr, .q-table th, .q-table td{
+            border-color: rgba(138, 124, 177, 0.45);
+            th:first-child, td:first-child {
+              border-color: rgba(138, 124, 177, 0.45);
+            }
+            th:last-child, td:last-child {
+              border-color: rgba(138, 124, 177, 0.45);
+            }
+          }
+          .q-table tr:first-child th {
+            border-color: rgba(138, 124, 177, 0.45);
+          }
+          .q-table tr:last-child td {
             border-color: rgba(138, 124, 177, 0.45);
           }
         }
