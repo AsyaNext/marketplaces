@@ -71,7 +71,7 @@ export default {
 .card-rate {
   &__headline {
     border-radius: 15px 15px 0 0;
-    padding: 12px 2px 14px 18px;
+    padding: 12px 4px 14px 18px;
     &-title {
       flex-wrap: nowrap;
     }
