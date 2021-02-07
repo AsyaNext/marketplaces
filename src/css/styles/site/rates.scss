@@ -68,8 +68,10 @@
       width: 16px;
       height: 16px;
       border-radius: 50%;
-      &:hover {
-        background-color: #8A7CB1;
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: #8A7CB1;
+        }
       }
     }
     .active-point {

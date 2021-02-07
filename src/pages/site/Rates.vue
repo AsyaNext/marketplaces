@@ -20,7 +20,7 @@
         <card-of-rate class="rates-list__item col" v-for="rate in ratesOrg" :key="rate.id" :rate="rate" :subscription="activeItem" />
       </div>
       <div v-show="widthWindow <= 1160" class="rates-slider row justify-center q-gutter-x-xs">
-        <div :class="{ 'active-point' : activePoint === i }" class="rates-slider__point cursor-pointer" v-for="i in 4" :key="i" @click="(event) => onToggle(event, i)"></div>
+        <div :class="[ activePoint === i ? 'active-point' : '' ]" class="rates-slider__point cursor-pointer" v-for="i in 4" :key="i" @click="(event) => onToggle(event, i)"></div>
       </div>
     </div>
   </q-page>
@@ -72,12 +72,12 @@ export default {
     },
     onToggle (event, i) {
       this.preventScrolling = true
-      this.activePoint = i
       const scrollTo = ((i - 1) / this.availableWidth) * 290
+      this.activePoint = i
       this.$refs.rates.scrollTo({ left: scrollTo, behavior: 'smooth' })
       setTimeout(() => {
         this.preventScrolling = false
-      }, 200)
+      }, 750)
     }
   },
   beforeMount () {
