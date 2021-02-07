@@ -15,7 +15,7 @@
           <router-link to="/contacts">Контакты</router-link>
           <span v-show="!isAuth" @click="openLogin = true">Вход</span>
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
-          <span v-show="isAuth">Сервис</span>
+          <router-link v-show="isAuth" to="/service">Сервис</router-link>
         </div>
         <div v-show="widthWindow < 1100" class="header-drawer__menu">
           <q-btn
@@ -124,7 +124,7 @@
         :status="openLogin"
         :widthWindow="widthWindow"
         @close-login="openLogin = false;"
-        @login="openLogin = false; isAuth = true"
+        @login="openLogin = false; $router.push('/service')"
         @open-register="openLogin = false; openRegister = true"
         @open-recovery-password="openLogin = false; openRecoveryPassword = true"
       />
