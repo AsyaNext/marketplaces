@@ -16,6 +16,7 @@
           <span v-show="!isAuth" @click="openLogin = true">Вход</span>
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
           <router-link v-show="isAuth" to="/service">Сервис</router-link>
+          <span v-show="isAuth" @click="logout">Выход</span>
         </div>
         <div v-show="widthWindow < 1100" class="header-drawer__menu">
           <q-btn
