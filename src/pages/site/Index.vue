@@ -27,47 +27,48 @@
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">1</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Наличие интернет ресурса дает возможность развивать бизнес за пределами своего
-            географического положения и получить новых клиентов не только в своем регионе,
-            а если вы того захотите то и за ее пределами.
+            Самые точные данные по продажам на Wildberries.
+            Наши алгоритмы наиболее точно оценивают продажи каждого товара на Wildberries.
+            Мы знаем даже о продажах цифровых товаров и товаров проданных по модели FBS!
           </div>
         </div>
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">2</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Электронный каталог ваших товаров и услуг в каждом доме,
-            доступен 24 часа в сутки, 7 дней в неделю, 365 дней в году.
+            Все новинки и тренды.
+            Оперативная информация о новинках и трендах.
+            Узнайте, какой товар «выстрелит» и запустите его в продажу раньше конкурентов!
           </div>
         </div>
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">3</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Наличие интернет ресурса дает возможность развивать бизнес за пределами своего
-            географического положения и получить новых клиентов не только в своем регионе,
-            а если вы того захотите то и за ее пределами.
+            Анализ категорий и брендов.
+            Подскажем категории с максимальным объемом выручки и прибыли!
+            В каких категориях топовые товары конкурентов.
           </div>
         </div>
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">4</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Товар ваших конкурентов может быть хуже или дороже, чем ваш,
-            но более популярный лишь потому, что у них есть интернет ресурс.
+            Позиции товаров в категории.
+            Отслеживайте позиции товаров в категории. Изучайте “фишки” успешных товаров конкурентов.
           </div>
         </div>
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">5</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Наличие интернет ресурса дает возможность развивать бизнес за пределами своего
-            географического положения и получить новых клиентов не только в своем регионе,
-            а если вы того захотите то и за ее пределами.
+            Аналитика в реальном времени.
+            Наши роботы постоянно сканируют Wildberries.
+            Мы оперативно покажем изменения цен и скидки на товары конкурентов.
           </div>
         </div>
         <div class="index-page-advantages__list-item relative-position">
           <div class="index-page-advantages__list-item-number absolute font-montserrat__bold">6</div>
           <div class="index-page-advantages__list-item-description text-justify text-main font-avenir__demi-bold">
-            Наличие интернет ресурса дает возможность развивать бизнес за пределами своего
-            географического положения и получить новых клиентов не только в своем регионе,
-            а если вы того захотите то и за ее пределами.
+            Подробные отчёты и графики.
+            Все данные представлены максимально подробно и удобно.
+            Можно фильтровать информацию и анализировать только интересующие показатели.
           </div>
         </div>
       </div>
