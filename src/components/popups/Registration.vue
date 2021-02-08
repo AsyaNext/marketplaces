@@ -18,14 +18,17 @@
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
             class="register-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
-            error-message="Пользователь с таким email уже существует"
-            :error="emailExist"
+            :error="emailCurrent"
             :lazy-rules="true"
             :rules="[
               $rules.email('Вы ввели некорректный email'),
               $rules.required('Это обязательное поле')
             ]"
-          />
+          >
+            <template v-slot:error>
+              Пользователь с таким email уже существует
+            </template>
+          </q-input>
         </div>
         <div class="register-form__section">
           <div class="q-mb-xs register-form__section-caption font-montserrat__semi-bold text-purple-11 text-body1">
@@ -77,13 +80,16 @@
             mask="+7###########"
             placeholder="+7"
             class="register-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
-            error-message="Пользователь с таким телефоном уже существует"
-            :error="mobileExist"
+            :error="emailCurrent"
             :rules="[
-              $rules.minLength(12, 'Неправильный номер'),
+              $rules.minLength(12, 'Некорректный номер телефона'),
               $rules.required('Это обязательное поле')
             ]"
-          />
+          >
+            <template v-slot:error>
+              Пользователь с таким телефоном уже существует
+            </template>
+          </q-input>
         </div>
         <div class="register-form__section">
           <div class="q-mb-xs register-form__section-caption font-montserrat__semi-bold text-purple-11 text-body1">
@@ -120,7 +126,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   name: 'Registration',
   props: {
@@ -128,6 +134,8 @@ export default {
     widthWindow: Number
   },
   data: () => ({
+    emailCurrent: false,
+    mobileCurrent: false,
     warning: false,
     user: {
       username: '',
@@ -137,12 +145,6 @@ export default {
       re_password: ''
     }
   }),
-  computed: {
-    ...mapGetters({
-      emailExist: 'auth/emailExist',
-      mobileExist: 'auth/mobileExist'
-    })
-  },
   methods: {
     ...mapActions({
       registration: 'auth/registration'
@@ -155,11 +157,21 @@ export default {
             this.warning = false
             this.$emit('registration')
           })
-          .catch(() => {
+          .catch((error) => {
+            if (error.response.data.email) {
+              this.emailCurrent = true
+            }
+            if (error.response.data.mobile) {
+              this.mobileCurrent = true
+            }
             this.warning = true
           })
       }
     }
+  },
+  created () {
+    this.emailCurrent = false
+    this.mobileCurrent = false
   }
 }
 </script>

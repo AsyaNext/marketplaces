@@ -4,15 +4,11 @@ import { Cookies } from 'quasar'
 const state = {
   accessToken: '',
   refreshToken: '',
-  emailExist: false,
-  mobileExist: false,
   email: ''
 }
 
 const getters = {
-  email: state => state.email,
-  emailExist: state => state.emailExist,
-  mobileExist: state => state.mobileExist
+  email: state => state.email
 }
 
 const mutations = {
@@ -22,12 +18,6 @@ const mutations = {
   },
   UPDATE_TOKEN (state, payload) {
     state.accessToken = payload.access
-  },
-  EMAIL_EXIST (state, payload) {
-    state.emailExist = payload
-  },
-  MOBILE_EXIST (state, payload) {
-    state.mobileExist = payload
   },
   GET_EMAIL (state, payload) {
     state.email = payload
@@ -43,14 +33,6 @@ const actions = {
           resolve(response)
         })
         .catch((error) => {
-          if (error.response) {
-            if (error.response.data.email) {
-              commit('EMAIL_EXIST', true)
-            }
-            if (error.response.data.mobile) {
-              commit('MOBILE_EXIST', true)
-            }
-          }
           reject(error)
         })
     })

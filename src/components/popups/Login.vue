@@ -17,13 +17,19 @@
             type="email"
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
+            bottom-slots
+            :error="emailCurrent"
             :lazy-rules="true"
             class="login-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
             :rules="[
-            $rules.required('Это обязательное поле'),
-            $rules.email('Вы ввели некорректный email')
+              $rules.required('Это обязательное поле'),
+              $rules.email('Вы ввели некорректный email')
             ]"
-          />
+          >
+            <template v-slot:error>
+              Такая почта не зарегистрирована
+            </template>
+          </q-input>
         </div>
         <div class="login-form__section">
           <div class="q-mb-xs login-form__section-caption font-montserrat__semi-bold text-purple-11 text-body1">
@@ -70,6 +76,7 @@ export default {
     widthWindow: Number
   },
   data: () => ({
+    emailCurrent: false,
     warning: false,
     user: {
       email: '',
@@ -88,11 +95,17 @@ export default {
             this.warning = false
             this.$emit('login')
           })
-          .catch(() => {
+          .catch((error) => {
+            if (error.response.data.detail) {
+              this.emailCurrent = true
+            }
             this.warning = true
           })
       }
     }
+  },
+  created () {
+    this.emailCurrent = false
   }
 }
 </script>
