@@ -15,8 +15,6 @@
           <router-link to="/contacts">Контакты</router-link>
           <span v-show="!isAuth" @click="openLogin = true">Вход</span>
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
-          <router-link v-show="isAuth" to="/service">Сервис</router-link>
-          <span v-show="isAuth" @click="logout">Выход</span>
         </div>
         <div v-show="widthWindow < 1100" class="header-drawer__menu">
           <q-btn
@@ -42,16 +40,16 @@
             dense
             flat
             round
-            icon="img:icons/icon-person-index.svg"
-            @click="rightDrawer = !rightDrawer"
+            icon="img:icons/icon-login-index.svg"
+            @click="openLogin = !openLogin"
           />
           <q-btn
             v-else
             dense
             flat
             round
-            icon="img:icons/icon-person.svg"
-            @click="rightDrawer = !rightDrawer"
+            icon="img:icons/icon-login.svg"
+            @click="openLogin = !openLogin"
           />
         </div>
       </q-toolbar>
@@ -90,11 +88,6 @@
             Контакты
           </q-item-section>
         </q-item>
-        <q-item v-show="!isAuth" clickable @click="leftDrawer = false; openLogin = true">
-          <q-item-section>
-            Вход
-          </q-item-section>
-        </q-item>
         <q-item v-show="!isAuth" clickable @click="leftDrawer = false; openRegister = true">
           <q-item-section>
             Регистрация
@@ -103,21 +96,21 @@
       </q-list>
     </q-drawer>
 
-    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right" overlay behavior="mobile">
-      <q-separator color="orange-10" />
-      <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">
-        <q-item v-show="isAuth" clickable to="/service" exact>
-          <q-item-section>
-            Сервис
-          </q-item-section>
-        </q-item>
-        <q-item v-show="isAuth" clickable @click="logout">
-          <q-item-section>
-            Выход
-          </q-item-section>
-        </q-item>
-      </q-list>
-    </q-drawer>
+<!--    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right" overlay behavior="mobile">-->
+<!--      <q-separator color="orange-10" />-->
+<!--      <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">-->
+<!--        <q-item v-show="isAuth" clickable to="/service" exact>-->
+<!--          <q-item-section>-->
+<!--            Сервис-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
+<!--        <q-item v-show="isAuth" clickable @click="logout">-->
+<!--          <q-item-section>-->
+<!--            Выход-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
+<!--      </q-list>-->
+<!--    </q-drawer>-->
 
     <q-page-container class="container">
       <router-view :widthWindow="widthWindow" />
