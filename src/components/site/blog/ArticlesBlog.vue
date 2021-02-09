@@ -1,5 +1,6 @@
 <template>
   <div class="row q-col-gutter-lg">
+    <div v-show="articles.length === 0" class="font-montserrat__medium text-purple-10 text-main">Статьи не найдены</div>
     <card-of-article
       class="article-blog col-md-4 col-sm-6"
       v-for="article in articles"
