@@ -48,7 +48,7 @@ export default {
   &-item {
     transition: all 0.3s ease;
     &:hover {
-      background-color: rgba(124, 104, 165, 0.1);
+      background: rgba(138, 124, 177, 0.45);
     }
   }
 }
