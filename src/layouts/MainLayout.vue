@@ -57,7 +57,7 @@
       </q-toolbar>
     </q-header>
 
-    <q-drawer class="navigation-drawer" v-model="leftDrawer" side="left">
+    <q-drawer class="navigation-drawer" v-model="leftDrawer" side="left" overlay>
       <q-separator color="orange-10" />
       <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10">
         <q-item to="/blog" clickable exact>
@@ -103,7 +103,7 @@
       </q-list>
     </q-drawer>
 
-    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right">
+    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right" overlay>
       <q-separator color="orange-10" />
       <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">
         <q-item v-show="isAuth" clickable to="/service" exact>
