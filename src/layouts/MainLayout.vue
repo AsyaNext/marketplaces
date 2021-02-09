@@ -1,7 +1,7 @@
 <template>
   <q-layout :class="[$route.name === 'index' || $route.name === 'activate' ? 'bg-index' : 'bg-purple-1']" view="hhh LpR fff">
     <q-header :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
-      <q-toolbar class="row items-center justify-between">
+      <q-toolbar class="row justify-between">
         <router-link to="/" class="header-logo">
           <q-img v-if="$route.name === 'index' || $route.name === 'activate'" src="../assets/logo-index.svg"/>
           <q-img v-else src="../assets/logo.svg"/>
@@ -15,6 +15,21 @@
           <router-link to="/contacts">Контакты</router-link>
           <span v-show="!isAuth" @click="openLogin = true">Вход</span>
           <span v-show="!isAuth" @click="openRegister = true">Регистрация</span>
+        </div>
+        <div
+          :class="{ 'bg-white text-purple-10' : openProfile }"
+          v-show="widthWindow >= 1100 && isAuth"
+          class="header-profile text-body2"
+          @click="openProfile = !openProfile"
+        >
+          <div class="header-profile__item items-center row font-montserrat__semi-bold cursor-pointer">
+            <div>Александр М.</div>
+            <q-img src="../../public/icons/avatar.svg" ratio="1" />
+          </div>
+          <div v-show="openProfile" class="items-menu font-montserrat__medium">
+            <div class="header-profile__item cursor-pointer" @click="$router.push('/service')">На сервис</div>
+            <div class="header-profile__item cursor-pointer" @click="logout">Выход</div>
+          </div>
         </div>
         <div v-show="widthWindow < 1100" class="header-drawer__menu">
           <q-btn
@@ -96,22 +111,6 @@
       </q-list>
     </q-drawer>
 
-<!--    <q-drawer class="profile-drawer" v-model="rightDrawer" side="right" overlay behavior="mobile">-->
-<!--      <q-separator color="orange-10" />-->
-<!--      <q-list dense class="q-mt-md font-montserrat__semi-bold text-body1 text-purple-10 text-right">-->
-<!--        <q-item v-show="isAuth" clickable to="/service" exact>-->
-<!--          <q-item-section>-->
-<!--            Сервис-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
-<!--        <q-item v-show="isAuth" clickable @click="logout">-->
-<!--          <q-item-section>-->
-<!--            Выход-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
-<!--      </q-list>-->
-<!--    </q-drawer>-->
-
     <q-page-container class="container">
       <router-view :widthWindow="widthWindow" />
       <login
@@ -184,7 +183,7 @@ export default {
     isAuth: false,
     widthWindow: 0,
     leftDrawer: false,
-    rightDrawer: false,
+    openProfile: false,
     openLogin: false,
     openRegister: false,
     openSendLink: false,
