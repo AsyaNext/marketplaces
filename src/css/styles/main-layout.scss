@@ -12,7 +12,7 @@
 .header {
   padding: 21px 0;
   .q-toolbar {
-    padding: 0 12px 0 0;
+    padding: 0 15px 0 0;
   }
   &-logo {
     width: 163px;
@@ -58,6 +58,14 @@
     }
     .q-item.q-router-link--active, .q-item--active {
       color: inherit;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  header {
+    .q-toolbar {
+      padding: 0 15px !important;
     }
   }
 }
