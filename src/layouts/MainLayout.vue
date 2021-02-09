@@ -1,7 +1,7 @@
 <template>
   <q-layout :class="[$route.name === 'index' || $route.name === 'activate' ? 'bg-index' : 'bg-purple-1']" view="hhh LpR fff">
     <q-header :class="[$route.name === 'index' || $route.name === 'activate' ? 'text-white' : 'text-purple-10']" class="header container bg-transparent">
-      <q-toolbar class="row justify-between">
+      <q-toolbar class="row justify-between" @click.self="openProfile = false">
         <router-link to="/" class="header-logo">
           <q-img v-if="$route.name === 'index' || $route.name === 'activate'" src="../assets/logo-index.svg"/>
           <q-img v-else src="../assets/logo.svg"/>
@@ -49,7 +49,7 @@
             @click="leftDrawer = !leftDrawer"
           />
         </div>
-        <div v-show="widthWindow < 1100" class="header-drawer__profile">
+        <div v-show="widthWindow < 1100 & !isAuth" class="header-drawer__profile">
           <q-btn
             v-if="$route.name === 'index' || $route.name === 'activate'"
             dense
@@ -66,6 +66,19 @@
             icon="img:icons/icon-login.svg"
             @click="openLogin = !openLogin"
           />
+        </div>
+        <div
+          v-show="widthWindow < 1100 && isAuth"
+          class="header-profile"
+          @click="openProfile = !openProfile"
+        >
+          <div class="header-profile__item font-montserrat__semi-bold cursor-pointer">
+            <q-img src="../../public/icons/avatar.svg" ratio="1" />
+          </div>
+          <div v-show="openProfile" class="items-menu font-montserrat__medium text-caption text-purple-10">
+            <div class="header-profile__item cursor-pointer text-no-wrap" @click="$router.push('/service')">На сервис</div>
+            <div class="header-profile__item cursor-pointer" @click="logout">Выход</div>
+          </div>
         </div>
       </q-toolbar>
     </q-header>
