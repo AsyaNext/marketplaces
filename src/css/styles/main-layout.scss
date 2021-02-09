@@ -44,7 +44,7 @@
         width: 30px;
       }
       @media (max-width: 1100px) {
-        padding-right: 17px;
+        padding: 0;
         .q-img {
           width: 24px;
         }
@@ -56,10 +56,14 @@
       position: absolute;
       top: 53px;
       @media (max-width: 1100px) {
-        right: 13px;
+        top: 30px;
+        right: 0;
         width: auto;
-        .header-profile__item:first-child {
-          border-radius: 11px 11px 0 0;
+        .header-profile__item {
+          padding: 11px 17px 11px 13px;
+          &:first-child {
+            border-radius: 11px 11px 0 0;
+          }
         }
       }
       .header-profile__item {
