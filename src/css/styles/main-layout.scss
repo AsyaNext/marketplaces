@@ -18,11 +18,17 @@
     width: 163px;
   }
   &-navigation {
+    .router-link--active, .router-link-exact-active {
+      color: #FF3393;
+    }
     span, a {
       text-decoration: none;
       color: inherit;
       margin-left: 30px;
       cursor: pointer;
+      &:hover {
+        color: #FF3393;
+      }
     }
   }
   &-drawer__menu {
