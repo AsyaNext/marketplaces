@@ -6,8 +6,8 @@
           <q-img v-if="article.image" native-context-menu :src="article.image" :ratio="26/14" />
           <q-img v-else native-context-menu src="../../../assets/placeholder.png" :ratio="26/14" />
         </div>
-        <q-card-section class="card-article__group column justify-between">
-          <div class="card-article__group-headline column justify-between">
+        <q-card-section class="card-article__group column">
+          <div class="card-article__group-headline">
             <div
               class="q-mb-sm card-article__group-title text-h6 font-montserrat__semi-bold text-main line-transform__title text-purple-10"
               v-html="highlight(article.name, 'highlight-name')">
@@ -26,9 +26,7 @@
             </div>
           </div>
           <div class="card-article__group-content">
-            <div class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10">
-               <q-markdown :src="highlight(article.text, 'highlight-text')" />
-            </div>
+            <div v-html="highlight(article.description, 'highlight-text')" class="q-mb-xs card-article__group-description font-avenir__regular text-body2 line-transform__description letter-spacing__less text-grey-10"></div>
             <div class="card-article__group-date font-avenir__bold text-subtitle2 text-grey-5">{{dateArticle}}</div>
           </div>
         </q-card-section>
