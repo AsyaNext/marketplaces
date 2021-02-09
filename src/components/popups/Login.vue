@@ -18,18 +18,13 @@
             standout="bg-purple-2 text-grey-9"
             v-model="user.email"
             bottom-slots
-            :error="emailCurrent"
             :lazy-rules="true"
             class="login-form__section-input font-montserrat__regular text-main text-grey-9 border-box"
             :rules="[
               $rules.required('Это обязательное поле'),
               $rules.email('Вы ввели некорректный email')
             ]"
-          >
-            <template v-slot:error>
-              Такая почта не зарегистрирована
-            </template>
-          </q-input>
+          />
         </div>
         <div class="login-form__section">
           <div class="q-mb-xs login-form__section-caption font-montserrat__semi-bold text-purple-11 text-body1">
@@ -58,7 +53,7 @@
           label="Войти в аккаунт"
           @click="authLogin"
         />
-        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Невозможно войти в аккаунт</div>
+        <div v-show="warning" class="text-center text-red text-caption font-avenir__regular">Неправильно введены почта и/или пароль</div>
         <div class="login-form__link-registration cursor-pointer font-montserrat__semi-bold text-center text-body1" @click="$emit('open-register')">
           Регистрация
         </div>
@@ -97,9 +92,8 @@ export default {
           })
           .catch((error) => {
             if (error.response.data.detail) {
-              this.emailCurrent = true
+              this.warning = true
             }
-            this.warning = true
           })
       }
     }
