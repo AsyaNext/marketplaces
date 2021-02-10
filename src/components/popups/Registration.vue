@@ -24,6 +24,7 @@
               $rules.email('Вы ввели некорректный email'),
               $rules.required('Это обязательное поле')
             ]"
+            @input="emailCurrent = false"
           >
             <template v-slot:error>
               Пользователь с таким email уже существует
@@ -85,6 +86,7 @@
               $rules.minLength(12, 'Некорректный номер телефона'),
               $rules.required('Это обязательное поле')
             ]"
+            @input="emailCurrent = false"
           >
             <template v-slot:error>
               Пользователь с таким телефоном уже существует
