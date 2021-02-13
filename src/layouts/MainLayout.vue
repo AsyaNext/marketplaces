@@ -116,7 +116,7 @@
             Контакты
           </q-item-section>
         </q-item>
-        <q-item v-show="!isAuth" clickable @click="leftDrawer = false; openRegister = true">
+        <q-item v-show="!isAuth" clickable @click="leftDrawer = false;openRegister = true">
           <q-item-section>
             Регистрация
           </q-item-section>
