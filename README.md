@@ -24,3 +24,5 @@ quasar build
 
 ### Customize the configuration
 See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+
+Site: http://192.162.240.96:8015
